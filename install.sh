@@ -3,14 +3,19 @@
 # Need to upgrade Vim: brew update
 # brew install vim --override-system-vi --with-lua
 # hash -r
-# Install Vundle:
-# git clone https://github.com/gmarik/Vundle.vim pwd ./vim/bundle/Vundle.vim
 
 function install() {
     rsync --exclude ".git/"  \
           --exclude ".DS_Store" \
           --exclude "install.sh" \
           -avh --no-perms . $HOME
+
+    if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
+        git clone https://github.com/gmarik/Vundle.vim.git \
+            $HOME/.vim/bundle/Vundle.vim
+    fi
+
+    vim +PluginInstall +qall
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

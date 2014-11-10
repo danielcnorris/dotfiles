@@ -37,7 +37,9 @@ endif
 
 " Colors
 set background=dark
-colorscheme solarized
+if filereadable(expand("~/.vim/bundle/vim-colors-solarized"))
+    colorscheme solarized
+endif
 
 " Turn off swap files
 set noswapfile
@@ -46,7 +48,7 @@ set nowb
 
 " Persistent undo
 if has('persistent_undo')
-  silent !mkdir ~/vim/backups > /dev/null 2 > &1
+  silent !mkdir ~/vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
   set undofile
 endif
