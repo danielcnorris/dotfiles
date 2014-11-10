@@ -1,4 +1,10 @@
 #!/bin/bash
+# TODO
+# Need to upgrade Vim: brew update
+# brew install vim --override-system-vi --with-lua
+# hash -r
+# Install Vundle:
+# git clone https://github.com/gmarik/Vundle.vim pwd ./vim/bundle/Vundle.vim
 
 function install() {
     rsync --exclude ".git/"  \
