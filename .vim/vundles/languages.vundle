@@ -1,0 +1,8 @@
+Plugin 'pangloss/vim-javascript'
+Plugin 'itspriddle/vim-jquery.git'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'jtratner/vim-flavored-markdown.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'fatih/vim-go'
+Plugin 'bitc/vim-hdevtools.git'
+Plugin 'eagletmt/neco-ghc.git'

@@ -1,0 +1,11 @@
+Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'vim-scripts/matchit.zip.git'
+Plugin 'ervandew/supertab.git'
+Plugin 'tpope/vim-commentary.git'
+Plugin 'tpope/vim-repeat.git'
+Plugin 'tpope/vim-abolish.git'
+Plugin 'tpope/vim-surround.git'
+Plugin 'tpope/vim-speeddating.git'
+Plugin 'bling/vim-airline'
+
