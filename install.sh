@@ -8,6 +8,8 @@ function install() {
     rsync --exclude ".git/"  \
           --exclude ".DS_Store" \
           --exclude "install.sh" \
+          --exclude "README.md" \
+          --exclude "LICENSE"
           -avh --no-perms . $HOME
 
     if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
