@@ -37,7 +37,7 @@ endif
 
 " Colors
 set background=dark
-if filereadable(expand("~/.vim/bundle/vim-colors-solarized"))
+if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
     colorscheme solarized
 endif
 
