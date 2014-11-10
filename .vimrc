@@ -5,7 +5,7 @@ set nocompatible
                 
 " General settings
 set title
-"set number
+set number
 set ruler
 set backspace=indent,eol,start
 set history=1000
