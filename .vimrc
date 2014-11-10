@@ -2,7 +2,7 @@
 
 " Use Vim
 set nocompatible
-                
+
 " General settings
 set title
 set number
@@ -21,17 +21,12 @@ syntax on
 " Allow buffers to exist in background
 set hidden
 
-" Move leader
+" Basic mappings
 let mapleader=","
-
-" Move ` to '
 nnoremap ' `
 nnoremap ` '
-
-" Map ; to : for commands
+map jj <Esc>
 noremap ; :
-
-" Allow easier up/down navigation on wrapped lines
 nnoremap j gj
 nnoremap k gk
 
@@ -67,8 +62,12 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Display tabs and trailing whitespace
-" set list listchars=tab:\ \ ,trail:·
+" Line length
+set textwidth=79
+set colorcolumn=80
+
+" Remove trailing whitespace on save
+autocmd BufWritePre *.* :%s/\s\+$//e
 
 " Turnoff auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -100,10 +99,16 @@ set laststatus=2
 set encoding=utf-8
 
 " Buffer navigation
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+set splitbelow
+set splitright
+nnoremap vv <C-w>v<CR>
+nnoremap ss <C-w>s<CR>
+nnoremap <Leader>z :bp<CR>
+nnoremap <Leader>x :bn<CR>
 
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
@@ -116,22 +121,7 @@ nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>10 :10b<CR>
 
-""" BELOW HERE ALL SHOULD BE MOVED
-" " Python standards as per http://docs.python.org/
-" " en/latest/dev/env/#text-editors
-au FileType python setlocal textwidth=79
-au FileType python setlocal colorcolumn=80
-highlight ColorColoumn ctermbg=black guibg=black
-set shiftwidth=1
-set tabstop=4
-set expandtab
-set softtabstop=4
-set autoindent
-
-
-" Remove trailing whitespace form python files
-autocmd BufWritePre *.py :%s/\s\+$//e
-
+" PUT THESE IN LANGUAGE SPECIFIC FILES
 " Give a shortcut to NERD tree
 map <F2> :NERDTreeToggle<CR>
 
