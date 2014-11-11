@@ -91,7 +91,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-nmap <silent> <leader>/ :nohlsearch<CR>
+nmap <silent> <Leader>/ :nohlsearch<CR>
 
 " Closing character
 set showmatch
@@ -109,8 +109,9 @@ set splitbelow
 set splitright
 nnoremap vv <C-w>v<CR>
 nnoremap ss <C-w>s<CR>
-nnoremap <Leader>z :bp<CR>
-nnoremap <Leader>x :bn<CR>
+nnoremap <Leader>a :bp<CR>
+nnoremap <Leader>s :bn<CR>
+nnoremap <Leader>x :bp\|bd #<CR>
 
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>

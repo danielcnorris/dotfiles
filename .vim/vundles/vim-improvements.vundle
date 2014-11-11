@@ -1,4 +1,4 @@
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'ervandew/supertab'
