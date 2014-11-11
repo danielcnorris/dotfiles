@@ -18,6 +18,7 @@ function install() {
     fi
 
     vim +PluginInstall +qall
+    source $HOME/.bash_profile
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
