@@ -57,8 +57,8 @@ endif
 set autoindent
 set expandtab
 set shiftwidth=4
-set softtabstop=4
-set shiftround
+set softtabstop=1
+" set shiftround
 
 filetype on
 filetype plugin on
