@@ -38,6 +38,7 @@ endif
 " Colors
 set background=dark
 if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
+    let g:solarized_termtrans=1
     colorscheme solarized
 endif
 
