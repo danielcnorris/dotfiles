@@ -32,6 +32,8 @@ alias gr='git rebase'
 alias gri='git rebase -i'
 alias gs='git status'
 
+export TERM=xterm-16color
+
 export PATH=$PATH:~/AWS-ElasticBeanstalk-CLI-2.6.3/eb/macosx/python2.7
 export PATH=~/.cabal/bin:$PATH
 export PATH=~/Library/Haskell/bin:$PATH
