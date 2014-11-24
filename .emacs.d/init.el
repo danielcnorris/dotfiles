@@ -1,4 +1,4 @@
-; Add MELPA packages
+;; Add MELPA packages
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -17,7 +17,7 @@ re-downloaded in order to locate PACKAGE."
 
 (package-initialize)
 
-; Use evil mode
+;; Use evil mode
 (require-package 'evil)
 
 (setq evil-search-module 'evil-search
@@ -27,12 +27,18 @@ re-downloaded in order to locate PACKAGE."
 (require 'evil)
 (evil-mode t)
 
-; Load solarized theme
+;; Load solarized theme
 (require-package 'color-theme-solarized)
-; (add-to-list 'custom-theme-load-path "emacs-color-theme-solarized")
 (load-theme 'solarized-dark t)
 
-; Org mode setup
+;; Remove menu bar
+(menu-bar-mode -1)
+
+;; Line and column numbers
+(global-linum-mode 1)
+(column-number-mode 1)
+
+;; Org mode setup
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
