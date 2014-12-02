@@ -1,7 +1,9 @@
-;; Add MELPA packages
+;; Add packages
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
@@ -35,7 +37,15 @@ re-downloaded in order to locate PACKAGE."
 (menu-bar-mode -1)
 
 ;; Line and column numbers
+(require 'linum)
 (global-linum-mode 1)
+(setq linum-format
+    (lambda (line) (propertize
+                    (format (let ((w (length (number-to-string
+                                              (count-lines (point-min)
+                                                           (point-max))))))
+                    (concat " %" (number-to-string w) "d ")) line)
+                    'face 'linum)))
 (column-number-mode 1)
 
 ;; Org mode setup
