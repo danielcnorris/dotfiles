@@ -23,6 +23,9 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'color-theme-solarized)
 (load-theme 'solarized-dark t)
 
+;; Remove splash screen
+(setq inhibit-startup-message t)
+
 ;; Remove menu bar
 (menu-bar-mode -1)
 
@@ -47,3 +50,4 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (display-color-cells (selected-frame))
+(find-file "~/Dropbox/org/todo.org")
