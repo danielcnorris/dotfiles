@@ -13,6 +13,7 @@ alias rm='rm -i'
 alias chr='open -a "Google Chrome"'
 
 export ds=~/Desktop
+export dr=~/Dropbox
 alias cds='cd $ds'
 alias lds='ll $ds'
 

@@ -19,22 +19,15 @@ re-downloaded in order to locate PACKAGE."
 
 (package-initialize)
 
-;; Use evil mode
-(require-package 'evil)
-
-(setq evil-search-module 'evil-search
-      evil-want-C-u-scroll t
-      evil-want-C-w-in-emacs-state t)
-
-(require 'evil)
-(evil-mode t)
-
 ;; Load solarized theme
 (require-package 'color-theme-solarized)
 (load-theme 'solarized-dark t)
 
 ;; Remove menu bar
 (menu-bar-mode -1)
+
+;; Tabs are illegal
+(setq-default indent-tabs-mode nil)
 
 ;; Line and column numbers
 (require 'linum)
