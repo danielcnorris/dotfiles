@@ -53,5 +53,5 @@ re-downloaded in order to locate PACKAGE."
 (find-file "~/Dropbox/org/todo.org")
 
 ;; Coffeescript settings
-(require-package coffee-mode)
+(require-package 'coffee-mode)
 (custom-set-variables '(coffee-tab-width 4))
