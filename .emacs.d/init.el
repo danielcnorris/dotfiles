@@ -63,6 +63,16 @@ re-downloaded in order to locate PACKAGE."
                     'face 'linum)))
 (column-number-mode 1)
 
+;; Autocomplete
+(require-package 'auto-complete)
+(require 'auto-complete)
+(global-auto-complete-mode t)
+(ac-linum-workaround)
+(defun auto-complete-mode-maybe ()
+    "Use AC everywhere but in minibuffer"
+    (unless (minibufferp (current-buffer))
+        (auto-complete-mode 1)))
+
 ;; Org mode setup
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -70,6 +80,10 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-cb" 'org-iswitchb)
 (display-color-cells (selected-frame))
 (find-file "~/Dropbox/org/todo.org")
+
+;; Require flycheck
+;;(require-package 'flycheck)
+;;(add-hook 'after-init-hood #'global-flycheck-mode)
 
 ;; Lisp settings
 (setq lisp-body-indent 4)
