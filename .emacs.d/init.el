@@ -32,6 +32,25 @@ re-downloaded in order to locate PACKAGE."
 ;; Tabs are illegal
 (setq-default indent-tabs-mode nil)
 
+;; Delete trailing whitespace on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Delete trailing newline
+(defun my-other-delete-trailing-blank-lines ()
+    "Deletes all blank lines at the end of the file, even the last one"
+    (interactive)
+    (save-excursion
+        (save-restriction
+            (widen)
+            (goto-char (point-max))
+            (delete-blank-lines)
+            (let ((trailnewlines (abs (skip-chars-backward "\n\t"))))
+                (if (> trailnewlines 0)
+                        (progn
+                            (delete-char trailnewlines)))))))
+
+(add-hook 'before-save-hook 'my-other-delete-trailing-blank-lines)
+
 ;; Line and column numbers
 (require 'linum)
 (global-linum-mode 1)
@@ -51,6 +70,9 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-cb" 'org-iswitchb)
 (display-color-cells (selected-frame))
 (find-file "~/Dropbox/org/todo.org")
+
+;; Lisp settings
+(setq lisp-body-indent 4)
 
 ;; Coffeescript settings
 (require-package 'coffee-mode)
