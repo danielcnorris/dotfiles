@@ -51,3 +51,7 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-cb" 'org-iswitchb)
 (display-color-cells (selected-frame))
 (find-file "~/Dropbox/org/todo.org")
+
+;; Coffeescript settings
+(require-package coffee-mode)
+(custom-set-variables '(coffee-tab-width 4))
