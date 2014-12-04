@@ -93,9 +93,9 @@ re-downloaded in order to locate PACKAGE."
 (defvar dcn/org-directory "~/Dropbox/org/")
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline (concat dcn/org-directory "todo.org") "Tasks")
-         "* TODO %?\nCREATED: %U")
+         "* TODO %?%i\nCREATED: %U")
         ("l" "Todo with link" entry (file+headline (concat dcn/org-directory "todo.org") "Tasks")
-         "* TODO %?\n%a\nCREATED: %U")
+         "* TODO %?%i\n%a\nCREATED: %U")
         ("j" "Journal" entry (file+datetree (concat dcn/org-directory "journal.org"))
          "* %?\n%i\nCREATED: %U")))
 (find-file (concat dcn/org-directory "todo.org"))
