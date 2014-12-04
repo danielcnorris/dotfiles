@@ -29,6 +29,13 @@ re-downloaded in order to locate PACKAGE."
 ;; Remove menu bar
 (menu-bar-mode -1)
 
+;; Break lines after 78 chars
+(setq-default auto-fill-mode nil)
+(set-fill-column 78)
+
+;; Visual line wrapping
+(global-visual-line-mode 1)
+
 ;; Tabs are illegal
 (setq-default indent-tabs-mode nil)
 
@@ -78,7 +85,15 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-(display-color-cells (selected-frame))
+(setq org-log-done t)
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
+         "* TODO %?\n%i\nAdded on %U")
+        ("l" "Todo with link" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
+         "* TODO %?\n%i\n%a\nAdded on %U")
+        ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
+         "* %?\n%i\nEntered on %U")))
 (find-file "~/Dropbox/org/todo.org")
 
 ;; Require flycheck
