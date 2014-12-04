@@ -5,7 +5,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
-(defun require-package (package &optional min-version no-refresh)
+(defun dcn/require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
 If NO-REFRESH is non-nil, the available package lists will not be
 re-downloaded in order to locate PACKAGE."
@@ -15,12 +15,12 @@ re-downloaded in order to locate PACKAGE."
         (package-install package)
       (progn
         (package-refresh-contents)
-        (require-package package min-version t)))))
+        (dcn/require-package package min-version t)))))
 
 (package-initialize)
 
 ;; Load solarized theme
-(require-package 'color-theme-solarized)
+(dcn/require-package 'color-theme-solarized)
 (load-theme 'solarized-dark t)
 
 ;; Remove splash screen
@@ -30,7 +30,7 @@ re-downloaded in order to locate PACKAGE."
 (menu-bar-mode -1)
 
 ;; Break lines after 78 chars
-(setq-default auto-fill-mode nil)
+(setq-default auto-fill-function 'do-auto-fill)
 (set-fill-column 78)
 
 ;; Visual line wrapping
@@ -43,7 +43,7 @@ re-downloaded in order to locate PACKAGE."
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Delete trailing newline
-(defun my-other-delete-trailing-blank-lines ()
+(defun dcn/delete-trailing-blank-lines ()
     "Deletes all blank lines at the end of the file, even the last one"
     (interactive)
     (save-excursion
@@ -56,7 +56,7 @@ re-downloaded in order to locate PACKAGE."
                         (progn
                             (delete-char trailnewlines)))))))
 
-(add-hook 'before-save-hook 'my-other-delete-trailing-blank-lines)
+(add-hook 'before-save-hook 'dcn/delete-trailing-blank-lines)
 
 ;; Line and column numbers
 (require 'linum)
@@ -71,14 +71,17 @@ re-downloaded in order to locate PACKAGE."
 (column-number-mode 1)
 
 ;; Autocomplete
-(require-package 'auto-complete)
+(dcn/require-package 'auto-complete)
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (ac-linum-workaround)
-(defun auto-complete-mode-maybe ()
-    "Use AC everywhere but in minibuffer"
-    (unless (minibufferp (current-buffer))
-        (auto-complete-mode 1)))
+(add-to-list 'ac-modes 'python-mode)
+(add-to-list 'ac-modes 'coffee-mode)
+(add-to-list 'ac-modes 'emacs-lisp-mode)
+;; (defun auto-complete-mode-maybe ()
+;;     "Use AC everywhere but in minibuffer"
+;;     (unless (minibufferp (current-buffer))
+;;         (auto-complete-mode 1)))
 
 ;; Org mode setup
 (global-set-key "\C-cl" 'org-store-link)
@@ -87,22 +90,23 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 
+(defvar dcn/org-directory "~/Dropbox/org/")
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
-         "* TODO %?\n%i\nAdded on %U")
-        ("l" "Todo with link" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
-         "* TODO %?\n%i\n%a\nAdded on %U")
-        ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
-         "* %?\n%i\nEntered on %U")))
-(find-file "~/Dropbox/org/todo.org")
+      '(("t" "Todo" entry (file+headline (concat dcn/org-directory "todo.org") "Tasks")
+         "* TODO %?\nCREATED: %U")
+        ("l" "Todo with link" entry (file+headline (concat dcn/org-directory "todo.org") "Tasks")
+         "* TODO %?\n%a\nCREATED: %U")
+        ("j" "Journal" entry (file+datetree (concat dcn/org-directory "journal.org"))
+         "* %?\n%i\nCREATED: %U")))
+(find-file (concat dcn/org-directory "todo.org"))
 
 ;; Require flycheck
-;;(require-package 'flycheck)
+;;(dcn/require-package 'flycheck)
 ;;(add-hook 'after-init-hood #'global-flycheck-mode)
 
 ;; Lisp settings
 (setq lisp-body-indent 4)
 
 ;; Coffeescript settings
-(require-package 'coffee-mode)
+(dcn/require-package 'coffee-mode)
 (custom-set-variables '(coffee-tab-width 4))
