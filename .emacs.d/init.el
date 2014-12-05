@@ -42,22 +42,6 @@ re-downloaded in order to locate PACKAGE."
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Delete trailing newline
-(defun dcn/delete-trailing-blank-lines ()
-    "Deletes all blank lines at the end of the file, even the last one"
-    (interactive)
-    (save-excursion
-        (save-restriction
-            (widen)
-            (goto-char (point-max))
-            (delete-blank-lines)
-            (let ((trailnewlines (abs (skip-chars-backward "\n\t"))))
-                (if (> trailnewlines 0)
-                        (progn
-                            (delete-char trailnewlines)))))))
-
-(add-hook 'before-save-hook 'dcn/delete-trailing-blank-lines)
-
 ;; Line and column numbers
 (require 'linum)
 (global-linum-mode 1)
