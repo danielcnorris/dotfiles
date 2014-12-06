@@ -63,6 +63,11 @@ re-downloaded in order to locate PACKAGE."
 (add-to-list 'ac-modes 'coffee-mode)
 (add-to-list 'ac-modes 'emacs-lisp-mode)
 
+;; Spellcheck
+;; Be sure to enable before opening any buffers
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+(add-hook 'org-mode-hook 'turn-on-flyspell)
+
 ;; Org mode setup
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -83,10 +88,6 @@ re-downloaded in order to locate PACKAGE."
 ;; Require flycheck
 ;;(dcn/require-package 'flycheck)
 ;;(add-hook 'after-init-hood #'global-flycheck-mode)
-
-;; Spellcheck
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'org-mode-hook 'flyspell-mode)
 
 ;; Lisp settings
 (setq lisp-body-indent 4)
