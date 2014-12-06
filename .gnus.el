@@ -10,6 +10,11 @@
 (require 'smtpmail)
 (require 'cl)
 
+(defvar dcn/home-address "danielcnorris@gmail.com")
+(defvar dcn/qlabs-address "daniel@quantifiedlabs.com")
+(defvar dcn/auth-info "~/.authinfo")
+
+;; Add home and work accounts to news
 (setq gnus-select-method '(nnimap "home"
                                   (nnimap-address "imap.gmail.com")
                                   (nnimap-server-port 993)
@@ -21,19 +26,21 @@
               (nnimap-server-port 993)
               (nnimap-stream-ssl)))
 
+;; Favor plaintext
 (setq mm-discouraged-alternatives '("text/html" "text/richtext"))
 
+;; Change the from address based on which group we enter
 (setq gnus-posting-styles
-      '(("Gmail" (address "danielcnorris@gmail.com"))
-        ("^INBOX" (address "danielcnorris@gmail.com"))
-        ("drafts" (address "danielcnorris@gmail.com"))
-        ("archive" (address "daniel@quantifiedlabs.com"))
-        ("work" (address "daniel@quantifiedlabs.com"))))
+      '(("Gmail" (address dcn/home-address))
+        ("^INBOX" (address dcn/home-address))
+        ("drafts" (address dcn/home-address))
+        ("archive" (address dcn/qlabs-address))
+        ("work" (address dcn/qlabs-address))))
 
-
+;; These function handle choosing the right smtp server to send mail
 (defvar smtp-accounts
-    '((ssl "danielcnorris@gmail.com" "smtp.gmail.com" 587 "key" nil)
-      (ssl "daniel@quantifiedlabs.com" "smtp.gmail2.com" 587 "key" nil)))
+    '((ssl dcn/home-address "smtp.gmail.com" 587 "key" nil)
+      (ssl dcn/qlabs-address "smtp.gmail2.com" 587 "key" nil)))
 
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'smtpmail-send-it
@@ -60,7 +67,7 @@
           smtpmail-smtp-server server
           smtpmail-smtp-service port
           smtp-starttls-credentials (list (list server port key cert))
-          smtpmail-auth-credentials "~/.authinfo")
+          smtpmail-auth-credentials dcn/auth-info)
     (message
      "Setting SMTP server to '%s:%s' for user '%s'. (SSL enabled)"
      server port user))
@@ -83,8 +90,10 @@
                               auth-mech)))
               finally (error "Cannot infer SMTP information."))))
 
+;; Change smtp server on send
 (add-hook 'message-send-hook 'change-smtp)
 
+;; Display messages in descending chronological order
 (setq-default gnus-summary-line-format
               "%U%R%z %(%&user-date; %-15,15f %B%s%)\n"
               gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M"))
@@ -94,6 +103,10 @@
 (setq gnus-thread-sort-functions '((not gnus-thread-sort-by-date)
                                    (not gnus-thread-sort-by-number)))
 
+;; Spell check messages
+(add-hook 'message-mode-hook 'flyspell-mode)
+
+;; Offline reading
 (setq gnus-use-cache t)
 
 ;; Fetch only part of the article if possible

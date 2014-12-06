@@ -62,10 +62,6 @@ re-downloaded in order to locate PACKAGE."
 (add-to-list 'ac-modes 'python-mode)
 (add-to-list 'ac-modes 'coffee-mode)
 (add-to-list 'ac-modes 'emacs-lisp-mode)
-;; (defun auto-complete-mode-maybe ()
-;;     "Use AC everywhere but in minibuffer"
-;;     (unless (minibufferp (current-buffer))
-;;         (auto-complete-mode 1)))
 
 ;; Org mode setup
 (global-set-key "\C-cl" 'org-store-link)
@@ -87,6 +83,10 @@ re-downloaded in order to locate PACKAGE."
 ;; Require flycheck
 ;;(dcn/require-package 'flycheck)
 ;;(add-hook 'after-init-hood #'global-flycheck-mode)
+
+;; Spellcheck
+(add-hood 'text-mode-hook 'flyspell-mode)
+(add-hook 'org-mode-hook 'flyspell-mode)
 
 ;; Lisp settings
 (setq lisp-body-indent 4)
