@@ -1,3 +1,7 @@
+;; Load secrets
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'secrets)
+
 ;; Add packages
 (require 'package)
 (add-to-list 'package-archives
@@ -75,13 +79,15 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 
-(defvar dcn/org-directory "~/Dropbox/org/")
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline (concat dcn/org-directory "todo.org") "Tasks")
+      '(("t" "Todo" entry
+         (file+headline (concat dcn/org-directory "todo.org") "Tasks")
          "* TODO %?%i\nCREATED: %U")
-        ("l" "Todo with link" entry (file+headline (concat dcn/org-directory "todo.org") "Tasks")
+        ("l" "Todo with link" entry
+         (file+headline (concat dcn/org-directory "todo.org") "Tasks")
          "* TODO %?%i\n%a\nCREATED: %U")
-        ("j" "Journal" entry (file+datetree (concat dcn/org-directory "journal.org"))
+        ("j" "Journal" entry
+         (file+datetree (concat dcn/org-directory "journal.org"))
          "* %?\n%i\nCREATED: %U")))
 (find-file (concat dcn/org-directory "todo.org"))
 

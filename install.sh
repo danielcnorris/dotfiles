@@ -23,11 +23,15 @@ function install() {
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
     install
+    cp $SECRETS/secrets.el $HOME/.emacs.d/lisp/
+    cp $SECRETS/.authinfo $HOME
 else
     read -p "This operation may override files in your home directory. Proceed? [y/n]"
     echo ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         install
+        cp $SECRETS/secrets.el $HOME/.emacs.d/lisp/
+        cp $SECRETS/.authinfo $HOME
     fi
 fi
 

@@ -10,9 +10,8 @@
 (require 'smtpmail)
 (require 'cl)
 
-(defvar dcn/home-address "danielcnorris@gmail.com")
-(defvar dcn/qlabs-address "daniel@quantifiedlabs.com")
-(defvar dcn/auth-info "~/.authinfo")
+;; Load account info
+(require 'secrets)
 
 ;; Add home and work accounts to news
 (setq gnus-select-method '(nnimap "home"
