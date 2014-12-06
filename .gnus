@@ -81,8 +81,7 @@
                    (return (apply 'set-smtp-ssl auth-spec)))
                   (t (error "Unrecognized SMTP auth. mechanism: '%s'."
                               auth-mech)))
-              finally (error "Bad '%s' '%s '%s '%s'" address from
-                             auth-mech auth-spec))))
+              finally (error "Cannot infer SMTP information."))))
 
 (add-hook 'message-send-hook 'change-smtp)
 
