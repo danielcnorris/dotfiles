@@ -42,6 +42,15 @@ re-downloaded in order to locate PACKAGE."
 
 ;; Tabs are illegal
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+;; Automatically insert and highlight matching paren, brace, etc.
+(electric-pair-mode 1)
+(show-paren-mode 1)
+(require 'paren)
+(set-face-background 'show-paren-match "#657b83")
+(set-face-foreground 'show-paren-match "#dc322f")
+(set-face-attribute 'show-paren-match nil :weight 'extra-bold)
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
