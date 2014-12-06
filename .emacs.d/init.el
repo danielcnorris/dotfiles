@@ -85,7 +85,7 @@ re-downloaded in order to locate PACKAGE."
 ;;(add-hook 'after-init-hood #'global-flycheck-mode)
 
 ;; Spellcheck
-(add-hood 'text-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
 
 ;; Lisp settings
