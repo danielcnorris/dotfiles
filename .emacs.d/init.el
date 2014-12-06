@@ -98,11 +98,16 @@ re-downloaded in order to locate PACKAGE."
         ("j" "Journal" entry
          (file+datetree (concat dcn/org-directory "journal.org"))
          "* %?\n%i\nCREATED: %U")))
+
+;; Open org on load
 (find-file (concat dcn/org-directory "todo.org"))
 
+;; Set default dired directory back to home
+(setq default-directory dcn/home-directory)
+
 ;; Require flycheck
-;;(dcn/require-package 'flycheck)
-;;(add-hook 'after-init-hood #'global-flycheck-mode)
+(dcn/require-package 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Lisp settings
 (setq lisp-body-indent 4)
