@@ -1,4 +1,5 @@
-;; Gnus config
+;;; .gnus.el --- Summary
+;;; Commentary:
 ;; Adapted heavily from
 ;; http://blog.binchen.org/posts/notes-on-using-gnus.html
 ;; http://www.emacswiki.org/emacs/MultipleSMTPAccounts
@@ -6,6 +7,7 @@
 ;; http://linil.wordpress.com/2008/01/18/gnus-gmail/
 ;; NOTE: Must set an alias smtp.gmail2.com in /etc/hosts in order to
 ;; send mail from 2 gmail accounts
+;;; Code:
 
 (require 'smtpmail)
 (require 'cl)
@@ -121,3 +123,6 @@
 ;; Only show top level message
 (setq gnus-thread-hide-subtree t)
 (setq gnus-thread-ignore-subject t)
+
+(provide '.gnus.el)
+;;; .gnus.el ends here
