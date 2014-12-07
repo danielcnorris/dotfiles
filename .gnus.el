@@ -40,8 +40,8 @@
 
 ;; These function handle choosing the right smtp server to send mail
 (defvar smtp-accounts
-    '((ssl dcn/home-address "smtp.gmail.com" 587 "key" nil)
-      (ssl dcn/qlabs-address "smtp.gmail2.com" 587 "key" nil)))
+    `((ssl ,dcn/home-address "smtp.gmail.com" 587 "key" nil)
+      (ssl ,dcn/qlabs-address "smtp.gmail2.com" 587 "key" nil)))
 
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'smtpmail-send-it

@@ -88,6 +88,7 @@ re-downloaded in order to locate PACKAGE."
 (add-hook 'org-mode-hook 'turn-on-flyspell)
 
 ;;;; Org mode setup
+;; Borrowed heavily from http://doc.norang.ca/org-mode.html
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
@@ -140,6 +141,7 @@ re-downloaded in order to locate PACKAGE."
                             ("@home" . ?H)
                             ("@shiya" . ?s)
                             ("@journal" . ?j)
+                            ("@phone" . ?p)
                             (:endgroup)
                             ("WAITING" . ?w)
                             ("HOLD" . ?h)
@@ -152,7 +154,7 @@ re-downloaded in order to locate PACKAGE."
 (setq org-fast-tag-selection-single-key (quote expert))
 
 ;; When searching by tags ignore tasks with schedule or deadline dates
-(setq org-agenda-tags-todo-honor-ingore-options t)
+(setq org-agenda-tags-todo-honor-ignore-options t)
 
 ;;; Refile configuration
 
@@ -306,6 +308,7 @@ re-downloaded in order to locate PACKAGE."
                           (t
                            subtree-end))))
         (save-excursion (org-end-of-subtree t))))
+
 (require 'org-habit)
 (defun dcn/skip-project-tasks ()
     "Show non-project tasks."
