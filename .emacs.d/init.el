@@ -73,6 +73,10 @@ re-downloaded in order to locate PACKAGE."
                     'face 'linum)))
 (column-number-mode 1)
 
+;; Use Ido
+(require 'ido)
+(ido-mode t)
+
 ;; Autocomplete
 (dcn/require-package 'auto-complete)
 (require 'auto-complete)
@@ -424,6 +428,37 @@ Callers of this function already widen the buffer view."
                             nil)) ; Available to archive
                 (or subtree-end (point-max)))
             next-headline)))
+
+;; Create an inactive timestamp with new header
+(defvar dcn/insert-inactive-timestamp t)
+
+(defun dcn/toggle-insert-inactive-timestamp ()
+    (interactive)
+    (setq dcn/insert-inactive-timestamp (not
+                                         dcn/insert-inactive-timestamp))
+    (message "Heading timestamps are %s"
+             (if dcn/insert-inactive-timestamp "ON" "OFF")))
+
+(defun dcn/insert-inactive-timestamp ()
+    (interactive)
+    (org-insert-time-stamp nil t t nil nil nil))
+
+(defun dcn/insert-heading-inactive-timestamp ()
+    (save-excursion
+        (when dcn/insert-inactive-timestamp
+            (org-return)
+            (org-cycle)
+            (dcn/insert-inactive-timestamp))))
+
+(add-hook 'org-insert-heading-hook
+          'dcn/insert-heading-inactive-timestamp
+          'append)
+
+;; Don't export timestamps when publishing
+(setq org-export-with-timestamps nil)
+
+;; Display settings
+(setq org-startup-indented t)
 
 ;; Open org on load
 (find-file (concat dcn/org-directory "todo.org"))
