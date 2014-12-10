@@ -73,6 +73,9 @@ re-downloaded in order to locate PACKAGE."
                     'face 'linum)))
 (column-number-mode 1)
 
+;; Reload files updated on disk
+(global-auto-revert-mode 1)
+
 ;; Use Ido
 (require 'ido)
 (ido-mode t)
@@ -99,8 +102,7 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 
-;; Disable C-c [ ]
-;; Not sure why can't use var for paths: TODO
+;; Load all org files form these directories into agenda
 (setq org-agenda-files (list dcn/org-directory
                              (concat dcn/org-directory
                                      "qlabs")))
@@ -453,6 +455,9 @@ Callers of this function already widen the buffer view."
 (add-hook 'org-insert-heading-hook
           'dcn/insert-heading-inactive-timestamp
           'append)
+
+;; Don't enter blank lines between headings
+(setq org-cycle-separator-lines 0)
 
 ;; Don't export timestamps when publishing
 (setq org-export-with-timestamps nil)
