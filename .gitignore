@@ -1,3 +1,5 @@
 .vim/.vundles.local
 .vim/bundle
 .vim/.netrwhist
+*~
+\#*
