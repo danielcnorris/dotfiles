@@ -19,13 +19,18 @@
 (setq gnus-select-method '(nnimap "home"
                                   (nnimap-address "imap.gmail.com")
                                   (nnimap-server-port 993)
-                                  (nnimap-stream-ssl)))
+                                  (nnimap-stream-ssl)
+                                  (nnmail-expiry-target
+                                   "[Gmail]/Trash")
+                                  (nnmail-expiry-wait 10)))
 
 (add-to-list 'gnus-secondary-select-methods
              '(nnimap "work"
               (nnimap-address "imap.gmail.com")
               (nnimap-server-port 993)
-              (nnimap-stream-ssl)))
+              (nnimap-stream-ssl)
+              (nnmail-expiry-target "nnimap+work:[Gmail]/Trash")
+              (nnmail-expiry-wait 10)))
 
 ;; Favor plaintext
 (setq mm-discouraged-alternatives '("text/html" "text/richtext"))
