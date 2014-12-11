@@ -10,4 +10,6 @@ With help from:
 - [jamesob/dotfiles](https://github.com/jamesob/dotfiles)
 - [Configuring Vim Right](http://items.sjbach.com/319/configuring-vim-right)
 - [A Good Vimrc](http://dougblack.io/words/a-good-vimrc.html)
-- Countless Emacs resources
+- [purcell/.emacs.d](https://github.com/purcell/emacs.d)
+- [Org Mode - Organize Your Life in Plain
+Text](http://doc.norang.ca/org-mode.html)
