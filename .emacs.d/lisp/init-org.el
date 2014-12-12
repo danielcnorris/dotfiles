@@ -61,6 +61,7 @@
                             ("HOLD" . ?h)
                             ("PERSONAL" . ?P)
                             ("QLABS" . ?W)
+                            ("IDEA" . ?i)
                             ("NOTE" . ?n)
                             ("CANCELLED" . ?c))))
 
@@ -77,7 +78,10 @@
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
 
-;; Stuff about ido / outline paths...
+;; Use Ido and full paths for refiling
+(setq org-completion-use-ido t)
+(setq org-refile-use-outline-path t)
+(setq org-outline-path-complete-in-steps nil)
 
 ;; Allow refile to create parent tasks with confirmation
 (setq org-refile-allow-creating-parent-nodes (quote confirm))
