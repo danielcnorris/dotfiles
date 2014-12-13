@@ -16,6 +16,7 @@
 (require 'init-flyspell)
 (require 'init-flycheck)
 (require 'init-git)
+(require 'init-html)
 (require 'init-javascript)
 (require 'init-lisp)
 
