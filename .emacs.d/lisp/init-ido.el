@@ -3,7 +3,6 @@
 ;; Configures Ido mode
 ;;; Code:
 
-;(require-package 'fix-ido)
 (require-package 'ido-hacks)
 (require-package 'ido-vertical-mode)
 (require-package 'smex)
@@ -18,7 +17,6 @@
 
 (require 'ido-hacks)
 (ido-vertical-mode t)
-;;(fix-ido-mode t)
 
 (require 'smex)
 (smex-initialize)
