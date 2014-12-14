@@ -18,7 +18,7 @@
 ;; Org keywords
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-              (sequnce "WAITING(w@/!)" "HOLD(h@/!)" "|"
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|"
                        "CANCELLED(c@/!)"))))
 
 ;; Allow todo selection with keys
@@ -46,7 +46,16 @@
          "* %?  :NOTE:\n%U\n\n%a\n")
         ("j" "Journal" entry
          (file+datetree (concat dcn/org-directory "journal.org"))
-         "* %?\n%U\n")))
+         "* %?\n%U\n")
+        ("e" "Event" entry
+         (file (concat dcn/org-directory "inbox.org"))
+         "* %?%^{Time}T  :EVENT:\n%U\n")
+        ("d" "Full-day event" entry
+         (file (concat dcn/org-directory "inbox.org"))
+         "* %?%^{Date}t  :EVENT:\n%U\n")
+        ("D" "Multi-day event" entry
+         (file (concat dcn/org-directory "inbox.org"))
+         "* %?%^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n")))
 
 ;; Tags with fast selection keys
 (setq org-tag-alist (quote ((:startgroup)
@@ -59,6 +68,7 @@
                             (:endgroup)
                             ("WAITING" . ?w)
                             ("HOLD" . ?h)
+                            ("EVENT" . ?E)
                             ("PERSONAL" . ?P)
                             ("QLABS" . ?W)
                             ("IDEA" . ?i)
