@@ -71,6 +71,7 @@
                             ("EVENT" . ?E)
                             ("PERSONAL" . ?P)
                             ("QLABS" . ?W)
+                            ("crypt" . ?C)
                             ("IDEA" . ?i)
                             ("NOTE" . ?n)
                             ("CANCELLED" . ?c))))
@@ -389,5 +390,12 @@ Callers of this function already widen the buffer view."
 ;; Display settings
 (setq org-startup-indented t)
 
+;; Use org-crypt to encrypt parts of org file
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+(setq org-crypt-key dcn/gpg-key)
+(setq org-crypt-disable-auto-save nil)
+
 (provide 'init-org)
-;; init-org.el ends here
+;;; init-org.el ends here
