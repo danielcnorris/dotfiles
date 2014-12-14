@@ -22,7 +22,7 @@
                                   (nnimap-stream-ssl)
                                   (nnmail-expiry-target
                                    "[Gmail]/Trash")
-                                  (nnmail-expiry-wait 10)))
+                                  (nnmail-expiry-wait 'immediate)))
 
 (add-to-list 'gnus-secondary-select-methods
              '(nnimap "work"
@@ -30,14 +30,15 @@
               (nnimap-server-port 993)
               (nnimap-stream-ssl)
               (nnmail-expiry-target "nnimap+work:[Gmail]/Trash")
-              (nnmail-expiry-wait 10)))
+              (nnmail-expiry-wait 'immediate)))
 
 ;; Favor plaintext
 (setq mm-discouraged-alternatives '("text/html" "text/richtext"))
 
 ;; Change the from address based on which group we enter
 (setq gnus-posting-styles
-      '(("Gmail" (address dcn/home-address))
+      '((".*" (address dcn/home-address))
+        ("Gmail" (address dcn/home-address))
         ("^INBOX" (address dcn/home-address))
         ("drafts" (address dcn/home-address))
         ("archive" (address dcn/qlabs-address))
