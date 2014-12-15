@@ -22,6 +22,7 @@
 (require 'init-html)
 (require 'init-javascript)
 (require 'init-lisp)
+(require 'init-term)
 
 ;; Open org on load
 (find-file (concat dcn/org-directory "todo.org"))

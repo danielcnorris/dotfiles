@@ -1,8 +1,3 @@
-if [ -f ~/.bashrc ]
-then
-    source ~/.bashrc
-fi
-
 alias ..='cd ..'
 alias ...='cd ../..'
 
