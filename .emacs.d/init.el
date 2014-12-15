@@ -13,6 +13,7 @@
 (require 'init-ido)
 (require 'init-auto-complete)
 (require 'init-org)
+(require 'init-bbdb)
 (require 'init-flyspell)
 (require 'init-flycheck)
 (require 'init-git)

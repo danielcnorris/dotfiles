@@ -1,0 +1,3 @@
+[submodule ".emacs.d/lisp/gmail2bbdb"]
+	path = .emacs.d/lisp/gmail2bbdb
+	url = https://github.com/redguardtoo/gmail2bbdb.git

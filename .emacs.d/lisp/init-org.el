@@ -49,13 +49,13 @@
          "* %?\n%U\n")
         ("e" "Event" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* %?%^{Time}T  :EVENT:\n%U\n")
+         "* %? %^{Time}T  :EVENT:\n%U\n")
         ("d" "Full-day event" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* %?%^{Date}t  :EVENT:\n%U\n")
+         "* %? %^{Date}t  :EVENT:\n%U\n")
         ("D" "Multi-day event" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* %?%^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n")))
+         "* %? %^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n")))
 
 ;; Tags with fast selection keys
 (setq org-tag-alist (quote ((:startgroup)

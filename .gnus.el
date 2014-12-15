@@ -111,7 +111,13 @@
                                    (not gnus-thread-sort-by-number)))
 
 ;; Spell check messages
-(add-hook 'message-mode-hook 'flyspell-mode)
+;;(add-hook 'message-mode-hook 'flyspell-mode)
+(add-hook 'message-mode-hook
+          '(lambda ()
+               (flyspell-mode t)
+               (bbdb-initialize 'message)
+               (bbdb-initialize 'gnus)
+               (local-set-key "<TAB>" 'bbdb-complete-name)))
 
 ;; Offline reading
 (setq gnus-use-cache t)

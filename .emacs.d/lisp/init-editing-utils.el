@@ -9,6 +9,12 @@
 ;; Remove menu bar
 (menu-bar-mode -1)
 
+;; Show time
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(setq display-time-default-load-average nil)
+
 ;; Break lines after 78 chars
 (setq-default auto-fill-function 'do-auto-fill)
 (set-fill-column 78)
