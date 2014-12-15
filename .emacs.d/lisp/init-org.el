@@ -11,9 +11,11 @@
 (setq org-log-done t)
 
 ;; Keymaps to use on tty
-(global-set-key "\C-cm" 'org-insert-todo-heading)
-(global-set-key "\C-cp" 'org-promote-subtree)
-(global-set-key "\C-cn" 'org-demote-subtree)
+(add-hook 'org-mode-hook
+          (lambda ()
+              (local-set-key "\C-cm" 'org-insert-todo-heading)
+              (local-set-key "\C-cp" 'org-promote-subtree)
+              (local-set-key "\C-cn" 'org-demote-subtree)))
 
 ;; Use speed commands
 (setq org-use-speed-commands t)

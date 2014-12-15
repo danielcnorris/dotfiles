@@ -27,5 +27,6 @@
 
 (global-set-key (kbd "C-c \\") 'dcn/toggle-input-change-dictionary)
 
+(setq ispell-personal-dictionary dcn/dcn-en-dict)
 (provide 'init-flyspell)
 ;;; init-flyspell.el ends here

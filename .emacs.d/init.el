@@ -7,10 +7,12 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'secrets)
 
+(require 'init-utils)
 (require 'init-elpa)
 (require 'init-solarized)
 (require 'init-editing-utils)
 (require 'init-ido)
+(require 'init-dired)
 (require 'init-auto-complete)
 (require 'init-org)
 (require 'init-bbdb)
