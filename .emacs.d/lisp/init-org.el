@@ -55,7 +55,12 @@
          "* %? %^{Date}t  :EVENT:\n%U\n")
         ("D" "Multi-day event" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* %? %^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n")))
+         "* %? %^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n")
+        ("r" "Russian-English translation" plain
+         (file (concat dcn/org-directory "russian.org"))
+         "| %^{Russian word} | %^{English word} | %^{Notes} |"
+         :immediate-finish t)))
+
 
 ;; Tags with fast selection keys
 (setq org-tag-alist (quote ((:startgroup)
