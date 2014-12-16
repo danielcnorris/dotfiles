@@ -80,6 +80,7 @@
                             ("@home" . ?H)
                             ("@shiya" . ?s)
                             ("@journal" . ?j)
+                            ("@reading" . ?r)
                             ("@phone" . ?p)
                             (:endgroup)
                             ("WAITING" . ?w)
