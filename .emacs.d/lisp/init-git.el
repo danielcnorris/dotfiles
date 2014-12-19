@@ -7,6 +7,7 @@
 
 (global-set-key (kbd "\C-c g") 'magit-status)
 
+;; Disable linum mode
 (add-hook 'magit-mode-hook
           (lambda ()
               (linum-mode -1)))

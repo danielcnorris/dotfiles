@@ -19,6 +19,7 @@
               (local-set-key "\C-cp" 'org-promote-subtree)
               (local-set-key "\C-cn" 'org-demote-subtree)))
 
+;; Disable linum in org agenda
 (add-hook 'org-agenda-mode-hook
           (lambda ()
               (linum-mode -1)))
