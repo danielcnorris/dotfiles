@@ -13,6 +13,7 @@
 ;; Keymaps to use on tty
 (add-hook 'org-mode-hook
           (lambda ()
+              (linum-mode -1)
               (local-set-key "\C-cj" 'org-insert-heading-respect-content)
               (local-set-key "\C-cm" 'org-insert-todo-heading-respect-content)
               (local-set-key "\C-cp" 'org-promote-subtree)
