@@ -10,7 +10,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 
-;; Keymaps to use on tty
+;; Keymaps to use on tty and disable linum mode
 (add-hook 'org-mode-hook
           (lambda ()
               (linum-mode -1)
@@ -18,6 +18,10 @@
               (local-set-key "\C-cm" 'org-insert-todo-heading-respect-content)
               (local-set-key "\C-cp" 'org-promote-subtree)
               (local-set-key "\C-cn" 'org-demote-subtree)))
+
+(add-hook 'org-agenda-mode-hook
+          (lambda ()
+              (linum-mode -1)))
 
 ;; Use speed commands
 (setq org-use-speed-commands t)
