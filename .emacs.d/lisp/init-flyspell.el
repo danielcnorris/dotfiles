@@ -4,6 +4,7 @@
 
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 (add-hook 'org-mode-hook 'turn-on-flyspell)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (defun dcn/switch-dictionary-ru ()
     "Toggle dictionary between Russian and English."
