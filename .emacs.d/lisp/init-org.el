@@ -408,6 +408,44 @@ Callers of this function already widen the buffer view."
           'dcn/insert-heading-inactive-timestamp
           'append)
 
+;;; Clock configuration
+
+;; Persist clocking when restart
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+(setq org-clock-persist t)
+
+(setq org-clock-is-switch-to-state 'dcn/clock-in-to-next)
+(setq org-clock-out-remove-zero-time-clocks t)
+(setq org-clock-out-when-done t)
+
+;; Automatically resume task on start
+(setq org-clock-persist-query-resume nil)
+
+;; Include current clocking task in reports
+(setq org-clock-report-include-clocking-task t)
+
+(defun dcn/clock-in-to-next ()
+    "Switch task from TODO to NEXT when clocking in.  Skip capture
+    tasks, project, and sub-projects. Projects and sub-projects are
+    switched from NEXT to TODO."
+    (when (not (and (boundp 'org-capture-mode) org-capture-mode))
+        (cond
+         ((and (member (org-get-todo-state) (list "TODO"))
+               (dcn/is-task-p))
+          "NEXT")
+         ((and (member (org-get-todo-state) (list "NEXT"))
+               (dcn/is-project-p))
+          "TODO"))))
+
+;; Column mode for viewing tasks
+(setq org-columns-default-format
+      "%80ITEM(Task) %10Effort(Effort){:} %10CLOCK SUM")
+
+;; Effort estimates
+(setq org-global-properties (quote (("Effort_ALL" .
+                                     "0:10 0:30 1:00 2:00 4:00 8:00"))))
+
 ;; Don't enter blank lines between headings
 (setq org-cycle-separator-lines 0)
 
@@ -423,6 +461,14 @@ Callers of this function already widen the buffer view."
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
 (setq org-crypt-key dcn/gpg-key)
 (setq org-crypt-disable-auto-save nil)
+
+
+;; Org Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (haskell . t)
+   (ledger . t)))
 
 (provide 'init-org)
 ;;; init-org.el ends here
