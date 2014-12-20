@@ -1,8 +1,4 @@
 #!/bin/bash
-# TODO
-# Need to upgrade Vim: brew update
-# brew install vim --override-system-vi --with-lua
-# hash -r
 
 function install() {
     rsync --exclude ".git/"  \

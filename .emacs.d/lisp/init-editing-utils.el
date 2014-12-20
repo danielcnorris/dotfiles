@@ -23,8 +23,10 @@
 (global-visual-line-mode 1)
 
 ;; Tabs are illegal
-(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(add-hook 'write-file-hooks
+          (lambda () (untabify (point-min) (point-max)))
+          nil)
 
 ;; Automatically insert and highlight matching paren, brace, etc.
 (require 'paren)

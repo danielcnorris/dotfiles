@@ -36,7 +36,7 @@
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|"
-                       "CANCELLED(c@/!)"))))
+                        "CANCELLED(c@/!)"))))
 
 ;; Allow todo selection with keys
 (setq org-use-fast-todo-selection t)
@@ -160,9 +160,9 @@
                 (tags-todo "-CANCELLED/!NEXT"
                            ((org-agenda-overriding-header
                              (concat "Next Tasks"
-                                      (if dcn/hide-scheduled-and-waiting-next-tasks
-                                           ""
-                                          " (including WAITING and SCHEDULED tasks)")))
+                                     (if dcn/hide-scheduled-and-waiting-next-tasks
+                                             ""
+                                         " (including WAITING and SCHEDULED tasks)")))
                             (org-agenda-todo-ignore-scheduled
                              dcn/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-deadlines
@@ -405,38 +405,38 @@ Callers of this function already widen the buffer view."
 (add-hook 'org-agenda-mode-hook
           '(lambda ()
                (org-defkey org-agenda-mode-map "W"
-                (lambda ()
-                    (interactive)
-                    (setq dcn/hide-scheduled-and-waiting-next-tasks t)
-                    (dcn/widen))))
+                           (lambda ()
+                               (interactive)
+                               (setq dcn/hide-scheduled-and-waiting-next-tasks t)
+                               (dcn/widen))))
           'append)
 
 
 ;; Limit agenda to subtree
 (defun dcn/set-agenda-restriction-lock (arg)
-  "Set restriction lock to current task subtree or file if ARG."
-  (interactive "p")
-  (let* ((pom (dcn/get-pom-from-agenda-restriction-or-point))
-          (tags (org-with-point-at pom (org-get-tags-at))))
-         (let ((restriction-type (if (equal arg 4) 'file 'subtree)))
-           (save-restriction
-             (cond
-               ((and (equal major-mode 'org-agenda-mode) pom)
-                (org-with-point-at pom
-                  (org-agenda-set-restriction-lock restriction-type))
-                (org-agenda-redo))
-               ((and (equal major-mode 'org-mode)
-                     (org-before-first-heading-p))
-                (org-agenda-set-restriction-lock 'file))
-               (pom
-                 (org-with-point-at pom
-                                    (org-agenda-set-restriction-lock
-                                      restriction-type))))))))
+    "Set restriction lock to current task subtree or file if ARG."
+    (interactive "p")
+    (let* ((pom (dcn/get-pom-from-agenda-restriction-or-point))
+           (tags (org-with-point-at pom (org-get-tags-at))))
+        (let ((restriction-type (if (equal arg 4) 'file 'subtree)))
+            (save-restriction
+                (cond
+                 ((and (equal major-mode 'org-agenda-mode) pom)
+                  (org-with-point-at pom
+                      (org-agenda-set-restriction-lock restriction-type))
+                  (org-agenda-redo))
+                 ((and (equal major-mode 'org-mode)
+                       (org-before-first-heading-p))
+                  (org-agenda-set-restriction-lock 'file))
+                 (pom
+                  (org-with-point-at pom
+                      (org-agenda-set-restriction-lock
+                       restriction-type))))))))
 
 (add-hook 'org-agenda-mode-hook
           '(lambda ()
-             (org-defkey org-agenda-mode-map "\C-c\C-x<"
-                         'dcn/set-agenda-restriction-lock))
+               (org-defkey org-agenda-mode-map "\C-c\C-x<"
+                           'dcn/set-agenda-restriction-lock))
           'append)
 
 ;; Follow mode
@@ -471,7 +471,7 @@ Callers of this function already widen the buffer view."
                     (dcn/narrow-to-org-subtree))
                 (when org-agenda-sticky
                     (org-agenda-redo)))
-    (dcn/narrow-to-org-subtree)))
+        (dcn/narrow-to-org-subtree)))
 
 (add-hook 'org-agenda-mode-hook
           '(lambda ()
@@ -480,10 +480,10 @@ Callers of this function already widen the buffer view."
           'append)
 
 (defun dcn/narrow-up-one-org-level ()
-     (widen)
-     (save-excursion
-         (outline-up-heading 1 'invisible-ok)
-         (dcn/narrow-to-org-subtree)))
+    (widen)
+    (save-excursion
+        (outline-up-heading 1 'invisible-ok)
+        (dcn/narrow-to-org-subtree)))
 
 (defun dcn/get-pom-from-agenda-restriction-or-point ()
     (or (and (marker-position org-agenda-restrict-begin)
@@ -532,8 +532,8 @@ Callers of this function already widen the buffer view."
 
 (add-hook 'org-agenda-mode-hook
           '(lambda ()
-                    (org-defkey org-agenda-mode-map "P"
-                                'dcn/narrow-to-project))
+               (org-defkey org-agenda-mode-map "P"
+                           'dcn/narrow-to-project))
           'append)
 
 (defvar dcn/project-list nil)
