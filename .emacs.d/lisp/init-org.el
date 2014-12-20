@@ -439,8 +439,7 @@ Callers of this function already widen the buffer view."
                          'dcn/set-agenda-restriction-lock))
           'append)
 
-;; What is this for?
-;; Follow mode?
+;; Follow mode
 (defun dcn/restrict-to-file-or-follow (arg)
     "Set agenda restrictionto 'file or with ARG follow mode."
     (interactive "p")
@@ -486,7 +485,6 @@ Callers of this function already widen the buffer view."
          (outline-up-heading 1 'invisible-ok)
          (dcn/narrow-to-org-subtree)))
 
-;; What does it do?
 (defun dcn/get-pom-from-agenda-restriction-or-point ()
     (or (and (marker-position org-agenda-restrict-begin)
              org-agenda-restrict-begin)
