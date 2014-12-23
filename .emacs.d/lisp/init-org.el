@@ -97,6 +97,7 @@
                             ("FAMILY" . ?F)
                             ("QLABS" . ?W)
                             ("FUNNY" . ?f)
+                            ("LEARN" . ?l)
                             ("PROUD" . ?P)
                             ("crypt" . ?C)
                             ("IDEA" . ?i)

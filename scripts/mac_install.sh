@@ -151,6 +151,11 @@ echo ""
 echo "Showing all filename extensions in Finder by default"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# Finder: show hidden files by default
+echo ""
+echo "Showing hidden files by default"
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
 echo ""
 echo "Showing status bar in Finder by default"
 defaults write com.apple.finder ShowStatusBar -bool true

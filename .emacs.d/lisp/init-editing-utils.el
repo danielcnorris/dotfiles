@@ -24,9 +24,9 @@
 
 ;; Tabs are illegal
 (setq-default tab-width 4)
-(add-hook 'write-file-hooks
-          (lambda () (untabify (point-min) (point-max)))
-          nil)
+(add-hook 'before-save-hook
+          (lambda () (untabify (point-min) (point-max))))
+
 
 ;; Automatically insert and highlight matching paren, brace, etc.
 (require 'paren)

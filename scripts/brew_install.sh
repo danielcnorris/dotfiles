@@ -45,6 +45,7 @@ brew cleanup
 brew install caskroom/cask/brew-cask
 
 apps=(
+    google-drive
     google-chrome
     iterm2
 )

@@ -3,7 +3,7 @@
 ;; Load solarized theme
 ;;; Code:
 
-(require-package 'color-theme-solarized)
+(require-package 'solarized-theme)
 (load-theme 'solarized-dark t)
 
 (provide 'init-solarized)
