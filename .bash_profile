@@ -1,5 +1,3 @@
-stty erase ^?
-
 alias ..='cd ..'
 alias ...='cd ../..'
 
