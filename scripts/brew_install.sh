@@ -26,6 +26,7 @@ binaries=(
     git
     gpg2
     ledger
+    translate-shell
 )
 
 echo "Installing binaries..."

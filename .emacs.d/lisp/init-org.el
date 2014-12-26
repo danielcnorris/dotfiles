@@ -713,7 +713,11 @@ Callers of this function already widen the buffer view."
  'org-babel-load-languages
  '((python . t)
    (haskell . t)
-   (ledger . t)))
+   (ledger . t)
+   (sh . t)))
+
+;; This is dangerous but convenient
+(setq org-confirm-babel-evaluate nil)
 
 (provide 'init-org)
 ;;; init-org.el ends here
