@@ -658,6 +658,39 @@ Callers of this function already widen the buffer view."
 (setq org-global-properties (quote (("Effort_ALL" .
                                      "0:10 0:30 1:00 2:00 4:00 8:00"))))
 
+;; Command to translate words in table.
+;; Depends on https://github.com/soimort/translate-shell
+(defun translate-insert-rows ()
+    "Translates a plain word and inserts it and translation into new table."
+    (interactive)
+    (let (pos1 pos2 bds)
+        (if (use-region-p)
+                (setq pos1 (region-beginning) pos2 (region-end))
+            (progn
+                (setq bds (bounds-of-thing-at-point 'line))
+                (setq pos1 (car bds) pos2 (cdr bds))))
+        (setq num-lines (count-lines pos1 pos2))
+        (goto-char pos1)
+        (while (> num-lines 0)
+            (setq line (replace-regexp-in-string "\n" ""
+                                                 (thing-at-point 'line)))
+            (setq result (replace-regexp-in-string "\n" ""
+                                                   (shell-command-to-string
+                                                    (message
+                                                     "trans -b %s" line))))
+            (kill-visual-line)
+            (insert (message "|%s|%s||" line result))
+            (beginning-of-line)
+            (org-cycle)
+            (next-line)
+            (beginning-of-line)
+            (setq num-lines (- num-lines 1)))))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+              (local-set-key "\C-cr" 'translate-insert-rows))
+          'append)
+
 ;; Don't enter blank lines between headings
 (setq org-cycle-separator-lines 0)
 
