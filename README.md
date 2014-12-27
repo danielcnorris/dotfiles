@@ -21,3 +21,4 @@ With help from:
 - Set terminal to xterm-new
 - Max out time to show tabs by holding command iTerm2
 - Set up Russian keyboard and toggle shortcut
+- Install Latex
