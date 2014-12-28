@@ -6,6 +6,7 @@ function install() {
           --exclude "install.sh" \
           --exclude "README.md" \
           --exclude "LICENSE" \
+          --exclude "scripts/" \
           -avh --no-perms . $HOME
 
     if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
