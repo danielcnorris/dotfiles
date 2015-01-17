@@ -708,12 +708,15 @@ Callers of this function already widen the buffer view."
 
 
 ;; Org Babel languages
+(setq org-plantuml-jar-path
+      "/usr/local/Cellar/plantuml/8015/plantuml.8015.jar")
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
    (haskell . t)
    (ledger . t)
-   (sh . t)))
+   (sh . t)
+   (plantuml . t)))
 
 ;; This is dangerous but convenient
 (setq org-confirm-babel-evaluate nil)
