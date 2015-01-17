@@ -29,8 +29,7 @@
 
 ;; Load all org files form these directories into agenda
 (setq org-agenda-files (list dcn/org-directory
-                             (concat dcn/org-directory
-                                     "qlabs")))
+                             dcn/palantir-org-directory))
 
 ;; Org keywords
 (setq org-todo-keywords
@@ -616,7 +615,7 @@ Callers of this function already widen the buffer view."
             (org-cycle)
             (dcn/insert-inactive-timestamp))))
 
-(add-hook 'org-insert-heading-hook
+(add-hook 'org-insert-todo-heading-respect-content-hook
           'dcn/insert-heading-inactive-timestamp
           'append)
 
