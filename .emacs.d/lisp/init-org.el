@@ -94,9 +94,10 @@
                             ("DCN" . ?d)
                             ("SHIYA" . ?S)
                             ("FAMILY" . ?F)
-                            ("QLABS" . ?W)
+                            ("PALANTIR" . ?W)
                             ("FUNNY" . ?f)
-                            ("LEARN" . ?l)
+                            ("GOAL" . ?g)
+                            ("FEEDBACK" . ?l)
                             ("PROUD" . ?P)
                             ("crypt" . ?C)
                             ("IDEA" . ?i)
@@ -615,9 +616,16 @@ Callers of this function already widen the buffer view."
             (org-cycle)
             (dcn/insert-inactive-timestamp))))
 
-(add-hook 'org-insert-todo-heading-respect-content-hook
-          'dcn/insert-heading-inactive-timestamp
-          'append)
+(defun dcn/insert-todo-heding-respect-content ()
+    (interactive)
+    (dcn/insert-heading-inactive-timestamp)
+    (org-insert-todo-heading-respect-content))
+
+(defadvice org-insert-todo-heading
+        (after dcn/org-time-stamp-new-headline activate compile)
+               (let ((previous-location (point)))
+            (dcn/insert-heading-inactive-timestamp)
+            (goto-char previous-location)))
 
 ;;; Clock configuration
 

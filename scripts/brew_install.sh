@@ -26,7 +26,6 @@ binaries=(
     git
     gpg2
     ledger
-    translate-shell
 )
 
 echo "Installing binaries..."
@@ -39,6 +38,9 @@ brew install emacs --srgb --cocoa --use-git-head
 
 # Install English and Russian dictionaries
 brew install aspell --with-lang-ru --with-lang-en
+
+# Install translate CLI
+brew install http://www.soimort.org/translate-shell/translate-shell.rb
 
 brew cleanup
 
