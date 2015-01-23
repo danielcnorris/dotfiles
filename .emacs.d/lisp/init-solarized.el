@@ -4,8 +4,8 @@
 ;;; Code:
 
 (require-package 'color-theme-solarized)
-;;(require-package 'solarized-theme)
-;;(load-theme 'solarized-dark t)
+(require 'cl)
+(setq frame-background-mode 'dark)
 (load-theme 'solarized t)
 
 (provide 'init-solarized)
