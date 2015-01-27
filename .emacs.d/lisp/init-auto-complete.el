@@ -11,6 +11,7 @@
 (add-to-list 'ac-modes 'python-mode)
 (add-to-list 'ac-modes 'coffee-mode)
 (add-to-list 'ac-modes 'emacs-lisp-mode)
+(add-to-list 'ac-modes 'haskell-mode)
 
 (provide 'init-auto-complete)
 ;; init-auto-complete.el ends here
