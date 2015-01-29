@@ -12,6 +12,7 @@
 (add-to-list 'ac-modes 'coffee-mode)
 (add-to-list 'ac-modes 'emacs-lisp-mode)
 (add-to-list 'ac-modes 'haskell-mode)
+(add-to-list 'ac-modes 'scala-mode2)
 
 (provide 'init-auto-complete)
 ;; init-auto-complete.el ends here
