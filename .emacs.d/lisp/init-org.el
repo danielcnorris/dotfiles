@@ -98,6 +98,7 @@
                             ("FUNNY" . ?f)
                             ("GOAL" . ?g)
                             ("FEEDBACK" . ?l)
+                            ("CONVERSATION" . ?t)
                             ("PROUD" . ?P)
                             ("crypt" . ?C)
                             ("IDEA" . ?i)
