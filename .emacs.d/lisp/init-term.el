@@ -22,5 +22,7 @@
               ;; Enable proper pasting
               (define-key term-raw-map (kbd "\C-y") 'term-paste)))
 
+(setq command-line-default-directory "~")
+
 (provide 'init-term)
 ;;; init-term.el ends here
