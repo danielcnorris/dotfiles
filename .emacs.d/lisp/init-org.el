@@ -91,6 +91,7 @@
                             ("WAITING" . ?w)
                             ("HOLD" . ?h)
                             ("EVENT" . ?E)
+                            ("DAILY" . ?D)
                             ("DCN" . ?d)
                             ("SHIYA" . ?S)
                             ("FAMILY" . ?F)
