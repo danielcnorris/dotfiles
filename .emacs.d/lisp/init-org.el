@@ -61,7 +61,7 @@
          (file (concat dcn/org-directory "inbox.org"))
          "* %?  :NOTE:\n%U\n\n%a\n")
         ("j" "Journal" entry
-         (file+datetree (concat dcn/org-directory "journal.org"))
+         (file+datetree (concat dcn/org-directory "journal.org.gpg"))
          "* %?\n%U\n")
         ("e" "Event" entry
          (file (concat dcn/org-directory "inbox.org"))
@@ -72,6 +72,9 @@
         ("D" "Multi-day event" entry
          (file (concat dcn/org-directory "inbox.org"))
          "* %? %^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n")
+        ("b" "Birthday or Anniversary" entry
+         (file (concat dcn/org-directory "todo.org" "Anniversaries"))
+         "* %? %^{Date}t  :EVENT:\n%U\n")
         ("r" "Russian-English translation" plain
          (file (concat dcn/org-directory "russian.org"))
          "| %^{Russian word} | %^{English word} | %^{Notes} |"
