@@ -361,6 +361,7 @@ Callers of this function already widen the buffer view."
                                      (point-max))))
               (subtree-end (save-excursion (org-end-of-subtree t))))
             (if (member (org-get-todo-state) org-todo-keywords-1)
+                    (if (member (org-get-todo-state) org-done-keywords)
                     (let* ((daynr (string-to-int (format-time-string
                                                   "%d" (current-time))))
                            (a-month-ago (* 60 60 24 (+ daynr 1)))
@@ -384,7 +385,7 @@ Callers of this function already widen the buffer view."
                                 subtree-end ; Skip if this month or last
                             nil)) ; Available to archive
                 (or subtree-end (point-max)))
-            next-headline)))
+            next-headline))))
 
 ;; Enable narrowing to subtree
 (defun dcn/org-todo (arg)
