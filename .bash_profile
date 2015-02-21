@@ -41,3 +41,5 @@ function genpass() {
     LC_CTYPE=C tr -dc 'A-Za-z0-9_!@#$$%^&*()|+=' < /dev/urandom | \
         head -c32 | xargs
 }
+
+eval $(gpg-agent --daemon)
