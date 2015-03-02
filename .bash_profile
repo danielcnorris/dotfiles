@@ -10,7 +10,7 @@ alias rm='rm -i'
 alias chr='open -a "Google Chrome"'
 
 export ds=~/Desktop
-export gd=~/Google\ Drive
+export gd=~/drive
 alias cds='cd $ds'
 alias lds='ll $ds'
 
@@ -32,7 +32,6 @@ alias gs='git status'
 
 export TERM=xterm-16color
 
-export PATH=$PATH:~/AWS-ElasticBeanstalk-CLI-2.6.4/eb/macosx/python2.7
 export PATH=~/.cabal/bin:$PATH
 export PATH=~/Library/Haskell/bin:$PATH
 export PATH=/usr/local/bin:$PATH

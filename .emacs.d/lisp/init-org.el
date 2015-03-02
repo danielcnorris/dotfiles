@@ -63,6 +63,9 @@
         ("j" "Journal" entry
          (file+datetree (concat dcn/org-directory "journal.org"))
          "* %?\n%U\n")
+        ("m" "Meeting" entry
+         (file+datetree (concat dcn/palantir-org-directory "meetings.org"))
+         "* %?\n%U\n")
         ("e" "Event" entry
          (file (concat dcn/org-directory "inbox.org"))
          "* %? %^{Time}T  :EVENT:\n%U\n")
