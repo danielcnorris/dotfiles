@@ -30,6 +30,8 @@ alias gr='git rebase'
 alias gri='git rebase -i'
 alias gs='git status'
 
+alias copy='xclip -selection clipboard'
+
 export TERM=xterm-16color
 
 # export PATH=$PATH:~/AWS-ElasticBeanstalk-CLI-2.6.4/eb/macosx/python2.7

@@ -25,6 +25,10 @@
 (setq-default auto-fill-function 'do-auto-fill)
 (set-fill-column 78)
 
+;; Use xclip for copy and paste in X
+(require-package 'xclip)
+(xclip-mode 1)
+
 ;; Visual line wrapping
 (global-visual-line-mode 1)
 
