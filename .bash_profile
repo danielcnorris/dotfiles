@@ -3,8 +3,8 @@ stty erase ^?
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias ll='ls -l'
-alias la='ls -la'
+alias ll='ls -l --color'
+alias la='ls -la --color'
 alias rm='rm -i'
 
 alias chr='open -a "Google Chrome"'
