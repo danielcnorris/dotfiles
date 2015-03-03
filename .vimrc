@@ -25,7 +25,7 @@ set hidden
 let mapleader=","
 nnoremap ' `
 nnoremap ` '
-inoremap jj <Esc>
+inoremap jk <Esc>
 noremap ; :
 nnoremap j gj
 nnoremap k gk

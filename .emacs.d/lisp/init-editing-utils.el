@@ -6,14 +6,20 @@
 ;; Remove splash screen
 (setq inhibit-startup-message t)
 
-;; Remove menu bar
+;; Remove menu bar and other useless features
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(set-frame-parameter nil 'fullscreen 'fullboth)
 
 ;; Show time
 (display-time-mode 1)
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (setq display-time-default-load-average nil)
+
+;; Show battery status
+(display-battery-mode 1)
 
 ;; Break lines after 78 chars
 (setq-default auto-fill-function 'do-auto-fill)

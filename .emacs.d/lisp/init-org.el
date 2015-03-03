@@ -719,7 +719,7 @@ Callers of this function already widen the buffer view."
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
 (setq org-crypt-key dcn/gpg-key)
-(setq org-crypt-disable-auto-save nil)
+;;(setq org-crypt-disable-auto-save nil)
 
 
 ;; Org Babel languages
