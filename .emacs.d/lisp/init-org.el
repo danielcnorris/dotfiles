@@ -108,6 +108,8 @@
                             ("crypt" . ?C)
                             ("IDEA" . ?i)
                             ("NOTE" . ?n)
+                            ("IMPORTANT" . ?I)
+                            ("QUESTION" . ?q)
                             ("CANCELLED" . ?c))))
 
 ;; Allow setting single tags without menu
