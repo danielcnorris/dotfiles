@@ -62,6 +62,13 @@
                     'face 'linum)))
 (column-number-mode 1)
 
+;; Don't show linum in text or w3m
+(add-hook 'text-mode-hook
+          (lambda () (linum-mode -1)))
+
+(add-hook 'w3m-mode
+          (lambda () (linum-mode -1)))
+
 ;; Reload files updated on disk
 (global-auto-revert-mode 1)
 
