@@ -3,6 +3,8 @@ stty erase ^?
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias em='emacs -nw'
+
 alias ll='ls -l --color'
 alias la='ls -la --color'
 alias rm='rm -i'
