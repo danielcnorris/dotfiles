@@ -30,10 +30,10 @@
 (xclip-mode 1)
 
 ;; Clean up auto save and backup files
-(setq backup-directory-alist
-      `((".*" . ,"~/.backups")))
-(setq auto-save-file-name-transforms
-      `((".*" ,"~/.saves" t)))
+; (setq backup-directory-alist
+;       `((".*" . ,"~/.backups")))
+; (setq auto-save-file-name-transforms
+;       `((".*" ,"~/.saves" t)))
 
 ;; Visual line wrapping
 (global-visual-line-mode 1)
