@@ -1,0 +1,12 @@
+startup_message off
+escape C-i
+setwinname class
+
+defborder 0
+defpadding 0 0 0 0
+defbarpadding 0 0
+exec st
+bind c exec st
+bind e exec emacs
+bind i exec google-chrome-stable
+bind l exec slock
