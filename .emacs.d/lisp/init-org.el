@@ -642,11 +642,9 @@ Callers of this function already widen the buffer view."
 ;;(setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 (setq org-clock-persist t)
-
 (setq org-clock-history-length 23)
 (setq org-clock-in-resume t)
-;; Doesn't seem to work
-(setq org-clock-is-switch-to-state 'dcn/clock-in-to-next)
+(setq org-clock-in-switch-to-state 'dcn/clock-in-to-next)
 (setq org-clock-out-remove-zero-time-clocks t)
 (setq org-clock-out-when-done t)
 
