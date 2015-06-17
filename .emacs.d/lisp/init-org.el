@@ -28,7 +28,8 @@
 (setq org-use-speed-commands t)
 
 ;; Load all org files form these directories into agenda
-(setq org-agenda-files (list dcn/org-directory
+(setq org-agenda-files (list (concat dcn/org-directory "todo.org")
+                             (concat dcn/org-directory "inbox.org")
                              dcn/palantir-org-directory))
 
 ;; Org keywords
@@ -64,7 +65,7 @@
          (file+datetree (concat dcn/org-directory "journal.org"))
          "* %?\n%U\n" :clock-in t :clock-resume t)
         ("m" "Meeting" entry
-         (file+datetree (concat dcn/palantir-org-directory "meetings.org"))
+         (file (concat dcn/palantir-org-directory "meetings.org"))
          "* %?\n%U\n" :clock-in t :clock-resume t)
         ("e" "Event" entry
          (file (concat dcn/org-directory "inbox.org"))
