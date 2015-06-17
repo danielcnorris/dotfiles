@@ -639,10 +639,13 @@ Callers of this function already widen the buffer view."
 ;;; Clock configuration
 
 ;; Persist clocking when restart
-(setq org-clock-persist 'history)
+;;(setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 (setq org-clock-persist t)
 
+(setq org-clock-history-length 23)
+(setq org-clock-in-resume t)
+;; Doesn't seem to work
 (setq org-clock-is-switch-to-state 'dcn/clock-in-to-next)
 (setq org-clock-out-remove-zero-time-clocks t)
 (setq org-clock-out-when-done t)
@@ -650,10 +653,15 @@ Callers of this function already widen the buffer view."
 ;; Automatically resume task on start
 (setq org-clock-persist-query-resume nil)
 
+;; Enable auto clock resolution for finding open clocks
+(setq org-clock-auto-clock-resolution (quote when-no-clock-is-running))
+
 ;; Include current clocking task in reports
 (setq org-clock-report-include-clocking-task t)
 
-(defun dcn/clock-in-to-next ()
+(setq dcn/keep-clock-running nil)
+
+(defun dcn/clock-in-to-next (kw)
     "Switch task from TODO to NEXT when clocking in.  Skip capture
     tasks, project, and sub-projects. Projects and sub-projects are
     switched from NEXT to TODO."
@@ -665,6 +673,74 @@ Callers of this function already widen the buffer view."
          ((and (member (org-get-todo-state) (list "NEXT"))
                (dcn/is-project-p))
           "TODO"))))
+
+(defun dcn/punch-in (arg)
+    "Start continuous clocking and set the default task to the
+    selected task. If no task is selected set the Organization task as
+    the default task."
+    (interactive "p")
+    (setq dcn/keep-clock-running t)
+    (if (equal major-mode 'org-agenda-mode)
+            ;; In agenda
+            (let* ((marker (org-get-at-bol 'org-hd-marker))
+                   (tags (org-with-pointer-at marker
+                                              (org-get-tags-at))))
+                (if (and (eq arg 4) tags)
+                        (org-agenda-clock-in '(16))
+                    (dcn/clock-in-organization-task-as-default)))
+        ;; Not in Agenda
+        (save-restriction
+            (widen)
+                                        ; Find tags on current task
+            (if (and (equal major-mode 'org-mode) (not
+                                                   (org-before-first-heading-p)) (eq arg 4))
+                    (org-clock-in '(16))
+                (dcn/clock-in-organization-task-as-default)))))
+
+(defun dcn/punch-out ()
+    (interactive)
+    (setq dcn/keep-clock-running nil)
+    (when (org-clock-is-active)
+        (org-clock-out))
+    (org-agenda-remove-restriction-lock))
+
+(defun dcn/clock-in-default-task ()
+    (save-excursion
+        (org-with-point-at org-clock-default-task
+            (org-clock-in))))
+
+(defun dcn/clock-in-parent-task ()
+    "Move point to the parent (project) task if any and clock in."
+    (let ((parent-task))
+        (save-excursion
+            (save-restriction
+                (widen)
+                (while (and (not parent-task) (org-up-heading-safe))
+                    (when (member (nth 2 (org-heading-components))
+                                  org-todo-keywords-1)
+                        (setq parent-task (point))))
+                (if parent-task
+                        (org-with-point-at parent-task
+                            (org-clock-in))
+                    (when dcn/keep-clock-running
+                        (dcn/clock-in-default-task)))))))
+
+(defvar dcn/organization-task-id "organization-task-123")
+
+(require 'org-id)
+(defun dcn/clock-in-organization-task-as-default ()
+    (interactive)
+    (org-with-point-at (org-id-find dcn/organization-task-id 'marker)
+        (org-clock-in '(16))))
+
+(defun dcn/clock-out-maybe ()
+    (when (and dcn/keep-clock-running
+               (not org-clock-clocking-in)
+               (marker-buffer org-clock-default-task)
+               (not org-clock-resolving-clocks-due-to-idleness))
+        (dcn/clock-in-parent-task)))
+
+(add-hook 'org-clock-out-hook 'dcn/clock-out-maybe 'append)
 
 ;; Column mode for viewing tasks
 (setq org-columns-default-format
