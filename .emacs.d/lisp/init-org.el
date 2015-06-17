@@ -56,25 +56,25 @@
 (setq org-capture-templates
       '(("t" "Todo" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* TODO %?\n%U\n\n%a\n")
+         "* TODO %?\n%U\n\n%a\n" :clock-in t :clock-resume t)
         ("n" "Note" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* %?  :NOTE:\n%U\n\n%a\n")
+         "* %?  :NOTE:\n%U\n\n%a\n" :clock-in t :clock-resume t)
         ("j" "Journal" entry
          (file+datetree (concat dcn/org-directory "journal.org"))
-         "* %?\n%U\n")
+         "* %?\n%U\n" :clock-in t :clock-resume t)
         ("m" "Meeting" entry
          (file+datetree (concat dcn/palantir-org-directory "meetings.org"))
-         "* %?\n%U\n")
+         "* %?\n%U\n" :clock-in t :clock-resume t)
         ("e" "Event" entry
          (file (concat dcn/org-directory "inbox.org"))
          "* %? %^{Time}T  :EVENT:\n%U\n")
         ("d" "Full-day event" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* %? %^{Date}t  :EVENT:\n%U\n")
+         "* %? %^{Date}t  :EVENT:\n%U\n" :clock-in :clock-resume t)
         ("D" "Multi-day event" entry
          (file (concat dcn/org-directory "inbox.org"))
-         "* %? %^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n")
+         "* %? %^{Start Time}t--%^{End Time}t  :EVENT:\n%U\n" :clock-in :clock-resume t)
         ("r" "Russian-English translation" plain
          (file (concat dcn/org-directory "russian.org"))
          "| %^{Russian word} | %^{English word} | %^{Notes} |"
