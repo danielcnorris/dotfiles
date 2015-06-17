@@ -745,11 +745,12 @@ Callers of this function already widen the buffer view."
 
 ;; Column mode for viewing tasks
 (setq org-columns-default-format
-      "%80ITEM(Task) %10Effort(Effort){:} %10CLOCK SUM")
+      "%80ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM")
 
 ;; Effort estimates
 (setq org-global-properties (quote (("Effort_ALL" .
-                                     "0:10 0:30 1:00 2:00 4:00 8:00"))))
+                                     "0:10 0:30 1:00 2:00 4:00 8:00")
+                                    ("STYLE_ALL" . "habit"))))
 
 ;; Command to translate words in table.
 ;; Depends on https://github.com/soimort/translate-shell
