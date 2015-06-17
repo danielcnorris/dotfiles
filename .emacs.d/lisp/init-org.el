@@ -307,7 +307,7 @@
             (and is-a-task has-subtask))))
 
 (defun dcn/find-project-task ()
-    "Move point to parent (project) task if anny"
+    "Move point to parent (project) task if any."
     (save-restriction
         (widen)
         (let ((parent-task (save-excursion
@@ -701,6 +701,9 @@ Callers of this function already widen the buffer view."
     (when (org-clock-is-active)
         (org-clock-out))
     (org-agenda-remove-restriction-lock))
+
+(global-set-key (kbd "\C-ci") 'dcn/punch-in)
+(global-set-key (kbd "\C-co") 'dcn/punch-out)
 
 (defun dcn/clock-in-default-task ()
     (save-excursion
