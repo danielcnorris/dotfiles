@@ -646,8 +646,11 @@ Callers of this function already widen the buffer view."
 (setq org-clock-history-length 23)
 (setq org-clock-in-resume t)
 (setq org-clock-in-switch-to-state 'dcn/clock-in-to-next)
+(setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
+(setq org-clock-into-drawer t)
 (setq org-clock-out-remove-zero-time-clocks t)
 (setq org-clock-out-when-done t)
+(setq org-clock-sound t)
 
 ;; Automatically resume task on start
 (setq org-clock-persist-query-resume nil)
