@@ -5,8 +5,9 @@
 
 (require-package 'color-theme-solarized)
 (require 'cl)
-(setq frame-background-mode 'dark)
-(load-theme 'solarized-dark t)
+(set-frame-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
+(set-terminal-parameter nil 'background-mode 'dark)
 
 (provide 'init-solarized)
 ;;; init-solarized ends here

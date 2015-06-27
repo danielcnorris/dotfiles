@@ -1,6 +1,10 @@
 ;;; init-term.el --- Terminal Emulator support
 ;;; Commentary:
 ;;; Code:
+(require-package 'exec-path-from-shell)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 
 (require-package 'multi-term)
 
