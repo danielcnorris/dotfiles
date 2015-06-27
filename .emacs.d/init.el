@@ -27,6 +27,7 @@
 (require 'init-lisp)
 (require 'init-term)
 (require 'init-ledger)
+(require 'init-ess)
 
 ;; Open org on load
 (find-file (concat dcn/org-directory "todo.org"))
