@@ -6,6 +6,10 @@
 ;; Remove splash screen
 (setq inhibit-startup-message t)
 
+;; key bindings for os x
+(when (eq system-type 'darwin) ;; mac specific settings
+    (setq mac-command-modifier 'meta))
+
 ;; Remove menu bar and other useless features
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -28,6 +32,10 @@
 ;; Use xclip for copy and paste in X
 (require-package 'xclip)
 (xclip-mode 1)
+
+;; Latex preview mode
+(require-package 'latex-preview-pane)
+(latex-preview-pane-enable)
 
 ;; Clean up auto save and backup files
 ; (setq backup-directory-alist
@@ -74,6 +82,9 @@
 
 (add-hook 'w3m-mode
           (lambda () (linum-mode -1)))
+
+;; Continuous scroll in doc-vew
+(setq doc-view-continuous t)
 
 ;; Reload files updated on disk
 (global-auto-revert-mode 1)
