@@ -15,5 +15,7 @@
           (lambda () (flycheck-mode -1)))
 (add-hook 'inferior-ess-mode-hook
           (lambda () (linum-mode -1)))
+
+(ess-toggle-underscore nil)
 (provide 'init-ess)
 ;; init-ess.el ends here
