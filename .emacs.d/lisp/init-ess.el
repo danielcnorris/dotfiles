@@ -17,5 +17,10 @@
           (lambda () (linum-mode -1)))
 
 (ess-toggle-underscore nil)
+
+(defun dcn/indent-ess-hook ()
+    (setq ess-indent-level 2))
+(add-hook 'ess-mode-hook 'dcn/indent-ess-hook)
+
 (provide 'init-ess)
 ;; init-ess.el ends here
