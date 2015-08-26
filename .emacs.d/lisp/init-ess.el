@@ -22,5 +22,7 @@
     (setq ess-indent-level 2))
 (add-hook 'ess-mode-hook 'dcn/indent-ess-hook)
 
+(setq ess-fancy-comments nil)
+
 (provide 'init-ess)
 ;; init-ess.el ends here
