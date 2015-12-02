@@ -39,6 +39,11 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
+
 (setq javascript-indent-level 2)
 (setq js-indent-level 2)
 (setq coffee-tab-width 2)

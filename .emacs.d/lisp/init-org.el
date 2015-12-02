@@ -30,6 +30,7 @@
 ;; Load all org files form these directories into agenda
 (setq org-agenda-files (list (concat dcn/org-directory "todo.org")
                              (concat dcn/org-directory "inbox.org")
+                             (concat dcn/org-directory "amigodb.org")
                              dcn/palantir-org-directory))
 
 ;; Org keywords
