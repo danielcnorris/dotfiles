@@ -101,7 +101,6 @@
                             ("SHIYA" . ?S)
                             ("FAMILY" . ?F)
                             ("PALANTIR" . ?W)
-                            ("FLETCHER" . ?b)
                             ("FUNNY" . ?f)
                             ("GOAL" . ?g)
                             ("FEEDBACK" . ?l)
