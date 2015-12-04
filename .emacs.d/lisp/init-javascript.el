@@ -20,6 +20,15 @@
         ad-do-it)
     ad-do-it))
 
+(defun dcn/web-mode-hook ()
+    ;; indentation
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-indent-style 2))
+
+(add-hook 'web-mode-hook 'dcn/web-mode-hook)
+
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
   (append flycheck-disabled-checkers
@@ -47,10 +56,7 @@
 (setq javascript-indent-level 2)
 (setq js-indent-level 2)
 (setq coffee-tab-width 2)
-(setq js2-basic-offset 2)js-indent-level
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
+(setq js2-basic-offset 2)
 (setq css-indent-offset 2)
 
 (provide 'init-javascript)
