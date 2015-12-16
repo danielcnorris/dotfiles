@@ -83,6 +83,9 @@
 (add-hook 'w3m-mode
           (lambda () (linum-mode -1)))
 
+(add-hook 'fundamental-mode
+          (lambda () (linum-mode -1)))
+
 ;; Continuous scroll in doc-vew
 (setq doc-view-continuous t)
 
