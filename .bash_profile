@@ -3,10 +3,8 @@ stty erase ^?
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias em='emacs -nw'
-
-alias ll='ls -l --color'
-alias la='ls -la --color'
+alias ll='ls -l'
+alias la='ls -la'
 alias rm='rm -i'
 
 export gd=~/drive
@@ -30,6 +28,10 @@ alias gs='git status'
 alias copy='xclip -selection clipboard'
 
 export TERM=xterm-16color
+
+export PATH=~/.cabal/bin:$PATH
+export PATH=~/Library/Haskell/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 
 function genpass() {
     LC_CTYPE=C tr -dc 'A-Za-z0-9_!@#$$%^&*()|+=' < /dev/urandom | \
