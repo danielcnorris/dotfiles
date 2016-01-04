@@ -59,10 +59,12 @@
 
 (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
 
-(setq-default fill-column 78)
+(setq-default fill-column 80)
 (auto-fill-mode 1)
 (setq comment-auto-fill-only-comments t)
 (global-visual-line-mode 1)
+
+(set-default 'sentence-end-double-space nil)
 
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
