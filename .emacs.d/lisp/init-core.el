@@ -82,6 +82,7 @@
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 ;; http://oremacs.com/2015/01/01/three-ansi-term-tips/
+;; http://echosa.github.io/blog/2012/06/06/improving-ansi-term/
 (defvar dcn/term-shell "/bin/bash")
 (defadvice ansi-term (before force-bash)
   (interactive (list dcn/term-shell)))
@@ -98,7 +99,7 @@
             (kill-buffer ,buff))))))
 (add-hook 'term-exec-hook 'dcn/term-exec-hook)
 (setq explicit-shell-file-name "/bin/bash")
-(global-set-key (kbd "C-c t") 'ansi-term)
+(global-set-key (kbd "C-c d") 'ansi-term)
 
 (provide 'init-core)
 ;;; init-defaults ends here
