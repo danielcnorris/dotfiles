@@ -44,6 +44,8 @@
 (require-package 'which-key)
 (which-key-mode)
 
+(setq echo-keystrokes 0.1)
+
 (require-package 'smartparens)
 (smartparens-global-mode 1)
 (sp-with-modes sp--lisp-modes
