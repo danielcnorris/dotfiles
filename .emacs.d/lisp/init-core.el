@@ -38,9 +38,6 @@
 (setq x-select-enable-clipboard t)
 (setq x-select-enable-primary t)
 
-(require-package 'avy)
-(global-set-key (kbd "C-;") 'avy-goto-char)
-
 (require-package 'which-key)
 (which-key-mode)
 
@@ -77,13 +74,13 @@
 
 (setq doc-view-continuous t)
 
-(require 'flyspell)
-(require-package 'helm-flyspell)
-(define-key flyspell-mode-map (kbd "C-,") 'helm-flyspell-correct)
-(setq ispell-program-name "aspell")
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'org-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+;; (require 'flyspell)
+;; (require-package 'helm-flyspell)
+;; (define-key flyspell-mode-map (kbd "C-,") 'helm-flyspell-correct)
+;; (setq ispell-program-name "aspell")
+;; (add-hook 'text-mode-hook 'flyspell-mode)
+;; (add-hook 'org-mode-hook 'flyspell-mode)
+;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 ;; http://oremacs.com/2015/01/01/three-ansi-term-tips/
 ;; http://echosa.github.io/blog/2012/06/06/improving-ansi-term/
@@ -104,6 +101,10 @@
 (add-hook 'term-exec-hook 'dcn/term-exec-hook)
 (setq explicit-shell-file-name "/bin/bash")
 (global-set-key (kbd "C-c d") 'ansi-term)
+
+
+(require-package 'avy)
+(global-set-key (kbd "C-;") 'avy-goto-char)
 
 (provide 'init-core)
 ;;; init-defaults ends here

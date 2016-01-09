@@ -26,7 +26,7 @@ let mapleader=","
 nnoremap ' `
 nnoremap ` '
 inoremap jk <Esc>
-noremap ; :
+"noremap ; :
 nnoremap j gj
 nnoremap k gk
 
@@ -149,3 +149,5 @@ au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
 
 " Stylish haskell
 command Style %!stylish-haskell
+
+set nrformats=
