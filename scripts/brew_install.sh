@@ -17,6 +17,7 @@ brew install findutils
 brew install bash
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
+brew install task
 
 # Other binaries
 binaries=(

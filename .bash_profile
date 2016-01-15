@@ -1,5 +1,7 @@
 stty erase ^?
 
+export EDITOR=vim
+
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -26,6 +28,9 @@ alias gri='git rebase -i'
 alias gs='git status'
 
 alias copy='xclip -selection clipboard'
+
+alias ioa5="ssh -t bastion 'ssh -t maroon-ioa-di-5'"
+alias pc1="ssh -t bastion 'ssh -t maroon-poc-di-1'"
 
 export TERM=xterm-16color
 

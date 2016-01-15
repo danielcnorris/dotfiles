@@ -1,8 +1,0 @@
-Plugin 'pangloss/vim-javascript'
-Plugin 'itspriddle/vim-jquery'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'scrooloose/syntastic'
-Plugin 'fatih/vim-go'
-Plugin 'bitc/vim-hdevtools'
-Plugin 'eagletmt/neco-ghc'
