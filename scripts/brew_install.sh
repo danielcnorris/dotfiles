@@ -18,6 +18,7 @@ brew install bash
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
 brew install task
+brew install pass
 
 # Other binaries
 binaries=(
@@ -35,7 +36,7 @@ brew install ${binaries[@]}
 # Install updated text editors
 brew install vim --override-system-vi --with-lua
 hash -r
-brew install emacs --srgb --cocoa --use-git-head
+brew install emacs --srgb --with-cocoa --use-git-head
 
 # Install English and Russian dictionaries
 brew install aspell --with-lang-ru --with-lang-en

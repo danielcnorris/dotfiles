@@ -27,6 +27,8 @@ alias gr='git rebase'
 alias gri='git rebase -i'
 alias gs='git status'
 
+source $HOME/.task.sh
+
 alias copy='xclip -selection clipboard'
 
 alias ioa5="ssh -t bastion 'ssh -t maroon-ioa-di-5'"
