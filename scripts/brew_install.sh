@@ -54,6 +54,7 @@ apps=(
     google-drive
     google-chrome
     iterm2
+    flux
 )
 
 echo "Installing apps.."
