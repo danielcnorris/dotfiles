@@ -17,8 +17,6 @@ brew install findutils
 brew install bash
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep
-brew install task
-brew install pass
 
 # Other binaries
 binaries=(
@@ -28,6 +26,9 @@ binaries=(
     git
     gpg2
     ledger
+    task
+    pass
+    tmux
 )
 
 echo "Installing binaries..."
