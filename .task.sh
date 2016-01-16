@@ -1,6 +1,7 @@
 alias t='task'
 alias in='task in'
 alias wait='task wait'
+alias waiting='task waiting'
 alias may='task maybe'
 alias i='task add +in'
 alias buy='task add +in +buy'
