@@ -1,3 +1,4 @@
+alias t='task'
 alias in='task in'
 alias wait='task wait'
 alias may='task maybe'
