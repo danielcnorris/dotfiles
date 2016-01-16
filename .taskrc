@@ -50,11 +50,10 @@ alias.n=modify -in +next
 alias.p=modify +palantir
 alias.as=modify +aslan
 alias.pi=modify +pilot
-alias.np=modify +next +palantir
+alias.np=modify -in +next +palantir
 alias.nas=modify -in +next +aslan
 alias.npi=modify -in +next +pilot
 alias.m=modify -in +maybe
-alias.wa=modify -in -next +wait
 alias.wa=modify -in -next +wait
 
 # Notes report
