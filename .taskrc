@@ -1,4 +1,4 @@
-# [Created by task 2.5.0_1 1/6/2016 09:51:29]
+# [Created by task 2.5.0 1/6/2016 09:51:29]
 # Taskwarrior program configuration file.
 # For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
 # 'man task-sync' or 'man taskrc'
@@ -11,6 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
+<<<<<<< HEAD
 data.location=~/drive/.task
 
 # Color theme (uncomment one to use)

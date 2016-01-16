@@ -3,6 +3,9 @@
 ;; Borrowed heavily from http://doc.norang.ca/org-mode.html
 ;;; Code:
 
+(defvar dcn/org-directory "~/drive/org/")
+(defvar dcn/palantir-org-directory "~/org/palantir/")
+
 ;; Basic keymaps
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -26,6 +29,13 @@
 
 ;; Use speed commands
 (setq org-use-speed-commands t)
+
+;; Set to the location of your Org files on your local system
+(setq org-directory dcn/org-directory)
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull (concat dcn/org-directory "inbox.org"))
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg/")
 
 ;; Load all org files form these directories into agenda
 (setq org-agenda-files (list (concat dcn/org-directory "todo.org")
@@ -99,10 +109,12 @@
                             ("DAILY" . ?D)
                             ("DCN" . ?d)
                             ("SHIYA" . ?S)
+			    ("BUY" . ?b)
+			    ("GROCERY" . ?g)
                             ("FAMILY" . ?F)
                             ("PALANTIR" . ?W)
                             ("FUNNY" . ?f)
-                            ("GOAL" . ?g)
+                            ("GOAL" . ?G)
                             ("FEEDBACK" . ?l)
                             ("CONVERSATION" . ?t)
                             ("PROUD" . ?P)
@@ -802,7 +814,7 @@ Callers of this function already widen the buffer view."
 (require 'org-crypt)
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
-(setq org-crypt-key dcn/gpg-key)
+;;(setq org-crypt-key dcn/gpg-key)
 ;;(setq org-crypt-disable-auto-save nil)
 
 
