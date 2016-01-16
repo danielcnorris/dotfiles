@@ -3,9 +3,6 @@
 ;; Borrowed heavily from http://doc.norang.ca/org-mode.html
 ;;; Code:
 
-(defvar dcn/org-directory "~/drive/org/")
-(defvar dcn/palantir-org-directory "~/org/palantir/")
-
 ;; Basic keymaps
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
