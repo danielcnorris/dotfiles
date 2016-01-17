@@ -32,6 +32,8 @@ set autoread
 set hidden
 set showmatch
 set nrformats=
+" OSX copy paste
+set clipboard=unnamed
 
 let mapleader=" "
 
