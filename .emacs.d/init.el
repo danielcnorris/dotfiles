@@ -5,7 +5,7 @@
 
 ;; Load secrets
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-;; (require 'secrets)
+(require 'secrets)
 
 ;;(require 'init-utils)
 (require 'init-elpa)
