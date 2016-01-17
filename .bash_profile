@@ -29,6 +29,20 @@ alias gs='git status'
 
 source $HOME/.task.sh
 
+note() {
+  ts=$(date +"%s")
+  display_ts=$(date -jf "%s" $ts +"%Y-%m-%d %a %H:%M")
+  echo -e "# \n\n[$display_ts]" > "/tmp/entry-$ts.md"
+  vim -c "startinsert!" "/tmp/entry-$ts.md"
+  file=${1:-notes.md}
+  cat "/tmp/entry-$ts.md" >> $file
+}
+
+alias j='note ~/drive/journal.md'
+alias nn='note ~/drive/notes.md'
+alias oj='vim ~/drive/journal.md'
+alias on='vim ~/drive/notes.md'
+
 alias copy='xclip -selection clipboard'
 
 alias ioa5="ssh -t bastion 'ssh -t maroon-ioa-di-5'"

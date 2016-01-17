@@ -23,8 +23,6 @@ function install() {
     source $HOME/.bash_profile
 
     cp "$SECRETS/secrets.el" $HOME/.emacs.d/lisp/
-    cp "$SECRETS/.bbdb" $HOME/.emacs.d/
-    cp "$SECRETS/.authinfo.gpg" $HOME
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

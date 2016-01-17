@@ -43,7 +43,6 @@ alias.pend=list +PENDING
 
 # Other aliases
 alias.rm=delete
-alias.note=task add status:completed +note
 alias.n=modify -in +next
 alias.p=modify +palantir
 alias.as=modify +aslan
@@ -53,14 +52,6 @@ alias.nas=modify -in +next +aslan
 alias.npi=modify -in +next +pilot
 alias.m=modify -in +maybe
 alias.wa=modify -in -next +wait
-
-# Notes report
-uda.detail.type=string
-uda.detail.label=Detail
-report.notes.descritpion=Notes
-report.notes.columns=end,tags,description,detail
-report.notes.labels=Created,Tags,Description,Detail
-report.notes.filter=status:completed (+note)
 
 context.work=+palantir or +aslan or +pilot or +in
 context.dcn=-palantir -aslan -pilot
