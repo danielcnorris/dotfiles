@@ -31,11 +31,14 @@ source $HOME/.task.sh
 
 note() {
   ts=$(date +"%s")
-  display_ts=$(date -jf "%s" $ts +"%Y-%m-%d %a %H:%M")
-  echo -e "# \n\n[$display_ts]" > "/tmp/entry-$ts.md"
-  vim -c "startinsert!" "/tmp/entry-$ts.md"
+  entry="/tmp/entry-$ts.md"
+  display_ts="[$(date -jf "%s" $ts +"%Y-%m-%d %a %H:%M")]"
+  echo "# " > $entry
+  vim -c "startinsert!" $entry
   file=${1:-notes.md}
-  cat "/tmp/entry-$ts.md" >> $file
+  title=$(head -n1 $entry)
+  content=$(tail -n+2 $entry)
+  echo -e "$title\n $display_ts\n $content\n" >> $file
 }
 
 alias j='note ~/drive/journal.md'
