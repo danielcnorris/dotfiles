@@ -42,6 +42,7 @@ alias j='note ~/drive/journal.md'
 alias nn='note ~/drive/notes.md'
 alias oj='vim ~/drive/journal.md'
 alias on='vim ~/drive/notes.md'
+alias chr='open -a "Google Chrome"'
 
 alias copy='xclip -selection clipboard'
 
