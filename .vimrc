@@ -10,7 +10,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-speeddating'
 Plugin 'scrooloose/syntastic'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 call vundle#end()
 filetype plugin indent on
