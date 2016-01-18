@@ -33,6 +33,7 @@ set showmatch
 set nrformats=
 " OSX copy paste
 set clipboard=unnamed
+set spell spelllang=en_us
 
 let mapleader=" "
 
