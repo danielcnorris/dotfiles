@@ -29,6 +29,7 @@ binaries=(
     task
     pass
     tmux
+    pandoc
 )
 
 echo "Installing binaries..."

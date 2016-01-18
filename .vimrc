@@ -56,7 +56,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set textwidth=79
+set textwidth=80
 set colorcolumn=80
 set hlsearch
 set incsearch

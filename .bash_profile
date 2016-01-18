@@ -41,10 +41,10 @@ note() {
   echo -e "$title\n $display_ts\n $content\n" >> $file
 }
 
-alias j='note ~/drive/journal.md'
-alias nn='note ~/drive/notes.md'
-alias oj='vim ~/drive/journal.md'
-alias on='vim ~/drive/notes.md'
+alias j='note ~/drive/reference/journal.md'
+alias nn='note ~/drive/reference/notes.md'
+alias oj='vim ~/drive/reference/journal.md'
+alias on='vim ~/drive/reference/notes.md'
 alias r='remind ~/drive/remind/dcn.rem'
 alias rw='remind -c+1 ~/drive/remind/dcn.rem'
 alias rm='remind -c ~/drive/remind/dcn.rem'
