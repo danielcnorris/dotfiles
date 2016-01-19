@@ -47,7 +47,7 @@ alias oj='vim ~/drive/reference/journal.md'
 alias on='vim ~/drive/reference/notes.md'
 alias r='remind ~/drive/remind/dcn.rem'
 alias rw='remind -c+1 ~/drive/remind/dcn.rem'
-alias rm='remind -c ~/drive/remind/dcn.rem'
+alias rmo='remind -c ~/drive/remind/dcn.rem'
 alias ry='remind -c+12 ~/drive/remind/dcn.rem'
 alias chr='open -a "Google Chrome"'
 

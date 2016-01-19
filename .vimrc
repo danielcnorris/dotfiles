@@ -51,7 +51,6 @@ set nobackup
 set nowritebackup
 
 set autoindent
-set smartindent
 set expandtab
 set shiftwidth=2
 set softtabstop=2
