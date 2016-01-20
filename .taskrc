@@ -29,6 +29,8 @@ alias.pend=list +PENDING
 
 # Sorting
 report.next.sort=project+,tags+,due+,entry+
+report.list.sort=project+,tags+,due+,entry+
+report.waiting.sort=project+,tags+,wait+,due+,entry+
 
 # Other aliases
 alias.rm=delete
