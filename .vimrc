@@ -34,7 +34,7 @@ set nrformats=
 " OSX copy paste
 set clipboard=unnamed
 set spell spelllang=en_us
-
+nnoremap <Leader>d "=strftime("[%Y-%m-%d %a %H:%M]")<CR>
 let mapleader=" "
 
 syntax on
