@@ -26,7 +26,6 @@ binaries=(
     git
     gpg2
     ledger
-    task
     pass
     tmux
     pandoc

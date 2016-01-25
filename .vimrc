@@ -11,6 +11,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-speeddating'
 Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
+Plugin 'vimoutliner/vimoutliner'
 call vundle#end()
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -34,7 +35,6 @@ set nrformats=
 " OSX copy paste
 set clipboard=unnamed
 set spell spelllang=en_us
-nnoremap <Leader>d "=strftime("[%Y-%m-%d %a %H:%M]")<CR>
 let mapleader=" "
 
 syntax on
@@ -52,9 +52,9 @@ set nowritebackup
 
 set autoindent
 set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set textwidth=80
 set colorcolumn=80
 set hlsearch
