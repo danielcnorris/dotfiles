@@ -9,7 +9,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias rm='rm -i'
 
-alias d='~/drive/dcn'
+alias d='cd ~/drive/dcn'
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit -am'
@@ -38,14 +38,14 @@ note() {
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
-alias j='note ~/drive/reference/journal.md'
-alias nn='note ~/drive/reference/notes.md'
-alias oj='vim ~/drive/reference/journal.md'
-alias on='vim ~/drive/reference/notes.md'
-alias r='remind ~/drive/remind/dcn.rem'
-alias rw='remind -c+1 ~/drive/remind/dcn.rem'
-alias rmo='remind -c ~/drive/remind/dcn.rem'
-alias ry='remind -c+12 ~/drive/remind/dcn.rem'
+alias j='note ~/drive/dcn/journal.md'
+alias nn='note ~/drive/dcn/notes.md'
+alias oj='vim ~/drive/dcn/journal.md'
+alias on='vim ~/drive/dcn/notes.md'
+alias r='remind ~/drive/dcn/remind/dcn.rem'
+alias rw='remind -c+1 ~/drive/dcn/remind/dcn.rem'
+alias rmo='remind -c ~/drive/dcn/remind/dcn.rem'
+alias ry='remind -c+12 ~/drive/dcn/remind/dcn.rem'
 alias chr='open -a "Google Chrome"'
 
 alias copy='xclip -selection clipboard'

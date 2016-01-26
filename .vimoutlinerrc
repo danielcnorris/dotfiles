@@ -1,2 +1,3 @@
 let maplocalleader = ',,'
 let g:vo_modules_load = "checkbox:tags:smart_paste"
+set foldlevel=0
