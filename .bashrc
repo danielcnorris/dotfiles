@@ -2,6 +2,7 @@ stty erase ^?
 
 export EDITOR=vim
 
+alias c='cd'
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -10,8 +11,6 @@ alias ll='ls -l'
 alias la='ls -la'
 alias rm='rm -i'
 
-alias d='cd ~/drive/dcn'
-alias a='cd ~/projects/aslan'
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit -am'
@@ -40,18 +39,24 @@ note() {
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
-alias j='note ~/drive/dcn/journal.md'
-alias nn='note ~/drive/dcn/notes.md'
-alias oj='vim ~/drive/dcn/journal.md'
-alias on='vim ~/drive/dcn/notes.md'
-alias r='remind -c+1 ~/drive/dcn/remind/dcn.rem'
-alias rr='remind -c ~/drive/dcn/remind/dcn.rem'
-alias ry='remind -c+12 ~/drive/dcn/remind/dcn.rem'
-alias rd='remind -c+1 ~/drive/dcn/remind/defer.rem'
-alias rrd='remind -c ~/drive/dcn/remind/defer.rem'
-alias rry='remind -c+12 ~/drive/dcn/remind/defer.rem'
-alias chr='open -a "Google Chrome"'
+alias d='cd ~/drive/dcn'
 
+alias a='cd ~/projects/aslan'
+dpath='~/drive/dcn'
+rpath="$dpath/remind"
+alias i="vim $dpath/in.otl"
+alias j="note $dpath/journal.md"
+alias nn="note $dpath/notes.md"
+alias oj="vim $dpath/journal.md"
+alias on="vim $dpath/notes.md"
+alias r="remind -c+1 $rpath/dcn.rem"
+alias rr="remind -c $rpath/dcn.rem"
+alias ry="remind -c+12 $rpath/dcn.rem"
+alias rd="remind -c+1 $rpath/defer.rem"
+alias rrd="remind -c $rpath/defer.rem"
+alias rry="remind -c+12 $rpath/defer.rem"
+
+alias chr='open -a "Google Chrome"'
 alias copy='xclip -selection clipboard'
 
 export TERM=xterm-16color
