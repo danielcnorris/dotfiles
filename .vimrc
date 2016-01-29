@@ -14,7 +14,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'vimoutliner/vimoutliner'
 call vundle#end()
 filetype plugin indent on
-runtime macros/matchit.vim
 
 set number
 set ruler
@@ -27,7 +26,6 @@ set showmode
 set visualbell
 set noerrorbells
 set lazyredraw
-set autochdir
 set autoread
 set hidden
 set showmatch

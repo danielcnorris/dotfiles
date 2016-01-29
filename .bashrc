@@ -5,11 +5,13 @@ export EDITOR=vim
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias l='ls -l'
 alias ll='ls -l'
 alias la='ls -la'
 alias rm='rm -i'
 
 alias d='cd ~/drive/dcn'
+alias a='cd ~/projects/aslan'
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit -am'
@@ -42,16 +44,15 @@ alias j='note ~/drive/dcn/journal.md'
 alias nn='note ~/drive/dcn/notes.md'
 alias oj='vim ~/drive/dcn/journal.md'
 alias on='vim ~/drive/dcn/notes.md'
-alias r='remind ~/drive/dcn/remind/dcn.rem'
-alias rw='remind -c+1 ~/drive/dcn/remind/dcn.rem'
+alias r='remind -c+1 ~/drive/dcn/remind/dcn.rem'
+alias rt='remind ~/drive/dcn/remind/dcn.rem'
 alias rmo='remind -c ~/drive/dcn/remind/dcn.rem'
 alias ry='remind -c+12 ~/drive/dcn/remind/dcn.rem'
+alias rd='remind -c+1 ~/drive/dcn/remind/defer.rem'
+alias rdm='remind -c ~/drive/dcn/remind/defer.rem'
 alias chr='open -a "Google Chrome"'
 
 alias copy='xclip -selection clipboard'
-
-alias ioa5="ssh -t bastion 'ssh -t maroon-ioa-di-5'"
-alias pc1="ssh -t bastion 'ssh -t maroon-poc-di-1'"
 
 export TERM=xterm-16color
 
