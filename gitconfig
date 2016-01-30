@@ -4,3 +4,7 @@
     branch = auto
     interactive = auto
     diff = auto
+
+[user]
+    name = Daniel Norris
+    email = dnorris@palantir.com

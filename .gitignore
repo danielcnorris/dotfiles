@@ -1,5 +1,4 @@
-.vim/.vundles.local
-.vim/bundle
-.vim/.netrwhist
+vim/bundle
+emacs.d/lisp/secrets.el
 *~
 \#*
