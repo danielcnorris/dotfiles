@@ -1,1 +1,1 @@
-0 0 * * * /usr/local/bin/remind /Users/dnorris/drive/dcn/remind/defer.rem | /usr/bin/egrep -v '^Reminders for|^$' >> /Users/dnorris/drive/dcn/in.otl
+0 0 * * * /usr/local/bin/remind /Users/dnorris/drive/dcn/remind/defer.rem | /usr/bin/egrep -v '^Reminders for|^$|^No reminders.$' >> /Users/dnorris/drive/dcn/in.otl

@@ -58,10 +58,16 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
 nmap <silent> <Leader><Leader> :nohlsearch<CR>
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+nnoremap <C-J> o<Esc>k
+nnoremap <C-K> O<Esc>j
 
 " Remove trailing whitespace on save
 autocmd BufWritePre *.* :%s/\s\+$//e
 
 " Turnoff auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd FileType *.md setlocal tw=80
+autocmd FileType *.txt setlocal tw=80
