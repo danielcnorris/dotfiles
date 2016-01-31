@@ -13,6 +13,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'vimoutliner/vimoutliner'
 call vundle#end()
+runtime macros/matchit.vim
 filetype plugin indent on
 
 set number

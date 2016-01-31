@@ -31,3 +31,5 @@ vim +PluginInstall +qall
 source $HOME/.bash_profile
 
 cp "$SECRETS/secrets.el" $HOME/.emacs.d/lisp/
+
+crontab crontab
