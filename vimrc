@@ -70,5 +70,6 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 
 " Turnoff auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType *.md setlocal tw=80
-autocmd FileType *.txt setlocal tw=80
+autocmd FileType *.md setlocal tw=80 spell
+autocmd FileType *.txt setlocal tw=80 spell
+autocmd FileType *.otl setlocal spell
