@@ -58,6 +58,9 @@ alias rd="remind -c+1 -m $rpath/defer.rem"
 alias rrd="remind -c+5 -m $rpath/defer.rem"
 alias ryd="remind -c+12 -m $rpath/defer.rem"
 
+alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
+alias tl='tmux ls'
+
 alias chr='open -a "Google Chrome"'
 alias copy='xclip -selection clipboard'
 
