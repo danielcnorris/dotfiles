@@ -6,6 +6,8 @@ alias c='cd'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias v='vim'
+
 alias l='ls -l'
 alias ll='ls -l'
 alias la='ls -la'
