@@ -8,10 +8,10 @@ Plugin 'skwp/vim-colors-solarized'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-speeddating'
 Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'vimoutliner/vimoutliner'
+Plugin 'raichoo/purescript-vim'
 call vundle#end()
 runtime macros/matchit.vim
 filetype plugin indent on
@@ -31,6 +31,8 @@ set autoread
 set hidden
 set showmatch
 set nrformats=
+" Encryption
+set cm=blowfish
 " OSX copy paste
 set clipboard=unnamed
 set spelllang=en_us
