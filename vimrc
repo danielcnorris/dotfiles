@@ -12,6 +12,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'raichoo/purescript-vim'
+Plugin 'jpalardy/vim-slime'
+Plugin 'Townk/vim-autoclose'
+Plugin 'tpope/vim-ragtag'
 call vundle#end()
 runtime macros/matchit.vim
 filetype plugin indent on
@@ -53,9 +56,9 @@ set nowritebackup
 
 set autoindent
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set colorcolumn=80
 set hlsearch
 set incsearch
@@ -73,5 +76,8 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 " Turnoff auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufRead,BufNewFile *.md setlocal tw=80 spell
+autocmd BufRead,BufNewFile *.Rmd setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.txt setlocal tw=80 spell
-autocmd FileType *.otl setlocal spell
+autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4
+autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
+let g:slime_target = "tmux"
