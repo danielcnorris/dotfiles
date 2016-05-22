@@ -4,22 +4,23 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'skwp/vim-colors-solarized'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/syntastic'
+Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
-Plugin 'vimoutliner/vimoutliner'
-Plugin 'raichoo/purescript-vim'
 Plugin 'jpalardy/vim-slime'
-Plugin 'Townk/vim-autoclose'
+Plugin 'raichoo/purescript-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'skwp/vim-colors-solarized'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'vimoutliner/vimoutliner'
 call vundle#end()
 runtime macros/matchit.vim
 filetype plugin indent on
 
 set number
+set mouse=a
 set ruler
 set laststatus=2
 set encoding=utf-8
@@ -80,4 +81,5 @@ autocmd BufRead,BufNewFile *.Rmd setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.txt setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
+autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4
 let g:slime_target = "tmux"

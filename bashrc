@@ -44,6 +44,7 @@ note() {
 }
 
 alias d='cd ~/drive/dcn'
+alias g='cd ~/drive/go/'
 
 alias a='cd ~/projects/aslan'
 dpath='~/drive/dcn'
