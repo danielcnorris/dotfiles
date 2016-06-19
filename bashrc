@@ -1,4 +1,7 @@
-stty erase ^?
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# PS1='[\u@\h \W]\$ '
 
 export EDITOR=vim
 
@@ -8,6 +11,7 @@ alias ...='cd ../..'
 
 alias v='vim'
 
+alias ls='ls --color=auto'
 alias l='ls -l'
 alias ll='ls -l'
 alias la='ls -la'
@@ -43,11 +47,9 @@ note() {
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
-alias d='cd ~/drive/dcn'
-alias g='cd ~/drive/go/'
 
-alias a='cd ~/projects/aslan'
 dpath='~/drive/dcn'
+alias d='cd $dpath'
 rpath="$dpath/remind"
 alias i="echo $1 >> $dpath/in.otl"
 alias in="vim $dpath/in.otl"
@@ -68,15 +70,8 @@ alias ryd="remind -c+12 -m $rpath/defer.rem"
 alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
 
-alias chr='open -a "Google Chrome"'
 alias copy='xclip -selection clipboard'
 
-export TERM=xterm-16color
-
-export PATH=~/.cabal/bin:$PATH
-export PATH=~/Library/Haskell/bin:$PATH
-export PATH=/usr/local/bin:$PATH
 export GOPATH=~/drive/go/
 export PATH=$PATH:$GOPATH/bin
-
-eval $(gpg-agent --daemon)
+alias g='cd $GOPATH'
