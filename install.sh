@@ -7,7 +7,9 @@ declare -a files=("bash_profile"
                   "tmux.conf"
                   "vim"
                   "vimoutlinerrc"
-                  "vimrc")
+                  "vimrc"
+                  "xinitrc"
+                  "xserverrc")
 
 for file in "${files[@]}"
 do
