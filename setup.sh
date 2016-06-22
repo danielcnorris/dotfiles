@@ -25,6 +25,9 @@ PACMAN_PKGS=(
 	openssh
 	xclip
   # Latex?
+  abs
+  remind
+  wpa_actiond
 )
 
 # sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
@@ -55,4 +58,5 @@ sudo cp 70-synaptics.conf /etc/X11/xorg.conf.d/
 
 # Python packages
 # Set up ST with git
-
+# TODO Edit /etc/makepkg.conf
+# TODO Make abs build repository

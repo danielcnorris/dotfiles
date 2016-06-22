@@ -4,6 +4,7 @@
 # PS1='[\u@\h \W]\$ '
 
 export EDITOR=vim
+export TERM=st-16color
 
 alias c='cd'
 alias ..='cd ..'
@@ -48,7 +49,7 @@ note() {
 }
 
 
-dpath='~/drive/dcn'
+dpath='~/dcn'
 alias d='cd $dpath'
 rpath="$dpath/remind"
 alias i="echo $1 >> $dpath/in.otl"
