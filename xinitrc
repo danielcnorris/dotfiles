@@ -1,2 +1,2 @@
-setxkbmap -option ctrl:nocaps -option altwin:alt_win
+setxkbmap -option ctrl:nocaps
 exec dwm
