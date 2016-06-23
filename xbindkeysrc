@@ -1,0 +1,15 @@
+# Increase brightness by 10%.
+"xbacklight -inc 10"
+  XF86MonBrightnessUp
+
+# Decrease brightness by 10%
+"xbacklight -dec 10"
+  XF86MonBrightnessDown
+
+# Increase volume.
+"amixer -c 0 sset Master 10+"
+   XF86AudioRaiseVolume
+
+# Decrease volume.
+"amixer -c 0 sset Master 10-"
+   XF86AudioLowerVolume

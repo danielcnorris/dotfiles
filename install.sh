@@ -9,7 +9,8 @@ declare -a files=("bash_profile"
                   "vimoutlinerrc"
                   "vimrc"
                   "xinitrc"
-                  "xserverrc")
+                  "xserverrc"
+                  "xbindkeysrc")
 
 for file in "${files[@]}"
 do

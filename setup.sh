@@ -10,6 +10,8 @@ PACMAN_PKGS=(
 	git
 	xorg
 	xorg-xinit
+  xorg-xbacklight
+  xbindkeys
 	dwm
 	chromium
 	wget
