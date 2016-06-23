@@ -30,7 +30,7 @@ PACMAN_PKGS=(
   wpa_actiond
 )
 
-# sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
+sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
 
 # Install Packer.
 install_packer() {
@@ -55,8 +55,7 @@ packer -S --noconfirm ${PACKER_PKGS[@]}
 # Configure touchpad.
 sudo cp 70-synaptics.conf /etc/X11/xorg.conf.d/
 
-
-# Python packages
-# Set up ST with git
+# TODO Add Python packages
 # TODO Edit /etc/makepkg.conf
 # TODO Make abs build repository
+# TODO Run makepkg and install abs packages
