@@ -47,8 +47,8 @@ note() {
 }
 
 
-dpath='~/dcn'
-alias d='cd $dpath'
+dpath='$HOME/dcn'
+alias d="cd $dpath"
 rpath="$dpath/remind"
 alias i="echo $1 >> $dpath/in.otl"
 alias in="vim $dpath/in.otl"
