@@ -1,10 +1,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# PS1='[\u@\h \W]\$ '
-
 export EDITOR=vim
-export TERM=st-16color
+export TERM=st-256color
 
 alias c='cd'
 alias ..='cd ..'
