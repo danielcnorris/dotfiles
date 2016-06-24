@@ -37,26 +37,10 @@ note() {
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
-alias d='cd ~/drive/dcn'
-alias g='cd ~/drive/go/'
-
-dpath='~/drive/dcn'
-rpath="$dpath/remind"
+dpath='~/dcn'
 alias i="echo $1 >> $dpath/in.otl"
 alias in="vim $dpath/in.otl"
 alias n="vim $dpath/next.otl"
-alias j="note $dpath/journal.md"
-alias nn="note $dpath/notes.md"
-alias oj="vim $dpath/journal.md"
-alias on="vim $dpath/notes.md"
-alias nr="note $dpath/recipes.md"
-alias or="vim $dpath/recipes.md"
-alias r="remind -c+1 -m $rpath/dcn.rem"
-alias rr="remind -c+5 -m $rpath/dcn.rem"
-alias ry="remind -c12 -m $rpath/dcn.rem"
-alias rd="remind -c+1 -m $rpath/defer.rem"
-alias rrd="remind -c+5 -m $rpath/defer.rem"
-alias ryd="remind -c+12 -m $rpath/defer.rem"
 
 alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
