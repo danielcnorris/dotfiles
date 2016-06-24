@@ -1,10 +1,4 @@
-stty erase ^?
-
 export EDITOR=vim
-
-alias c='cd'
-alias ..='cd ..'
-alias ...='cd ../..'
 
 alias v='vim'
 
@@ -46,7 +40,6 @@ note() {
 alias d='cd ~/drive/dcn'
 alias g='cd ~/drive/go/'
 
-alias a='cd ~/projects/aslan'
 dpath='~/drive/dcn'
 rpath="$dpath/remind"
 alias i="echo $1 >> $dpath/in.otl"
@@ -73,10 +66,6 @@ alias copy='xclip -selection clipboard'
 
 export TERM=xterm-16color
 
-export PATH=~/.cabal/bin:$PATH
-export PATH=~/Library/Haskell/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export GOPATH=~/drive/go/
 export PATH=$PATH:$GOPATH/bin
-
-eval $(gpg-agent --daemon)

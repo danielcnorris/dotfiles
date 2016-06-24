@@ -1,4 +1,0 @@
-MAILTO=""
-0 0 * * * /usr/local/bin/remind /Users/dnorris/drive/dcn/remind/defer.rem | /usr/bin/egrep -v '^Reminders for|^$|^No reminders.$' >> /Users/dnorris/drive/dcn/in.otl
-0/10 * * * * /usr/local/bin/remind -s+53 -m /Users/dnorris/drive/dcn/remind/dcn.rem  | /Users/dnorris/drive/dcn/remind/scripts/display_reminders.py > /Users/dnorris/drive/dcn/agenda.txt
-0 10 * * * /Users/dnorris/drive/dcn/backup.sh > /dev/null
