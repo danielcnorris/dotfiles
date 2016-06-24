@@ -40,6 +40,7 @@ note() {
 
 wpath="$HOME/Box\ Sync/dnorris/"
 alias p="cd $wpath"
+alias gn="cd $wpath/projects/napoleon"
 dpath="$wpath/dcn"
 alias d="cd $dpath"
 alias i="echo $1 >> $dpath/in.otl"
