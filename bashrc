@@ -4,10 +4,6 @@
 export EDITOR=vim
 export TERM=st-256color
 
-alias c='cd'
-alias ..='cd ..'
-alias ...='cd ../..'
-
 alias v='vim'
 
 alias ls='ls --color=auto'
@@ -37,7 +33,7 @@ alias gs='git status'
 note() {
   ts=$(date +"%s")
   entry="/tmp/entry-$ts.md"
-  display_ts="[$(date -jf "%s" $ts +"%Y-%m-%d %a %H:%M")]"
+  display_ts="[$(date +"%F %a %R")]"
   echo "# " > $entry
   vim -c "startinsert!" $entry
   file=${1:-notes.md}

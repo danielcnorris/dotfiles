@@ -5,7 +5,7 @@ sudo -v
 
 # Install packman packages
 PACMAN_PKGS=(
-	vim
+	gvim
 	tmux
 	git
 	xorg
@@ -26,10 +26,10 @@ PACMAN_PKGS=(
 	r
 	openssh
 	xclip
-  # Latex?
   abs
   remind
   wpa_actiond
+  dosfstools
 )
 
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
@@ -57,7 +57,7 @@ packer -S --noconfirm ${PACKER_PKGS[@]}
 # Configure touchpad.
 sudo cp 70-synaptics.conf /etc/X11/xorg.conf.d/
 
-# TODO Add Python packages
 # TODO Edit /etc/makepkg.conf
 # TODO Make abs build repository
+# TODO Skip abs packages on pacman update
 # TODO Run makepkg and install abs packages
