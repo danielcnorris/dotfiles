@@ -1,6 +1,7 @@
 #!/bin/bash
 
 dir=$(pwd)
+
 declare -a files=("bash_profile"
                   "bashrc"
                   "ghci"
@@ -13,7 +14,7 @@ declare -a files=("bash_profile"
 for file in "${files[@]}"
 do
     unlink $HOME/.$file
-    ln -s $dir/$file $HOME/.$file
+    ln -s "$dir/$file" $HOME/.$file
 done
 
 if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
