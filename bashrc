@@ -2,6 +2,7 @@ export EDITOR=vim
 
 alias v='vim'
 
+alias ls='ls -G'
 alias l='ls -l'
 alias ll='ls -l'
 alias la='ls -la'
@@ -30,17 +31,20 @@ note() {
   entry="/tmp/entry-$ts.md"
   display_ts="[$(date -jf "%s" $ts +"%Y-%m-%d %a %H:%M")]"
   echo "# " > $entry
-  vim -c "startinsert!" $entry
+  $EDITOR -c "startinsert!" $entry
   file=${1:-notes.md}
   title=$(head -n1 $entry)
   content=$(tail -n+2 $entry)
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
-dpath='~/dcn'
+dpath="$HOME/dcn"
+alias d="cd $dpath"
 alias i="echo $1 >> $dpath/in.otl"
-alias in="vim $dpath/in.otl"
-alias n="vim $dpath/next.otl"
+alias in="$EDITOR $dpath/in.otl"
+alias n="$EDITOR $dpath/next.otl"
+alias nl="note $dpath/lead.md"
+alias ol="$EDITOR $dpath/lead.md"
 
 alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
@@ -51,5 +55,3 @@ alias copy='xclip -selection clipboard'
 export TERM=xterm-16color
 
 export PATH=/usr/local/bin:$PATH
-export GOPATH=~/drive/go/
-export PATH=$PATH:$GOPATH/bin
