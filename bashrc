@@ -1,13 +1,12 @@
-stty erase ^?
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 export EDITOR=vim
-
-alias c='cd'
-alias ..='cd ..'
-alias ...='cd ../..'
+export TERM=st-256color
 
 alias v='vim'
 
+alias ls='ls --color=auto'
 alias l='ls -l'
 alias ll='ls -l'
 alias la='ls -la'
@@ -34,30 +33,28 @@ alias gs='git status'
 note() {
   ts=$(date +"%s")
   entry="/tmp/entry-$ts.md"
-  display_ts="[$(date -jf "%s" $ts +"%Y-%m-%d %a %H:%M")]"
+  display_ts="[$(date +"%F %a %R")]"
   echo "# " > $entry
-  vim -c "startinsert!" $entry
+  $EDITOR -c "startinsert!" $entry
   file=${1:-notes.md}
   title=$(head -n1 $entry)
   content=$(tail -n+2 $entry)
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
-alias d='cd ~/drive/dcn'
-alias g='cd ~/drive/go/'
 
-alias a='cd ~/projects/aslan'
-dpath='~/drive/dcn'
+dpath='$HOME/dcn'
+alias d="cd $dpath"
 rpath="$dpath/remind"
 alias i="echo $1 >> $dpath/in.otl"
-alias in="vim $dpath/in.otl"
-alias n="vim $dpath/next.otl"
+alias in="$EDITOR $dpath/in.otl"
+alias n="$EDITOR $dpath/next.otl"
 alias j="note $dpath/journal.md"
 alias nn="note $dpath/notes.md"
-alias oj="vim $dpath/journal.md"
-alias on="vim $dpath/notes.md"
+alias oj="$EDITOR $dpath/journal.md"
+alias on="$EDITOR $dpath/notes.md"
 alias nr="note $dpath/recipes.md"
-alias or="vim $dpath/recipes.md"
+alias or="$EDITOR $dpath/recipes.md"
 alias r="remind -c+1 -m $rpath/dcn.rem"
 alias rr="remind -c+5 -m $rpath/dcn.rem"
 alias ry="remind -c12 -m $rpath/dcn.rem"
@@ -68,15 +65,8 @@ alias ryd="remind -c+12 -m $rpath/defer.rem"
 alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
 
-alias chr='open -a "Google Chrome"'
 alias copy='xclip -selection clipboard'
 
-export TERM=xterm-16color
-
-export PATH=~/.cabal/bin:$PATH
-export PATH=~/Library/Haskell/bin:$PATH
-export PATH=/usr/local/bin:$PATH
 export GOPATH=~/drive/go/
 export PATH=$PATH:$GOPATH/bin
-
-eval $(gpg-agent --daemon)
+alias g='cd $GOPATH'

@@ -3,13 +3,14 @@
 dir=$(pwd)
 declare -a files=("bash_profile"
                   "bashrc"
-                  "emacs.d"
-                  "ghci"
                   "gitconfig"
                   "tmux.conf"
                   "vim"
                   "vimoutlinerrc"
-                  "vimrc")
+                  "vimrc"
+                  "xinitrc"
+                  "xserverrc"
+                  "xbindkeysrc")
 
 for file in "${files[@]}"
 do
@@ -22,14 +23,5 @@ if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
         $HOME/.vim/bundle/Vundle.vim
 fi
 
-echo "" >> $HOME/.gitconfig
-echo "[user]" >> $HOME/.gitconfig
-echo "    name = $GITUSER" >> $HOME/.gitconfig
-echo "    email = $GITEMAIL" >> $HOME/.gitconfig
-
 vim +PluginInstall +qall
 source $HOME/.bash_profile
-
-cp "$SECRETS/secrets.el" $HOME/.emacs.d/lisp/
-
-crontab crontab

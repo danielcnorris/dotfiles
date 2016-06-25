@@ -84,3 +84,6 @@ autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4
 let g:slime_target = "tmux"
+
+set clipboard=unnamed
+set clipboard=unnamedplus
