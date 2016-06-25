@@ -35,7 +35,7 @@ note() {
   entry="/tmp/entry-$ts.md"
   display_ts="[$(date +"%F %a %R")]"
   echo "# " > $entry
-  vim -c "startinsert!" $entry
+  $EDITOR -c "startinsert!" $entry
   file=${1:-notes.md}
   title=$(head -n1 $entry)
   content=$(tail -n+2 $entry)
@@ -47,14 +47,14 @@ dpath='$HOME/dcn'
 alias d="cd $dpath"
 rpath="$dpath/remind"
 alias i="echo $1 >> $dpath/in.otl"
-alias in="vim $dpath/in.otl"
-alias n="vim $dpath/next.otl"
+alias in="$EDITOR $dpath/in.otl"
+alias n="$EDITOR $dpath/next.otl"
 alias j="note $dpath/journal.md"
 alias nn="note $dpath/notes.md"
-alias oj="vim $dpath/journal.md"
-alias on="vim $dpath/notes.md"
+alias oj="$EDITOR $dpath/journal.md"
+alias on="$EDITOR $dpath/notes.md"
 alias nr="note $dpath/recipes.md"
-alias or="vim $dpath/recipes.md"
+alias or="$EDITOR $dpath/recipes.md"
 alias r="remind -c+1 -m $rpath/dcn.rem"
 alias rr="remind -c+5 -m $rpath/dcn.rem"
 alias ry="remind -c12 -m $rpath/dcn.rem"

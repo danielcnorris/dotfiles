@@ -30,6 +30,8 @@ PACMAN_PKGS=(
   remind
   wpa_actiond
   dosfstools
+  syslinux
+  gptfdisk
 )
 
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
@@ -59,5 +61,7 @@ sudo cp 70-synaptics.conf /etc/X11/xorg.conf.d/
 
 # TODO Edit /etc/makepkg.conf
 # TODO Make abs build repository
-# TODO Skip abs packages on pacman update
 # TODO Run makepkg and install abs packages
+
+# Skip abs packages on pacman update.
+sudo echo "IgnoreGroup = modified" >> /etc/pacman.conf
