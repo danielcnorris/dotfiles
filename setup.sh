@@ -22,6 +22,7 @@ PACMAN_PKGS=(
 	acpi
 	go
 	nodejs
+  npm
 	python-pip
 	r
 	openssh
@@ -63,5 +64,5 @@ sudo cp 70-synaptics.conf /etc/X11/xorg.conf.d/
 # TODO Make abs build repository
 # TODO Run makepkg and install abs packages
 
-# Skip abs packages on pacman update.
-sudo echo "IgnoreGroup = modified" >> /etc/pacman.conf
+# TODO Skip abs packages on pacman update.
+# IgnoreGroup = modified in /etc/pacman.conf
