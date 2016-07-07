@@ -67,6 +67,6 @@ alias tl='tmux ls'
 
 alias copy='xclip -selection clipboard'
 
-export GOPATH=~/drive/go/
+export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 alias g='cd $GOPATH'

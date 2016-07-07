@@ -1,4 +1,4 @@
-" Daniel Norris's vimrc
+" Daniel Norris's vimrc.
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -36,10 +36,10 @@ set autoread
 set hidden
 set showmatch
 set nrformats=
-" Encryption
+" Encryption.
 set cm=blowfish
-" OSX copy paste
-set clipboard=unnamed
+" Set system clipboard.
+set clipboard=unnamedplus
 set spelllang=en_us
 let mapleader=" "
 
@@ -72,18 +72,21 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap <C-J> o<Esc>k
 nnoremap <C-K> O<Esc>j
 
-" Remove trailing whitespace on save
+" Remove trailing whitespace on save.
 autocmd BufWritePre *.* :%s/\s\+$//e
 
-" Turnoff auto comment insertion
+" Turnoff auto comment insertion.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Allow sending code to other tmux pane.
+let g:slime_target = "tmux"
+
+" Syntastic checkers
+let g:syntastic_go_checkers=['gofmt','golint']
+
 autocmd BufRead,BufNewFile *.md setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.Rmd setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.txt setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4
-let g:slime_target = "tmux"
-
-set clipboard=unnamed
-set clipboard=unnamedplus

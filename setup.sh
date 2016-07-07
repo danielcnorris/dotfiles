@@ -33,6 +33,7 @@ PACMAN_PKGS=(
   dosfstools
   syslinux
   gptfdisk
+  noto-fonts-cjk
 )
 
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
@@ -66,3 +67,10 @@ sudo cp 70-synaptics.conf /etc/X11/xorg.conf.d/
 
 # TODO Skip abs packages on pacman update.
 # IgnoreGroup = modified in /etc/pacman.conf
+PYTHON_PKGS=(
+  pep8
+  pyflakes
+  flake8
+  requests
+)
+sudo pip install  $PYTHON_PKGS
