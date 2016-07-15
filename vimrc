@@ -41,6 +41,7 @@ set cm=blowfish
 " Set system clipboard.
 set clipboard=unnamedplus
 set spelllang=en_us
+set spell
 let mapleader=" "
 
 syntax on
@@ -81,12 +82,16 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Allow sending code to other tmux pane.
 let g:slime_target = "tmux"
 
-" Syntastic checkers
-let g:syntastic_go_checkers=['gofmt','golint']
+" Syntastic checkers.
+let g:syntastic_go_checkers= ['go', 'gofmt','golint', 'gotype', 'govet']
 
-autocmd BufRead,BufNewFile *.md setlocal tw=80 spell
-autocmd BufRead,BufNewFile *.Rmd setlocal tw=80 spell
-autocmd BufRead,BufNewFile *.txt setlocal tw=80 spell
-autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4
+
+" Let goimports automatically insert import paths.
+let g:go_fmt_command = "goimports"
+
+autocmd BufRead,BufNewFile *.md setlocal tw=80
+autocmd BufRead,BufNewFile *.Rmd setlocal tw=80
+autocmd BufRead,BufNewFile *.txt setlocal tw=80
+autocmd BufRead,BufNewFile *.otl setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4

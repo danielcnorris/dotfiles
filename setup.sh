@@ -54,6 +54,7 @@ install_packer
 # Install Packer packages.
 PACKER_PKGS=(
 	chromium-widevine
+  go-tools
 )
 
 packer -S --noconfirm ${PACKER_PKGS[@]}
