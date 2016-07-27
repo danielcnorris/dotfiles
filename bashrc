@@ -35,10 +35,10 @@ note() {
   file=${1:-notes.md}
   title=$(head -n1 $entry)
   content=$(tail -n+2 $entry)
-  echo -e "$title\n$display_ts\n$content\n" >> $file
+  echo -e "$title\n$display_ts\n$content\n" >> "$file"
 }
 
-wpath="$HOME/Box\ Sync/dnorris/"
+wpath="$HOME/Box\ Sync/dnorris"
 alias p="cd $wpath"
 alias np="cd $wpath/projects/napoleon"
 dpath="$wpath/dcn"
