@@ -3,37 +3,44 @@
 
 sudo -v
 
-# Install packman packages
+# Set the language.
+localectl set-locale LANG="en_US.utf8"
+
+# Install packman packages.
 PACMAN_PKGS=(
-	gvim
-	tmux
+  abs
+  anki
+	acpi
+	alsa-utils
+	chromium
+  dosfstools
+	dwm
+	expac
 	git
+	go
+  gptfdisk
+	gvim
+	jshon
+	nodejs
+  npm
+  noto-fonts-cjk
+	openssh
+  pandoc
+	python-pip
+	r
+  remind
+	slock
+  syslinux
+  texlive-bin
+  texlive-core
+	tmux
+	wget
+  wpa_actiond
+  xbindkeys
+	xclip
 	xorg
 	xorg-xinit
   xorg-xbacklight
-  xbindkeys
-	dwm
-	chromium
-	wget
-	expac
-	jshon
-	slock
-	alsa-utils
-	acpi
-	go
-	nodejs
-  npm
-	python-pip
-	r
-	openssh
-	xclip
-  abs
-  remind
-  wpa_actiond
-  dosfstools
-  syslinux
-  gptfdisk
-  noto-fonts-cjk
 )
 
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
