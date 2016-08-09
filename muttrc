@@ -1,9 +1,11 @@
+source "gpg2 -dq ~/.passwords.gpg |"
+bind generic,alias,attach,browser,editor,index,compose,pager,pgp,postpone ':' noop
+
 set folder = imaps://imap.gmail.com/
-# set folder = ~/Maildir
 set from = "danielcnorris@gmail.com"
 set realname = "Daniel Norris"
 set imap_user = danielcnorris@gmail.com
-set smtp_url = "smtp://danielcnorris@smtp.gmail.com:587/"
+set smtp_url = smtp://$imap_user:$imap_pass@smtp.gmail.com:587/
 
 set spoolfile = +INBOX
 mailboxes = +INBOX
@@ -12,36 +14,24 @@ set mbox = "+[Gmail]/All Mail"
 set record = "+[Gmail]/Sent Mail"
 unset record
 
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
 
 set header_cache = ~/.cache/mutt
-set message_cachedir = "~/.cache/mutt"
-
-unset imap_passive
-set imap_keepalive = 300
-set mail_check = 10
+set message_cachedir = ~/.cache/mutt
 set timeout = 10
 
 set send_charset = "utf-8"
 unset markers
-
+set text_flowed = yes
 set sort = threads
 set sort_aux = reverse-last-date-received
-
-set text_flowed = yes
 
 set query_command = "goobook query '%s'"
 macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
 bind editor <Tab> complete-query
-
-source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
-
-macro pager \cu <pipe-entry>"urlview"<enter> "Follow links with urlview"
-macro index,pager \# "<save-message>+[Gmail].Trash<enter>" "move message to trash"
+macro pager \cu <pipe-entry>"urlview"<enter> "follow links with urlview"
+macro index,pager \# "<save-message>+[Gmail].Trash<enter><enter><refresh>" "move message to trash"
 
 set mailcap_path = ~/.mutt/mailcap
 auto_view text/html
 alternative_order text/plain text/html
-
-macro index S \
-     "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
-     "notmuch: search mail"
