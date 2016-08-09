@@ -21,6 +21,8 @@ PACMAN_PKGS=(
   gptfdisk
 	gvim
 	jshon
+  lynx
+  mutt
 	nodejs
   npm
   noto-fonts-cjk
@@ -61,7 +63,9 @@ install_packer
 # Install Packer packages.
 PACKER_PKGS=(
 	chromium-widevine
+  goobook
   go-tools
+  urlview
 )
 
 packer -S --noconfirm ${PACKER_PKGS[@]}

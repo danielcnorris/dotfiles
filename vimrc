@@ -96,3 +96,4 @@ autocmd BufRead,BufNewFile *.otl setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.tsv setlocal nowrap noexpandtab sw=20 softtabstop=20 tabstop=20
+autocmd BufRead /tmp/mutt-* setlocal fo+=aw tw=80
