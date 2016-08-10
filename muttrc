@@ -25,6 +25,7 @@ unset markers
 set text_flowed = yes
 set sort = threads
 set sort_aux = reverse-last-date-received
+folder-hook . "push <collapse-all>\n"
 
 set query_command = "goobook query '%s'"
 macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
