@@ -32,7 +32,8 @@ macro index,pager a "<pipe-message>goobook add<return>" "add sender to google co
 bind editor <Tab> complete-query
 macro pager \cu <pipe-entry>"urlview"<enter> "follow links with urlview"
 macro index,pager \# "<save-message>+[Gmail].Trash<enter><enter><refresh>" "move message to trash"
-
+bind index G imap-fetch-mail
+ 
 set mailcap_path = ~/.mutt/mailcap
 auto_view text/html
 alternative_order text/plain text/html
