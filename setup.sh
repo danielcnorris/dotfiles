@@ -13,15 +13,17 @@ PACMAN_PKGS=(
 	acpi
 	alsa-utils
 	chromium
+  cmus
   dosfstools
 	dwm
 	expac
+  feh
 	git
 	go
   gptfdisk
 	gvim
 	jshon
-  lynx
+  mps-youtube
   mutt
 	nodejs
   npm
@@ -43,6 +45,7 @@ PACMAN_PKGS=(
 	xorg
 	xorg-xinit
   xorg-xbacklight
+  w3m
 )
 
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
@@ -84,5 +87,6 @@ PYTHON_PKGS=(
   pyflakes
   flake8
   requests
+  youtube-dl
 )
 sudo pip install  $PYTHON_PKGS

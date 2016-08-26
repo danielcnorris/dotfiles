@@ -65,8 +65,10 @@ alias ryd="remind -c+12 -m $rpath/defer.rem"
 alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
 
+alias f='feh --scale-down --auto-zoom'
 alias copy='xclip -selection clipboard'
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 alias g='cd $GOPATH'
