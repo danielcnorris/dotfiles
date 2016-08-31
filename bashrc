@@ -66,6 +66,7 @@ alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
 
 alias f='feh --scale-down --auto-zoom'
+alias m1='mplayer -vf rotate=1'
 alias copy='xclip -selection clipboard'
 
 export GOPATH=~/go

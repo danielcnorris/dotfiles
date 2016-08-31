@@ -23,6 +23,7 @@ PACMAN_PKGS=(
   gptfdisk
 	gvim
 	jshon
+  mplayer
   mps-youtube
   mutt
 	nodejs

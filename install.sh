@@ -12,6 +12,7 @@ declare -a files=("bash_profile"
                   "vim"
                   "vimoutlinerrc"
                   "vimrc"
+                  "wyrdrc"
                   "xinitrc"
                   "xserverrc"
                   "xbindkeysrc")
