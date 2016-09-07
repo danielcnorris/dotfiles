@@ -13,11 +13,11 @@ set edit_any_command="$EDITOR \"%file%\""
 
 
 # templates for creating new appointments
-# %monname% -> month name, %mon% -> month number, %mday% -> day of the month, 
+# %monname% -> month name, %mon% -> month number, %mday% -> day of the month,
 # %year% -> year, %hour% -> hour, %min% -> minute, %wdayname% -> weekday name
 # %wday% -> weekday number
-set timed_template="REM %monname% %mday% %year% AT %hour%:%min% DURATION 1:00 MSG "
-set untimed_template="REM %monname% %mday% %year% MSG "
+set timed_template="REM %year% %monname% %mday% AT %hour%:%min% DURATION 1:00 MSG "
+set untimed_template="REM %year% %monname% %mday% MSG "
 
 # weekly recurrence
 set template0="REM %wdayname% AT %hour%:%min% DURATION 1:00 MSG "
@@ -35,7 +35,7 @@ set busy_algorithm="1"
 # for busy_algorithm="2", assume that untimed reminders occupy this many minutes
 set untimed_duration="60"
 
-# if busy_algorithm="1", number of reminders per day allowed for each calendar 
+# if busy_algorithm="1", number of reminders per day allowed for each calendar
 # colorization level; if busy_algorithm="2", use number of hours of reminders
 # per day
 set busy_level1="1"   # level1 color
@@ -46,7 +46,7 @@ set busy_level4="7"   # level3 color
 
 
 # first day of the week is Sunday
-set week_starts_monday="false"
+set week_starts_monday="true"
 
 # 12/24 hour time settings
 set schedule_12_hour="false"
@@ -56,7 +56,7 @@ set description_12_hour="true"
 
 # whether or not to keep the cursor centered when scrolling through timed
 # reminders
-set center_cursor="false"
+set center_cursor="true"
 
 # date syntax for the 'go to date' command can be big or little endian
 set goto_big_endian="true"
@@ -75,7 +75,7 @@ set home_sticky="true"
 set advance_warning="true"
 
 # width of the untimed reminders window
-set untimed_window_width="40"
+set untimed_window_width="80"
 
 # whether or not to render untimed reminders in boldface
 set untimed_bold="true"
@@ -149,7 +149,7 @@ color help               green blue
 color timed_default      white black
 color timed_current      white red
 color timed_reminder1    yellow blue
-color timed_reminder2    white red
+color timed_reminder2    white red default
 color timed_reminder3    white green
 color timed_reminder4    yellow magenta
 color untimed_reminder   white black
@@ -164,7 +164,3 @@ color calendar_level3    magenta black
 color calendar_today     white red
 color left_divider       cyan blue
 color right_divider      cyan blue
-
-
-
-# arch-tag: DO_NOT_CHANGE_ee9bb855-2fde-4a61-8645-8ba31b35eaab 

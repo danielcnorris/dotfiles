@@ -2,9 +2,14 @@
 [[ $- != *i* ]] && return
 
 export EDITOR=vim
+# For proper colors in Tmux ncurses apps
+# export TERM=screen-256color
 export TERM=st-256color
 
-alias v='vim'
+# alias vim="export TERM=st-256color; vim"
+# alias less="export TERM=st-256color; less"
+alias less="less_wrapper"
+alias wyrd="export TERM=screen-256color; wyrd"
 
 alias ls='ls --color=auto'
 alias l='ls -l'

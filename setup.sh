@@ -22,15 +22,24 @@ PACMAN_PKGS=(
 	go
   gptfdisk
 	gvim
+  gxmessage
+  ibus
+  ibus-libpinyin
+  ibus-m17n
 	jshon
   mplayer
   mps-youtube
+  mpv
   mutt
 	nodejs
   npm
   noto-fonts-cjk
 	openssh
   pandoc
+  perl-image-exiftool
+  perl-file-copy-recursive
+  perl-io-all
+  perl-test-warn
 	python-pip
 	r
   remind
@@ -46,6 +55,7 @@ PACMAN_PKGS=(
 	xorg
 	xorg-xinit
   xorg-xbacklight
+  wyrd
   w3m
 )
 
@@ -67,6 +77,8 @@ install_packer
 # Install Packer packages.
 PACKER_PKGS=(
 	chromium-widevine
+  fdupes
+  findimagedupes
   goobook
   go-tools
   urlview
