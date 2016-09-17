@@ -6,9 +6,6 @@ export EDITOR=vim
 # export TERM=screen-256color
 export TERM=st-256color
 
-# alias vim="export TERM=st-256color; vim"
-# alias less="export TERM=st-256color; less"
-alias less="less_wrapper"
 alias wyrd="export TERM=screen-256color; wyrd"
 
 alias ls='ls --color=auto'

@@ -27,6 +27,9 @@ set template1="REM %wdayname% MSG "
 set template2="REM %mday% AT %hour%:%min% DURATION 1:00 MSG "
 set template3="REM %mday% MSG "
 
+# deferred task
+set template4="REM %mday% MSG DEFER "
+
 
 # algorithm to use for determining busy level
 # "1" -> count the number of reminders in each day
@@ -118,6 +121,7 @@ bind "p"                 paste
 bind "P"                 paste_dialog
 bind "d"                 scroll_description_up
 bind "D"                 scroll_description_down
+bind "\\C d"             new_template4
 bind "q"                 quick_add
 bind "t"                 new_timed
 bind "T"                 new_timed_dialog
