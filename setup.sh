@@ -33,7 +33,6 @@ PACMAN_PKGS=(
   mutt
 	nodejs
   npm
-  noto-fonts-cjk
 	openssh
   pandoc
   perl-image-exiftool
@@ -55,6 +54,7 @@ PACMAN_PKGS=(
 	xorg
 	xorg-xinit
   xorg-xbacklight
+  wqy-zenhei
   wyrd
   w3m
 )
@@ -81,6 +81,7 @@ PACKER_PKGS=(
   findimagedupes
   goobook
   go-tools
+  masterpdfeditor
   urlview
 )
 
