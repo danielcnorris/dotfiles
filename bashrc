@@ -74,4 +74,4 @@ alias copy='xclip -selection clipboard'
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
-alias g='cd $GOPATH'
+alias g='cd $GOPATH/src/github.com/danielcnorris'
