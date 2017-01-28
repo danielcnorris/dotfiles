@@ -1,7 +1,8 @@
 #!/bin/bash
 
 dir=$(pwd)
-declare -a files=("bash_profile"
+declare -a files=("asoundrc"
+                  "bash_profile"
                   "bashrc"
                   "gitconfig"
                   "goobookrc"

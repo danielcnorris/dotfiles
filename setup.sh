@@ -33,6 +33,7 @@ PACMAN_PKGS=(
   mutt
 	nodejs
   npm
+  ntp
 	openssh
   pandoc
   perl-image-exiftool
