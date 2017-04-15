@@ -72,6 +72,7 @@ alias tl='tmux ls'
 alias f='feh --scale-down --auto-zoom'
 alias m1='mplayer -vf rotate=1'
 alias copy='xclip -selection clipboard'
+alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin

@@ -84,6 +84,7 @@ PACKER_PKGS=(
   go-tools
   masterpdfeditor
   urlview
+  zramswap
 )
 
 packer -S --noconfirm ${PACKER_PKGS[@]}
@@ -97,6 +98,9 @@ sudo cp 70-synaptics.conf /etc/X11/xorg.conf.d/
 
 # TODO Skip abs packages on pacman update.
 # IgnoreGroup = modified in /etc/pacman.conf
+
+# TODO Set up systemd services
+# NTPD, zram, backup service
 PYTHON_PKGS=(
   pep8
   pyflakes
@@ -105,3 +109,5 @@ PYTHON_PKGS=(
   youtube-dl
 )
 sudo pip install  $PYTHON_PKGS
+
+# TODO R packages: stringr, tidyverse

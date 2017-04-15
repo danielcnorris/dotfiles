@@ -38,7 +38,7 @@ set hidden
 set showmatch
 set nrformats=
 " Encryption.
-set cm=blowfish
+set cm=blowfish2
 " Set system clipboard.
 set clipboard=unnamedplus
 set spelllang=en_us
@@ -93,7 +93,7 @@ let g:go_fmt_command = "goimports"
 autocmd BufRead,BufNewFile *.md setlocal tw=80
 autocmd BufRead,BufNewFile *.Rmd setlocal tw=80
 autocmd BufRead,BufNewFile *.txt setlocal tw=80
-autocmd BufRead,BufNewFile *.otl setlocal sw=4 softtabstop=4 tabstop=4
+autocmd BufRead,BufNewFile *.otl setlocal sw=4 softtabstop=4 tabstop=4 tw=80 fo+=cro
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.tsv setlocal nowrap noexpandtab sw=20 softtabstop=20 tabstop=20
