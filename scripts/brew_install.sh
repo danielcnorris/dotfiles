@@ -53,7 +53,7 @@ brew install caskroom/cask/brew-cask
 apps=(
     google-drive
     google-chrome
-    iterm2
+    # iterm2
     flux
 )
 

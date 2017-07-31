@@ -38,9 +38,7 @@ note() {
   echo -e "$title\n$display_ts\n$content\n" >> "$file"
 }
 
-wpath="$HOME/Box\ Sync/dnorris"
-alias p="cd $wpath"
-alias np="cd $wpath/projects/napoleon"
+wpath="$HOME"
 dpath="$wpath/dcn"
 alias d="cd $dpath"
 alias i="echo $1 >> $dpath/in.otl"
