@@ -29,23 +29,23 @@ alias gs='git status'
 note() {
   ts=$(date +"%s")
   entry="/tmp/entry-$ts.md"
-  display_ts="[$(date -jf "%s" $ts +"%Y-%m-%d %a %H:%M")]"
-  echo "# " > $entry
-  $EDITOR -c "startinsert!" $entry
+  display_ts="[$(date +"%F %a %R")]"
+  echo "#  " > $entry
+  $EDITOR -c "normal $" +startinsert $entry
   file=${1:-notes.md}
   title=$(head -n1 $entry)
   content=$(tail -n+2 $entry)
-  echo -e "$title\n$display_ts\n$content\n" >> "$file"
+  echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
-wpath="$HOME"
+wpath="$HOME/Google\ Drive"
 dpath="$wpath/dcn"
 alias d="cd $dpath"
 alias i="echo $1 >> $dpath/in.otl"
 alias in="$EDITOR $dpath/in.otl"
 alias n="$EDITOR $dpath/next.otl"
-alias nl="note $dpath/lead.md"
-alias ol="$EDITOR $dpath/lead.md"
+alias nn="note $dpath/notes.md"
+alias on="$EDITOR $dpath/notes.md"
 
 alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
@@ -56,3 +56,10 @@ alias copy='xclip -selection clipboard'
 export TERM=xterm-16color
 
 export PATH=/usr/local/bin:$PATH
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
