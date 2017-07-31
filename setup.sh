@@ -81,6 +81,7 @@ PACKER_PKGS=(
   fdupes
   findimagedupes
   goobook
+  gcalcli
   go-tools
   masterpdfeditor
   urlview

@@ -36,8 +36,8 @@ note() {
   ts=$(date +"%s")
   entry="/tmp/entry-$ts.md"
   display_ts="[$(date +"%F %a %R")]"
-  echo "# " > $entry
-  $EDITOR -c "startinsert!" $entry
+  echo "#  " > $entry
+  $EDITOR -c "normal $" +startinsert $entry
   file=${1:-notes.md}
   title=$(head -n1 $entry)
   content=$(tail -n+2 $entry)
@@ -72,9 +72,10 @@ alias tl='tmux ls'
 alias f='feh --scale-down --auto-zoom'
 alias m1='mplayer -vf rotate=1'
 alias copy='xclip -selection clipboard'
-alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
+alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --left-of eDP1'
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:~/.local/bin
 export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 alias g='cd $GOPATH/src/github.com/danielcnorris'
