@@ -9,51 +9,50 @@ localectl set-locale LANG="en_US.utf8"
 # Install packman packages.
 PACMAN_PKGS=(
   abs
-  anki
-	acpi
-	alsa-utils
-	chromium
+  acpi
+  alsa-utils
+  chromium
   cmus
   dosfstools
-	dwm
-	expac
+  dwm
+  expac
   feh
-	git
-	go
+  git
+  go
   gptfdisk
-	gvim
+  gvim
   gxmessage
   ibus
   ibus-libpinyin
   ibus-m17n
-	jshon
+  jshon
   mplayer
   mps-youtube
   mpv
   mutt
-	nodejs
+  nodejs
   npm
   ntp
-	openssh
+  openssh
   pandoc
   perl-image-exiftool
   perl-file-copy-recursive
   perl-io-all
   perl-test-warn
-	python-pip
-	r
+  python-pip
+  r
   remind
-	slock
+  slock
   syslinux
   texlive-bin
   texlive-core
-	tmux
-	wget
+  tmux
+  wget
   wpa_actiond
   xbindkeys
-	xclip
-	xorg
-	xorg-xinit
+  xclip
+  xorg
+  xorg-xinit
   xorg-xbacklight
   wqy-zenhei
   wyrd
@@ -77,7 +76,8 @@ install_packer
 
 # Install Packer packages.
 PACKER_PKGS=(
-	chromium-widevine
+  anki
+  chromium-widevine
   fdupes
   findimagedupes
   goobook
