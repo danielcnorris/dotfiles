@@ -63,13 +63,13 @@ sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
 
 # Install Packer.
 install_packer() {
-	mkdir packer
-	cd packer
-	sudo wget https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=packer
-	mv PKGBUILD?h=packer PKGBUILD
-	makepkg -i --noconfirm
-	cd ..
-	sudo rm -Rf packer
+  mkdir packer
+  cd packer
+  sudo wget https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=packer
+  mv PKGBUILD?h=packer PKGBUILD
+  makepkg -i --noconfirm
+  cd ..
+  sudo rm -Rf packer
 }
 
 install_packer
