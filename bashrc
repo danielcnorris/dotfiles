@@ -45,7 +45,7 @@ note() {
 }
 
 
-dpath='$HOME/dcn'
+dpath='$HOME/Dropbox'
 alias d="cd $dpath"
 rpath="$dpath/remind"
 alias i="echo $1 >> $dpath/in.otl"
