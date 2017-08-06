@@ -4,7 +4,6 @@ export QT_IM_MODULE=ibus
 ibus-daemon --xim &
 setxkbmap -option ctrl:nocaps
 xbindkeys
-redshift -t 5500:2000 & > /dev/null &
 dropbox &
 remind -z -k'gxmessage %s &' /home/dcn/dcn/remind &
 while true; do

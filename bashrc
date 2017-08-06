@@ -57,12 +57,6 @@ alias oj="$EDITOR $dpath/journal.md"
 alias on="$EDITOR $dpath/notes.md"
 alias nc="note $dpath/chinese.md"
 alias oc="$EDITOR $dpath/chinese.md"
-alias r="remind -c+1 -m $rpath/dcn.rem"
-alias rr="remind -c+5 -m $rpath/dcn.rem"
-alias ry="remind -c12 -m $rpath/dcn.rem"
-alias rd="remind -c+1 -m $rpath/defer.rem"
-alias rrd="remind -c+5 -m $rpath/defer.rem"
-alias ryd="remind -c+12 -m $rpath/defer.rem"
 
 alias td='tmux attach-session -t dcn || tmux new-session -s dcn'
 alias tl='tmux ls'
@@ -71,6 +65,8 @@ alias f='feh --scale-down --auto-zoom'
 alias m1='mplayer -vf rotate=1'
 alias copy='xclip -selection clipboard'
 alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --left-of eDP1'
+alias rd='redshift -O 5500'
+alias rn='redshift -O 2000'
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
