@@ -2,11 +2,7 @@
 [[ $- != *i* ]] && return
 
 export EDITOR=vim
-# For proper colors in Tmux ncurses apps
-# export TERM=screen-256color
 export TERM=st-256color
-
-alias wyrd="export TERM=screen-256color; wyrd"
 
 alias ls='ls --color=auto'
 alias l='ls -l'
@@ -43,7 +39,6 @@ note() {
   content=$(tail -n+2 $entry)
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
-
 
 dpath='$HOME/Dropbox'
 alias d="cd $dpath"
