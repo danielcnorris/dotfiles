@@ -41,7 +41,6 @@ PACMAN_PKGS=(
   perl-test-warn
   python-pip
   r
-  remind
   slock
   syslinux
   texlive-bin
@@ -55,7 +54,6 @@ PACMAN_PKGS=(
   xorg-xinit
   xorg-xbacklight
   wqy-zenhei
-  wyrd
   w3m
 )
 
