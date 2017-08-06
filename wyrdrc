@@ -3,7 +3,7 @@
 # command for the Remind executable
 set remind_command="remind"
 # the default reminder file or directory to display
-set reminders_file="$HOME/dcn/remind/dcn.rem"
+set reminders_file="$HOME/Dropbox/remind/dcn.rem"
 # command for editing an old appointment, given a line number %line% and filename %file%
 set edit_old_command="$EDITOR +%line% \"%file%\""
 # command for editing a new appointment, given a filename %file%
