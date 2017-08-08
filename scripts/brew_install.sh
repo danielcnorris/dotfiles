@@ -30,6 +30,7 @@ binaries=(
     tmux
     # pandoc
     # postgres
+    reattach-to-user-namespace
 )
 
 echo "Installing binaries..."
