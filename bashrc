@@ -1,5 +1,8 @@
 export EDITOR=vim
 
+alias python=python2
+alias pip=pip2
+
 alias v='vim'
 
 alias ls='ls -G'
@@ -35,7 +38,7 @@ note() {
   file=${1:-notes.md}
   title=$(head -n1 $entry)
   content=$(tail -n+2 $entry)
-  echo -e "$title\n$display_ts\n$content\n" >> $file
+  echo -e "$title\n$display_ts\n$content\n" >> "$file"
 }
 
 wpath="$HOME/Google\ Drive"
@@ -55,7 +58,11 @@ alias copy='xclip -selection clipboard'
 
 export TERM=xterm-16color
 
-export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

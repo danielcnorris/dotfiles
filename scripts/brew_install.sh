@@ -25,10 +25,11 @@ binaries=(
     ack
     git
     gpg2
-    ledger
-    pass
+    # ledger
+    # pass
     tmux
-    pandoc
+    # pandoc
+    # postgres
 )
 
 echo "Installing binaries..."
@@ -51,10 +52,11 @@ brew cleanup
 brew install caskroom/cask/brew-cask
 
 apps=(
-    google-drive
+    anki
+    google-backup-and-sync
     google-chrome
-    # iterm2
-    flux
+    iterm2
+    slack
 )
 
 echo "Installing apps.."

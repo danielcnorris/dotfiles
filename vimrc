@@ -44,7 +44,7 @@ set spelllang=en_us
 let mapleader=" "
 
 syntax on
-set background=dark
+set background=light
 try
   colorscheme solarized
 catch
@@ -77,10 +77,10 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 
 " Turnoff auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd BufRead,BufNewFile *.md setlocal tw=80 spell
+autocmd BufRead,BufNewFile *.md setlocal tw=80 spell sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.Rmd setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.txt setlocal tw=80 spell
-autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4
+autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4 fo+=cro
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4
 let g:slime_target = "tmux"

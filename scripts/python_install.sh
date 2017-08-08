@@ -1,15 +1,13 @@
 # Install system wide Python packages
 
-sudo -v
+pip install virtualenv
+pip install virtualenvwrapper
 
-sudo pip install virtualenv
+pip install ipython
+pip install pandas
 
-sudo pip install "ipython[notebook]"
-sudo pip install flask
-sudo pip install pandas
+pip install pep8
+pip install pyflakes
+pip install flake8
 
-sudo pip install pep8
-sudo pip install pyflakes
-sudo pip install flake8
-
-sudo pip install requests
+pip install requests
