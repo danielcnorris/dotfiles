@@ -83,4 +83,5 @@ autocmd BufRead,BufNewFile *.txt setlocal tw=80 spell
 autocmd BufRead,BufNewFile *.otl setlocal spell sw=4 softtabstop=4 tabstop=4 fo+=cro
 autocmd BufRead,BufNewFile *.py setlocal sw=4 softtabstop=4 tabstop=4
 autocmd BufRead,BufNewFile *.go setlocal sw=4 softtabstop=4 tabstop=4
+autocmd BufRead,BufNewFile Makefile setlocal sw=4 softtabstop=4 tabstop=4
 let g:slime_target = "tmux"
