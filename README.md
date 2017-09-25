@@ -1,3 +1,2 @@
 # Dotfiles
 
-For Arch Linux.

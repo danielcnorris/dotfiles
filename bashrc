@@ -9,8 +9,6 @@ alias l='ls -l'
 alias ll='ls -l'
 alias la='ls -la'
 alias rm='rm -i'
-alias z='tar -zcvf'
-alias uz='tar -zxvf'
 
 alias ga='git add'
 alias gb='git branch'

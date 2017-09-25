@@ -9,5 +9,3 @@ if [[ -z $SSH_AUTH_SOCK ]]; then
   echo "export SSH_AUTH_SOCK" >> .ssh_agent
   echo "export SSH_AGENT_PID" >> .ssh_agent
 fi
-
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
