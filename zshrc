@@ -49,11 +49,13 @@ note() {
 }
 
 # I use Google Drive on my Mac at work.
-[[ $(uname) = "Linux" ]] && export $dpath="$HOME/Dropbox" || export $dpath="$HOME/Google\ Drive/dcn"
-alias n="$EDITOR $dpath/next.otl"
-alias j="note $dpath/journal.md"
-alias nn="note $dpath/notes.md"
-alias oj="$EDITOR $dpath/journal.md"
+# ls $HOME/Dropbox
+# export $dpath=~/Dropbox
+# # [[ $(uname) = "Linux" ]] && export $dpath=$HOME/Dropbox || export $dpath="$HOME/Google\ Drive/dcn"
+# alias n="$EDITOR $dpath/next.otl"
+# alias j="note $dpath/journal.md"
+# alias nn="note $dpath/notes.md"
+# alias oj="$EDITOR $dpath/journal.md"
 
 alias rd='redshift -O 5500'
 alias rn='redshift -O 2000'
@@ -63,3 +65,4 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.local/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--color bw'
