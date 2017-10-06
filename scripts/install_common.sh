@@ -1,5 +1,6 @@
 #!/usr/bin/zsh
 # TODO Invocation path will probably be different on macos.
+# TODO Only do the zprezto and fzf steps if they aren't there already or you want to update.
 
 # Prezto.
 rm -Rf "${ZDOTDIR:-$HOME}/.zprezto"
@@ -41,5 +42,5 @@ if [ ! -d $HOME/.vim/autoload/plug.vim ]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-vim +PlugInstall
+vim +PlugInstall +qall
 source $HOME/.zshrc

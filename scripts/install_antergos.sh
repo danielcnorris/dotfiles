@@ -6,7 +6,8 @@
 # Download this repo.
 # Log into Dropbox and Chromium.
 # Log into Anki.
-# TODO Set up ssh keys
+# TODO Set up ssh keys (add command and ssh-agent steps)
+# TODO Move these manual steps that are common into the common isntall script
 sudo -v
 
 PACMAN_PKGS=(
@@ -27,6 +28,7 @@ PACMAN_PKGS=(
   the_silver_surfer
   tmux
   ttf-inconsolata
+  xclip
   xorg
   xorg-xbacklight
   xorg-xinit
@@ -57,5 +59,5 @@ PYTHON_PKGS=(
 sudo pip install  $PYTHON_PKGS
 
 # Remove things placed by Antergos.
-rmdir ~/Desktop
-rmdir ~/.gnome
+rem -Rf ~/Desktop
+rem -Rf ~/.gnome

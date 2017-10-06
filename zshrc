@@ -55,6 +55,9 @@ alias j="note $dpath/journal.md"
 alias nn="note $dpath/notes.md"
 alias oj="$EDITOR $dpath/journal.md"
 
+alias rd='redshift -O 5500'
+alias rn='redshift -O 2000'
+
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.local/bin

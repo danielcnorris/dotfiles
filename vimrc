@@ -32,8 +32,11 @@ set spelllang=en_us
 set spell
 
 set background=dark
+try
+  colorscheme solarized
+catch
+endtry
 let g:solarized_termcolors=16
-colorscheme solarized
 
 set expandtab
 set tabstop=2
