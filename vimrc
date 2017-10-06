@@ -4,7 +4,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/syntastic'
+Plug 'junegunn/vim-plug'
 Plug 'sheerun/vim-polyglot'
 Plug 'skwp/vim-colors-solarized'
 Plug 'tpope/vim-commentary'
@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'vimoutliner/vimoutliner'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -27,11 +28,15 @@ set hidden
 set noerrorbells
 set lazyredraw
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 set spelllang=en_us
 set spell
 
-set background=dark
+if has('macunix')
+  set background=light
+else
+  set background=dark
+endif
 try
   colorscheme solarized
 catch
@@ -39,6 +44,7 @@ endtry
 let g:solarized_termcolors=16
 
 set expandtab
+set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
@@ -61,9 +67,12 @@ nmap <Leader>b :Buffers<CR>
 nmap <Leader>a :Ag<CR>
 nmap <Leader>/ :BLines<CR>
 
-" Allow sending code to other tmux pane.
+" Allow sending code to other tmux panes.
 let g:slime_target = "tmux"
 
-" Syntastic checkers.
 let g:go_fmt_command = "goimports"
-let g:syntastic_go_checkers= ['go', 'gofmt','golint', 'gotype', 'govet']
+
+let g:ale_fixers = {
+\   'python': ['yapf'],
+\}
+let g:ale_fix_on_save = 1

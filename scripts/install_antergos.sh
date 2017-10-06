@@ -37,10 +37,10 @@ PACMAN_PKGS=(
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
 
 # Install pacaur.
-mkdir pacaur; cd pacaur  
-curl https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur -o PKGBUILD  
+mkdir pacaur; cd pacaur
+curl https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur -o PKGBUILD
 makepkg -s --noconfirm
-makepkg -i --noconfirm 
+makepkg -i --noconfirm
 cd ..
 rm -Rf pacaur
 PACAUR_PKGS=(
@@ -50,14 +50,15 @@ PACAUR_PKGS=(
 )
 pacaur -S --noconfirm ${PACAUR_PKGS[@]}
 
+# TODO Is it possible to install without sudo? Then could do in common with macos.
 PYTHON_PKGS=(
-  pep8
-  pyflakes
   flake8
   requests
+  sqlint
+  yapf
 )
 sudo pip install  $PYTHON_PKGS
 
 # Remove things placed by Antergos.
-rem -Rf ~/Desktop
-rem -Rf ~/.gnome
+rem -Rf "$HOME/Desktop"
+rem -Rf "$HOME~/.gnome"
