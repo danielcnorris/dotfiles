@@ -1,22 +1,33 @@
-#!/bin/bash
+#!/usr/bin/zsh
+# TODO Invocation path will probably be different on macos.
+
+# Prezto.
+rm -Rf "${ZDOTDIR:-$HOME}/.zprezto"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  unlink "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+chsh -s /usr/bin/zsh
+
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 dir=$(pwd)
 declare -a files=("asoundrc"
-                  "bash_profile"
-                  "bashrc"
                   "gitconfig"
-                  "goobookrc"
-                  "mutt"
-                  "muttrc"
-                  "newsbeuter"
                   "tmux.conf"
                   "vim"
                   "vimoutlinerrc"
                   "vimrc"
-                  "wyrdrc"
                   "xinitrc"
                   "xserverrc"
-                  "xbindkeysrc")
+                  "xbindkeysrc"
+		  "zlogin"
+		  "zprestorc"
+		  "zshrc")
 
 for file in "${files[@]}"
 do
@@ -24,10 +35,11 @@ do
     ln -s $dir/$file $HOME/.$file
 done
 
-if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/gmarik/Vundle.vim.git \
-        $HOME/.vim/bundle/Vundle.vim
+# vim-plug
+if [ ! -d $HOME/.vim/autoload/plug.vim ]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-vim +PluginInstall +qall
-source $HOME/.bash_profile
+vim +PlugInstall
+source $HOME/.zshrc

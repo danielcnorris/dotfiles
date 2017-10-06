@@ -5,7 +5,6 @@ ibus-daemon --xim &
 setxkbmap -option ctrl:nocaps
 xbindkeys
 dropbox &
-remind -z -k'gxmessage %s &' /home/dcn/dcn/remind &
 while true; do
   xsetroot -name "$( acpi -b | grep -Eo "[0-9]+%") $( date +"%F %a %R" )"
   sleep 5

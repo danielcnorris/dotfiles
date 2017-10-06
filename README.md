@@ -1,3 +1,3 @@
 # Dotfiles
 
-For Arch Linux.
+Cross-platform.
