@@ -62,10 +62,11 @@ autocmd FileType markdown,text,rmd setlocal tw=79
 map <space> \
 
 " fzf mappings.
-nmap <Leader>e :Files<CR>
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>a :Ag<CR>
-nmap <Leader>/ :BLines<CR>
+nmap <leader>e :Files<CR>
+nmap <leader>f :History<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>a :Ag<CR>
+nmap <leader>s :BLines<CR>
 
 " Allow sending code to other tmux panes.
 let g:slime_target = "tmux"

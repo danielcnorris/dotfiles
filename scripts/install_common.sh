@@ -20,7 +20,7 @@ else
   git -C "${ZDOTDIR:-$HOME}/.zprezto" submodule update --init --recursive
 fi
 
-# fzf.
+# FZF.
 if [[ ! -d "$HOME/.fzf" ]]
 then
   git -C "$HOME" clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
