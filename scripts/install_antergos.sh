@@ -1,37 +1,40 @@
-#!/usr/bin/bash
-# Antergos
-# Select base install with no add ons other than NTP for time syncronization.
+#!/bin/bash
+# Antergos Linux distro.
+# Select base install with no add ons other than NTP for time synchronization.
 
-# Manual steps
-# Download this repo.
-# Log into Dropbox and Chromium.
-# Log into Anki.
-# TODO Set up ssh keys (add command and ssh-agent steps)
-# TODO Move these manual steps that are common into the common isntall script
+CALLER_DIR=$(pwd)
+cd "$(dirname "$0")"
+cd ..
+DOT_DIR=$(pwd)
+
 sudo -v
 
 PACMAN_PKGS=(
   anki
+  asp
   chromium
-  dwm
   ibus
   ibus-libpinyin
+  flake8
   git
   gvim
   go
   nodejs
   npm
   python-pip
+  python-requests
   r
   redshift
   slock
-  the_silver_surfer
+  the_silver_searcher
   tmux
   ttf-inconsolata
   xclip
+  xbindkeys
   xorg
   xorg-xbacklight
   xorg-xinit
+  yapf
   zsh
 )
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
@@ -46,19 +49,26 @@ rm -Rf pacaur
 PACAUR_PKGS=(
   dropbox
   fzf
+  sqlint
   st-solarized
 )
 pacaur -S --noconfirm ${PACAUR_PKGS[@]}
 
-# TODO Is it possible to install without sudo? Then could do in common with macos.
-PYTHON_PKGS=(
-  flake8
-  requests
-  sqlint
-  yapf
-)
-sudo pip install  $PYTHON_PKGS
+# Set up dwm.
+if [[ ! -d "$HOME/abs" ]]
+then
+  mkdir "$HOME/abs"
+fi
+cd "$HOME/abs"
+asp checkout dwm
+cp "$DOT_DIR/abs/dwm/config.h" "$HOME/abs/dwm/repos/community-x86_64/"
+cd "$HOME/abs/dwm/repos/community-x86_64/"
+makepkg -g >> PKGBUILD
+makepkg -si
+cd "$DOT_DIR"
 
 # Remove things placed by Antergos.
-rem -Rf "$HOME/Desktop"
-rem -Rf "$HOME~/.gnome"
+rm -Rf "$HOME/Desktop"
+rm -Rf "$HOME~/.gnome"
+
+cd "$CALLER_DIR"

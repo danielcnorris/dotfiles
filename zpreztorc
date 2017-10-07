@@ -32,9 +32,10 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
   'git' \
-  'pacman'
+  'pacman' \
+  'prompt' \
+  'tmux'
 
 #
 # Autosuggestions

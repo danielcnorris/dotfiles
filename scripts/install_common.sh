@@ -1,5 +1,10 @@
 #!/bin/zsh
-# TODO Invocation path will probably be different on macos.
+# Manual steps
+# Download this repo.
+# Log into Dropbox and Chromium.
+# Log into Anki.
+# Create SSH keys and add to Github.
+# TODO Set up ssh keys (add command and ssh-agent steps)
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"
@@ -30,7 +35,6 @@ fi
 "$HOME/.fzf/install --all --no-bash"
 
 DIR=$(pwd)
-echo $DIR
 FILES=(
   gitconfig
   tmux.conf
@@ -54,16 +58,16 @@ fi
 
 for FILE in "${FILES[@]}"
 do
-    unlink $HOME/.$FILE
-    ln -s $DIR/$FILE $HOME/.$FILE
+    unlink "$HOME/.$FILE"
+    ln -s "$DIR/$FILE $HOME/.$FILE"
 done
 
 # vim-plug.
-if [ ! -d $HOME/.vim/autoload/plug.vim ]; then
+if [ ! -d "$HOME/.vim/autoload/plug.vim" ]; then
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 vim +PlugUpdate +qall
 
-source $HOME/.zshrc
-cd $CALLER_DIR
+source "$HOME/.zshrc"
+cd "$CALLER_DIR"

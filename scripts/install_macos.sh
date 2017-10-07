@@ -1,4 +1,3 @@
-# TODO Do pip installations go into common?
-# TODO Pydocstyle
-# TODO yapf
-# TODO python setup with homebrew
+# TODO Install homebrew and apps
+# TODO Install homebrew cask and aps (chrome, iterm, anki)
+# TODO Install python packages

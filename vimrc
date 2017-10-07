@@ -28,7 +28,7 @@ set hidden
 set noerrorbells
 set lazyredraw
 
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 set spelllang=en_us
 set spell
 
@@ -61,7 +61,21 @@ autocmd FileType markdown,text,rmd setlocal tw=79
 
 map <space> \
 
-" fzf mappings.
+" FZF mappings.
+" Use FZF to search for a directory and then create a file in it.
+function! s:append_dir_with_fzf(line)
+  call fzf#run(fzf#wrap({
+    \ 'options': ['--prompt', a:line.'> '],
+    \ 'source': 'find . -path ./.git -prune -o -type d',
+    \ 'sink': {line -> feedkeys("\<esc>:e".a:line.line."/", 'n')}}))
+  return ''
+endfunction
+
+command! -nargs=* EditInDir call s:append_dir_with_fzf(<f-args>)
+
+nmap <leader>e :Files<CR>
+nmap <leader>g :EditInDir:<CR>
+nmap <leader>e :Files<CR>
 nmap <leader>e :Files<CR>
 nmap <leader>f :History<CR>
 nmap <leader>b :Buffers<CR>
