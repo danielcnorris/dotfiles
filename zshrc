@@ -31,21 +31,23 @@ note() {
 
 if [[ $(uname) = "Linux" ]]
 then
-  export DPATH=$HOME/Dropbox 
+  export D=$HOME/Dropbox 
   alias rd='redshift -O 5500'
   alias rn='redshift -O 2000'
+  export GOPATH="$HOME/go"
+  export GG="$GOPATH/src/bitbucket.org/danielcnorris"
 else
-  export DPATH="$HOME/Google\ Drive/dcn"
+  export D="$HOME/Google\ Drive/dcn"
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
 
-alias n="$EDITOR $DPATH/next.otl"
-alias j="note $DPATH/journal.md"
-alias nn="note $DPATH/notes.md"
-alias oj="$EDITOR $DPATH/journal.md"
+alias n="$EDITOR $D/next.otl"
+alias j="note $D/journal.md"
+alias nn="note $D/notes.md"
+alias oj="$EDITOR $D/journal.md"
 
+alias f='feh --scale-down --auto-zoom'
 
-export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.local/bin
 

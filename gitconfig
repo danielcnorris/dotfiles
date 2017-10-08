@@ -1,10 +1,16 @@
 [color]
-    ui = auto
-    status = auto
-    branch = auto
-    interactive = auto
-    diff = auto
+  ui = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  diff = auto
 
 [user]
-    name = Daniel Norris
-    email = danielcnorris@gmail.com
+  name = Daniel Norris
+  email = danielcnorris@gmail.com
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
+[url "git@bitbucket.org:"]
+  insteadOf = https://bitbucket.org/
