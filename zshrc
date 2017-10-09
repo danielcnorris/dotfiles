@@ -15,7 +15,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias gua="git remote add upstream"
-alias gpu="git pull upstream"
+alias gfu="git pull upstream"
 
 note() {
   ts=$(date +"%s")
