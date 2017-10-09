@@ -45,7 +45,7 @@ fi
 alias n="$EDITOR $D/next.otl"
 alias j="note $D/journal.md"
 alias nn="note $D/notes.md"
-alias oj="$EDITOR $D/notes.md"
+alias on="$EDITOR $D/notes.md"
 alias oj="$EDITOR $D/journal.md"
 
 export PATH=$PATH:$GOPATH/bin
