@@ -31,9 +31,10 @@ note() {
 
 if [[ $(uname) = "Linux" ]]
 then
-  export D=$HOME/Dropbox 
+  export D=$HOME/Dropbox
   alias rd='redshift -O 5500'
   alias rn='redshift -O 2000'
+  alias f='feh --scale-down --auto-zoom'
   export GOPATH="$HOME/go"
   export GG="$GOPATH/src/bitbucket.org/danielcnorris"
 else
@@ -44,9 +45,8 @@ fi
 alias n="$EDITOR $D/next.otl"
 alias j="note $D/journal.md"
 alias nn="note $D/notes.md"
+alias oj="$EDITOR $D/notes.md"
 alias oj="$EDITOR $D/journal.md"
-
-alias f='feh --scale-down --auto-zoom'
 
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.local/bin
