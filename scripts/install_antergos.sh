@@ -51,6 +51,7 @@ cd ..
 rm -Rf pacaur
 PACAUR_PKGS=(
   dropbox
+  fd-rs
   fzf
   sqlint
   st-solarized

@@ -67,8 +67,8 @@ map <space> \
 function! s:append_dir_with_fzf(line)
   call fzf#run(fzf#wrap({
     \ 'options': ['--prompt', a:line.'> '],
-    \ 'source': 'find . -path ./.git -prune -o -type d',
-    \ 'sink': {line -> feedkeys("\<esc>:e".a:line.line."/", 'n')}}))
+    \ 'source': 'fd -t d',
+    \ 'sink': {line -> feedkeys("\<esc>:e ".line."/", 'n')}}))
   return ''
 endfunction
 
