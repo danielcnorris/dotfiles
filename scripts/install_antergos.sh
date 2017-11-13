@@ -50,6 +50,7 @@ makepkg -si --noconfirm
 cd ..
 rm -Rf pacaur
 PACAUR_PKGS=(
+  drive
   dropbox
   fd-rs
   fzf
