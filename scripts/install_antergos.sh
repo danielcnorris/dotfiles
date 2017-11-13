@@ -84,3 +84,6 @@ rm -Rf "$HOME/Desktop"
 rm -Rf "$HOME~/.gnome"
 
 cd "$CALLER_DIR"
+
+# Manual steps
+# Setup drive with drive init.
