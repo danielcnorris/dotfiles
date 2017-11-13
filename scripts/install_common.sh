@@ -25,6 +25,16 @@ else
   git -C "${ZDOTDIR:-$HOME}/.zprezto" submodule update --init --recursive
 fi
 
+# Zgen.
+if [[ ! -d "${ZDOTDIR:-$HOME}/.zgen" ]]
+then
+  git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+else
+  zgen selfupdate
+  zgen update
+fi
+
+
 # FZF.
 if [[ ! -d "$HOME/.fzf" ]]
 then

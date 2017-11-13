@@ -41,6 +41,8 @@ then
 else
   export D="$HOME/Google\ Drive/dcn"
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+  source "${HOME}/.zgen/zgen.zsh"
+  zgen pmodule marzocchi/zsh-notify
 fi
 
 alias n="$EDITOR $D/next.otl"
