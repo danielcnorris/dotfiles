@@ -15,7 +15,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias gua="git remote add upstream"
-alias gfu="git pull upstream"
+alias gfu="git pull upstream '$(git-branch-current 2> /dev/null)'"
 
 note() {
   ts=$(date +"%s")
@@ -49,9 +49,9 @@ alias nn="note $D/notes.md"
 alias on="$EDITOR $D/notes.md"
 alias oj="$EDITOR $D/journal.md"
 
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/.local/bin
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--color bw'
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_OPTS="--color bw"
+export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
