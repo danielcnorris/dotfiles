@@ -50,6 +50,7 @@ makepkg -si --noconfirm
 cd ..
 rm -Rf pacaur
 PACAUR_PKGS=(
+  drive
   dropbox
   fd-rs
   fzf
@@ -83,3 +84,6 @@ rm -Rf "$HOME/Desktop"
 rm -Rf "$HOME~/.gnome"
 
 cd "$CALLER_DIR"
+
+# Manual steps
+# Setup drive with drive init.
