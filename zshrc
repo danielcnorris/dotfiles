@@ -15,7 +15,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias gua="git remote add upstream"
-alias gfu="git pull upstream '$(git-branch-current 2> /dev/null)'"
+alias gfu="git pull upstream master"
 
 note() {
   ts=$(date +"%s")
@@ -31,23 +31,17 @@ note() {
 
 if [[ $(uname) = "Linux" ]]
 then
-  export D=$HOME/Dropbox
   alias rd='redshift -O 5500'
   alias rn='redshift -O 2000'
   alias f='feh --scale-down --auto-zoom'
   alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
   export GOPATH="$HOME/go"
-  export GG="$GOPATH/src/bitbucket.org/danielcnorris"
+  export G="$GOPATH/src/bitbucket.org/danielcnorris"
+  export PATH="$PATH:/home/dcn/.gem/ruby/2.4.0/bin"
 else
   export D="$HOME/Google\ Drive/dcn"
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
-
-alias n="$EDITOR $D/next.otl"
-alias j="note $D/journal.md"
-alias nn="note $D/notes.md"
-alias on="$EDITOR $D/notes.md"
-alias oj="$EDITOR $D/journal.md"
 
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"

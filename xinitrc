@@ -4,7 +4,6 @@ export QT_IM_MODULE=ibus
 ibus-daemon --xim &
 setxkbmap -option ctrl:nocaps
 xbindkeys
-dropbox &
 while true; do
   xsetroot -name "$( acpi -b | grep -Eo "[0-9]+%") $( date +"%F %a %R" )"
   sleep 5
