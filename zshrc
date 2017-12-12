@@ -41,6 +41,7 @@ then
 else
   export D="$HOME/Google\ Drive/dcn"
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+  source tmux-macos.conf
   source "${HOME}/.zgen/zgen.zsh"
   zgen pmodule marzocchi/zsh-notify
 fi
@@ -57,3 +58,6 @@ export PATH="$PATH:$HOME/.local/bin"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color bw"
 export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
