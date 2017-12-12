@@ -91,4 +91,8 @@ let g:go_fmt_command = "goimports"
 let g:ale_fixers = {
 \   'python': ['yapf'],
 \}
+let g:ale_linters = {
+\   'go': ['gofmt', 'goimports', 'go vet', 'golint', 'gometalinter', 'go build'],
+\}
+let g:ale_go_metalinter_options = '--fast'
 let g:ale_fix_on_save = 1

@@ -1,6 +1,7 @@
 #!/bin/bash
 # Antergos Linux distro.
 # Select base install with no add ons other than NTP for time synchronization.
+# systemctl enable netctl-auto@wlan0.service
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"
@@ -51,7 +52,6 @@ cd ..
 rm -Rf pacaur
 PACAUR_PKGS=(
   drive
-  dropbox
   fd-rs
   fzf
   sqlint
