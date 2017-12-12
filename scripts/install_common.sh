@@ -30,7 +30,7 @@ if [[ ! -d "${ZDOTDIR:-$HOME}/.zgen" ]]
 then
   git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 else
-  zgen selfupdate
+  source "${ZDOTDIR:-$HOME}/.zgen/zgen.zsh"
   zgen update
 fi
 
@@ -73,7 +73,7 @@ fi
 for FILE in "${FILES[@]}"
 do
     unlink "$HOME/.$FILE"
-    ln -s "$DIR/$FILE $HOME/.$FILE"
+    ln -s "$DIR/$FILE" "$HOME/.$FILE"
 done
 
 # vim-plug.
