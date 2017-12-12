@@ -64,6 +64,10 @@ then
     xserverrc
     xbindkeysrc
   )
+else
+  FILES+=(
+    tmux-macos.conf
+  )
 fi
 
 for FILE in "${FILES[@]}"
