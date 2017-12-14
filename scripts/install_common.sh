@@ -34,6 +34,7 @@ else
   zgen update
 fi
 
+chsh -s /bin/zsh
 
 # FZF.
 if [[ ! -d "$HOME/.fzf" ]]
