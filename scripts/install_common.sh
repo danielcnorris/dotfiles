@@ -34,16 +34,15 @@ else
   zgen update
 fi
 
-chsh -s /bin/zsh
-
 # FZF.
+# TODO For some reason this isn't working as expected.
 if [[ ! -d "$HOME/.fzf" ]]
 then
   git -C "$HOME" clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 else
   git -C "$HOME/.fzf" pull
 fi
-"$HOME/.fzf/install --all --no-bash"
+$HOME/.fzf/install --all --no-bash
 
 DIR=$(pwd)
 FILES=(
@@ -86,3 +85,4 @@ vim +PlugUpdate +qall
 
 source "$HOME/.zshrc"
 cd "$CALLER_DIR"
+chsh -s /bin/zsh
