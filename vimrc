@@ -32,12 +32,8 @@ set lazyredraw
 set clipboard=unnamed,unnamedplus
 set spelllang=en_us
 set spell
+set background=dark
 
-if has('macunix')
-  set background=light
-else
-  set background=dark
-endif
 try
   colorscheme solarized
 catch
@@ -91,8 +87,9 @@ let g:go_fmt_command = "goimports"
 let g:ale_fixers = {
 \   'python': ['yapf'],
 \}
+" \   'go': ['gofmt', 'goimports', 'go vet', 'golint', 'gometalinter', 'go build'],
 let g:ale_linters = {
-\   'go': ['gofmt', 'goimports', 'go vet', 'golint', 'gometalinter', 'go build'],
+\   'go': ['go vet', 'golint', 'gometalinter', 'go build'],
 \}
 let g:ale_go_metalinter_options = '--fast'
 let g:ale_fix_on_save = 1
