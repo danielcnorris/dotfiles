@@ -29,6 +29,10 @@ note() {
   echo -e "$title\n$display_ts\n$content\n" >> $file
 }
 
+export GOPATH="$HOME/go"
+export G="$GOPATH/src/bitbucket.org/danielcnorris"
+export PATH="$PATH:$GOPATH/bin"
+
 if [[ $(uname) = "Linux" ]]
 then
   alias rd='redshift -O 5500'
@@ -58,6 +62,8 @@ export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh

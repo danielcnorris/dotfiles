@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'jpalardy/vim-slime'
+Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-plug'
@@ -32,6 +33,8 @@ set lazyredraw
 set clipboard=unnamed,unnamedplus
 set spelllang=en_us
 set spell
+set background=dark
+
 set background=dark
 
 try
@@ -86,6 +89,7 @@ let g:go_fmt_command = "goimports"
 
 let g:ale_fixers = {
 \   'python': ['yapf'],
+\   'javascript': ['prettier', 'eslint'],
 \}
 " \   'go': ['gofmt', 'goimports', 'go vet', 'golint', 'gometalinter', 'go build'],
 let g:ale_linters = {
