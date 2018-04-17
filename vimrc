@@ -64,10 +64,18 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 map <space> \
 
 " FZF configuration.
+" Create a command for using Ripgrep.
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always -g "!{node_modules,vendor}/*" '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 nmap <leader>e :Files<CR>
-nmap <leader>b :History<CR>
-nmap <leader>a :Ag<CR>
+nmap <leader>h :History<CR>
+nmap <leader>f :Rg<CR>
 nmap <leader>s :BLines<CR>
+
 
 " Go configuration.
 let g:go_fmt_command = "goimports"
@@ -76,7 +84,6 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
-let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
@@ -102,6 +109,11 @@ let g:deoplete#enable_smart_case = 1
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+" Taken from the docs. Otherwise, I sometimes had to press enter twice.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+ return deoplete#close_popup() . "\<CR>"
+endfunction
 set completeopt-=preview
 
 " Send code to Tmux pane.
