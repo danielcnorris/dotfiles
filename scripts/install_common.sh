@@ -5,6 +5,7 @@
 # Log into Anki.
 # Create SSH keys and add to Github.
 # TODO Set up ssh keys (add command and ssh-agent steps)
+# Pip install neovim
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"
@@ -23,15 +24,6 @@ then
 else
   git -C "${ZDOTDIR:-$HOME}/.zprezto" pull
   git -C "${ZDOTDIR:-$HOME}/.zprezto" submodule update --init --recursive
-fi
-
-# Zgen.
-if [[ ! -d "${ZDOTDIR:-$HOME}/.zgen" ]]
-then
-  git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-else
-  source "${ZDOTDIR:-$HOME}/.zgen/zgen.zsh"
-  zgen update
 fi
 
 # FZF.
