@@ -6,7 +6,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'honza/vim-snippets'
 Plug 'jpalardy/vim-slime'
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -17,6 +16,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'sheerun/vim-polyglot'
 Plug 'skwp/vim-colors-solarized'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
@@ -76,6 +76,7 @@ nmap <leader>e :Files<CR>
 nmap <leader>h :History<CR>
 nmap <leader>f :Rg<CR>
 nmap <leader>s :BLines<CR>
+nmap <leader>d :History:<CR>
 
 
 " Go configuration.
