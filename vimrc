@@ -1,18 +1,11 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'airblade/vim-gitgutter'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'jpalardy/vim-slime'
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-plug'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'sheerun/vim-polyglot'
 Plug 'skwp/vim-colors-solarized'
 Plug 'tpope/vim-commentary'
@@ -22,9 +15,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-sleuth'
 Plug 'w0rp/ale'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
@@ -81,11 +73,6 @@ nmap <leader>d :History:<CR>
 " Go configuration.
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_auto_sameids = 1
 
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
@@ -103,19 +90,7 @@ let g:ale_linters = {
 \}
 let g:ale_go_metalinter_options = '--fast'
 let g:ale_fix_on_save = 1
-
-" Autocompletion and snippets.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" Taken from the docs. Otherwise, I sometimes had to press enter twice.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
- return deoplete#close_popup() . "\<CR>"
-endfunction
-set completeopt-=preview
+let g:ale_completion_enabled = 1
 
 " Send code to Tmux pane.
 let g:slime_target = "tmux"
