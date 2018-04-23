@@ -4,4 +4,5 @@
 # TODO Install fd (brew)
 # TODO Install reattach to user namespace
 # TODO Install cmake
+# TODO Install hub
 # TODO Install vim override, with Lua and with python3.
