@@ -32,8 +32,14 @@ set lazyredraw
 set clipboard=unnamed,unnamedplus
 set spelllang=en_us
 set spell
-hi clear SpellBad
-hi SpellBad cterm=underline
+hi clear SpellBad                                                
+hi SpellBad cterm=underline                                      
+hi clear SpellRare                                               
+hi SpellRare cterm=underline                                     
+hi clear SpellCap                                                
+hi SpellCap cterm=underline                                      
+hi clear SpellLocal
+hi SpellLocal cterm=underline
 
 " Easier path expansion.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -65,6 +71,8 @@ let g:go_metalinter_autosave = 1
 
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+
+" "HTTP" "http"
 
 " TODO Yapf on save.
 " TODO Pretter / eslint fix on save.
