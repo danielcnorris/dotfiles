@@ -31,8 +31,8 @@ set lazyredraw
 set clipboard=unnamed,unnamedplus
 set spelllang=en_us
 set spell
-
-set mouse=a
+hi clear SpellBad
+hi SpellBad cterm=underline
 
 " Easier path expansion.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -67,3 +67,4 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 
 " TODO Yapf on save.
 " TODO Pretter / eslint fix on save.
+" TODO Formatting markdown lists adds an extra bullet.
