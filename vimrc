@@ -67,4 +67,3 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 
 " TODO Yapf on save.
 " TODO Pretter / eslint fix on save.
-" TODO Formatting markdown lists adds an extra bullet.
