@@ -72,7 +72,5 @@ let g:go_metalinter_autosave = 1
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 
-" "HTTP" "http"
-
 " TODO Yapf on save.
 " TODO Pretter / eslint fix on save.
