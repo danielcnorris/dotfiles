@@ -64,6 +64,18 @@ cp "$DOT_DIR/config.dwm.h" config.h
 make clean install
 cd "$DOT_DIR"
 
+# Set up ST.
+if [[ ! -d "$HOME/st" ]]
+then
+  cd "$HOME"
+  git clone https://git.suckless.org/st
+fi
+cd "$HOME/st"
+git pull origin master
+cp "$DOT_DIR/config.st.h" config.h
+make clean install
+cd "$DOT_DIR"
+
 # Set up root password.
 su
 passwd
