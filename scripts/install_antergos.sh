@@ -1,7 +1,10 @@
 #!/bin/bash
 # Antergos Linux distro.
-# Select base install with no add ons other than NTP for time synchronization.
+# Select base install with no add ons other than NTP for time synchronization and printer support.
+# TODO Internet setup... what does the below do?
 # systemctl enable netctl-auto@wlan0.service
+
+set -e
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"
@@ -12,32 +15,25 @@ sudo -v
 
 PACMAN_PKGS=(
   acpi
-  anki
-  asp
   chromium
-  ibus
-  ibus-libpinyin
-  ibus-m17n
   feh
   flake8
+  fzf
   git
   gvim
   go
-  jhead
   nodejs
   npm
   python-pip
   python-requests
-  r
   redshift
+  ripgrep
   slock
-  the_silver_searcher
   tmux
-  ttf-inconsolata
+  ttf-hack
   xclip
   xbindkeys
   xorg
-  xorg-xbacklight
   xorg-xinit
   yapf
   zsh
@@ -51,27 +47,21 @@ makepkg -si --noconfirm
 cd ..
 rm -Rf pacaur
 PACAUR_PKGS=(
-  drive
-  fd-rs
-  fzf
-  sqlint
-  st-solarized
+  st
+  dmenu
 )
 pacaur -S --noconfirm ${PACAUR_PKGS[@]}
 
-# Set up dwm.
-# NOTE: You must manually edit /etc/pacman.conf to ignore dwm for regular
-# pacman updates.
-if [[ ! -d "$HOME/abs" ]]
+# Set up DWM.
+if [[ ! -d "$HOME/dwm" ]]
 then
-  mkdir "$HOME/abs"
+  cd "$HOME"
+  git clone https://git.suckless.org/dwm
 fi
-cd "$HOME/abs"
-asp checkout dwm
-cp "$DOT_DIR/abs/dwm/config.h" "$HOME/abs/dwm/repos/community-x86_64/"
-cd "$HOME/abs/dwm/repos/community-x86_64/"
-makepkg -g >> PKGBUILD
-makepkg -fsi --noconfirm
+cd "$HOME/dwm"
+git pull origin master
+cp "$DOT_DIR/config.dwm.h" config.h
+make clean install
 cd "$DOT_DIR"
 
 # Set up root password.
@@ -79,11 +69,4 @@ su
 passwd
 exit
 
-# Remove things placed by Antergos.
-rm -Rf "$HOME/Desktop"
-rm -Rf "$HOME~/.gnome"
-
 cd "$CALLER_DIR"
-
-# Manual steps
-# Setup drive with drive init.

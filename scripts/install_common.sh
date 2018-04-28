@@ -1,11 +1,9 @@
 #!/bin/zsh
 # Manual steps
 # Download this repo.
-# Log into Dropbox and Chromium.
-# Log into Anki.
+# Log into Chromium.
 # Create SSH keys and add to Github.
 # TODO Set up ssh keys (add command and ssh-agent steps)
-# Pip install neovim
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"
@@ -26,22 +24,11 @@ else
   git -C "${ZDOTDIR:-$HOME}/.zprezto" submodule update --init --recursive
 fi
 
-# FZF.
-# TODO For some reason this isn't working as expected.
-if [[ ! -d "$HOME/.fzf" ]]
-then
-  git -C "$HOME" clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
-else
-  git -C "$HOME/.fzf" pull
-fi
-$HOME/.fzf/install --all --no-bash
-
 DIR=$(pwd)
 FILES=(
   gitconfig
   tmux.conf
   vim
-  vimoutlinerrc
   vimrc
   zlogin
   zpreztorc
