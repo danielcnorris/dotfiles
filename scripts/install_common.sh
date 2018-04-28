@@ -2,8 +2,7 @@
 # Manual steps
 # Download this repo.
 # Log into Chromium.
-# Create SSH keys and add to Github.
-# TODO Set up ssh keys (add command and ssh-agent steps)
+# Create SSH keys, add to Github, and add to ssh-agent.
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"
