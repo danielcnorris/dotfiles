@@ -12,6 +12,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'wakatime/vim-wakatime'
 Plug 'w0rp/ale'
 
 call plug#end()
