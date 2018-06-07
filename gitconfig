@@ -9,6 +9,9 @@
   name = Daniel Norris
   email = danielcnorris@gmail.com
 
+[core]
+  excludesfile=~/.gitignore
+
 [url "git@github.com:"]
   insteadOf = https://github.com/
 

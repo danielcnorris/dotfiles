@@ -18,6 +18,7 @@ brew install ${binaries[@]}
 brew services start --all
 
 brew install vim --override-system-vi --with-lua --with-python3
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 brew tap caskroom/cask
 
