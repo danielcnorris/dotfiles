@@ -16,7 +16,6 @@ hi SpellCap cterm=underline
 hi clear SpellLocal
 hi SpellLocal cterm=underline
 
-
 set grepprg=rg\ --vimgrep
 command! -nargs=+ Grep silent! grep! <args> | silent redraw!
 
@@ -26,7 +25,6 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Remove trailing whitespace on save.
 autocmd BufWritePre *.* :%s/\s\+$//e
 
-" TODO But won't this overwrite any make programs specified in Makefile?
 augroup Linting
 	autocmd!
 	autocmd FileType python setlocal makeprg=$HOME/dotfiles/python.sh
