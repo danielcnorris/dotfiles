@@ -29,10 +29,8 @@ then
   alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
 else
   export D="$HOME/Google\ Drive/"
-  export C="$GOPATH/src/github.com/caffeine.tv/"
+  export C="$GOPATH/src/github.com/caffeinetv/"
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-  [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-  [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -40,3 +38,6 @@ export FZF_DEFAULT_OPTS="--color bw"
 export FZF_DEFAULT_COMMAND='rg --files -g "!{node_modules,vendor}/*"'
 
 export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

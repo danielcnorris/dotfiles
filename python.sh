@@ -1,3 +1,4 @@
 set -e
-black --line-length 79 $1 > /dev/null 2>&1
+# black -q --line-length 79 $1
+yapf -i $1
 flake8 $1

@@ -18,6 +18,7 @@ CALLER_DIR=$(pwd)
 mkdir -p $HOME/.vim/pack/plugins/start/
 cd $HOME/.vim/pack/plugins/start/
 PLUGINS=(
+  fatih/vim-go
   ludovicchabant/vim-gutentags
   romainl/vim-qf
   sheerun/vim-polyglot
