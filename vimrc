@@ -73,8 +73,12 @@ autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit'
 
 " ALE configuration. 
 " Lint and format on save only.
+let g:ale_linters = {
+\  'javascript': ['standard'],
+\}
 let g:ale_fixers = {
 \   'python': ['yapf'],
+\   'javascript': ['prettier', 'standard'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
