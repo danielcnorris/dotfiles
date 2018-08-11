@@ -30,11 +30,34 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 
 let g:polyglot_disabled = ['python-compiler']
 
-augroup Linting
-	autocmd!
-	autocmd FileType python setlocal makeprg=$HOME/dotfiles/python.sh
-	" autocmd FileType go setlocal makeprg=$HOME/dotfiles/go.sh
-	autocmd BufWritePost *.py silent make! <afile> | silent redraw!
-	autocmd FileType javascript setlocal makeprg=$HOME/dotfiles/javascript.sh
-	autocmd BufWritePost *.js silent make! <afile> | silent redraw!
-augroup END
+map <space> \
+
+" FZF configuration.
+" Create a command for using Ripgrep.
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always -g "!{node_modules,vendor}/*" '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+nmap <leader>e :Files<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>f :Rg<CR>
+nmap <leader>s :BLines<CR>
+
+" ALE configuration. 
+" Lint and format on save only.
+let g:ale_linters = {
+\  'javascript': ['standard'],
+\}
+let g:ale_fixers = {
+\   'python': ['yapf'],
+\   'javascript': ['prettier', 'standard'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_set_signs = 0

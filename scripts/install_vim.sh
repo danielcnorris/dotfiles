@@ -19,6 +19,7 @@ mkdir -p $HOME/.vim/pack/plugins/start/
 cd $HOME/.vim/pack/plugins/start/
 PLUGINS=(
   fatih/vim-go
+  junegunn/fzf.vim
   ludovicchabant/vim-gutentags
   romainl/vim-qf
   sheerun/vim-polyglot
@@ -28,6 +29,7 @@ PLUGINS=(
   tpope/vim-sensible
   tpope/vim-sleuth
   tpope/vim-surround
+  w0rp/ale
 )
 for PLUGIN in "${PLUGINS[@]}"
 do
