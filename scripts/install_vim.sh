@@ -19,6 +19,7 @@ mkdir -p $HOME/.vim/pack/plugins/start/
 cd $HOME/.vim/pack/plugins/start/
 PLUGINS=(
   fatih/vim-go
+  junegunn/fzf
   junegunn/fzf.vim
   ludovicchabant/vim-gutentags
   romainl/vim-qf
