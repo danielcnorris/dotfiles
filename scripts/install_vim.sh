@@ -18,6 +18,8 @@ CALLER_DIR=$(pwd)
 mkdir -p $HOME/.vim/pack/plugins/start/
 cd $HOME/.vim/pack/plugins/start/
 PLUGINS=(
+  ElmCast/elm-vim
+  editorconfig/editorconfig-vim
   fatih/vim-go
   junegunn/fzf
   junegunn/fzf.vim

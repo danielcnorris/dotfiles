@@ -45,13 +45,14 @@ nmap <leader>b :Buffers<CR>
 nmap <leader>f :Rg<CR>
 nmap <leader>s :BLines<CR>
 
-" ALE configuration. 
+" ALE configuration.
 " Lint and format on save only.
 let g:ale_linters = {
 \  'javascript': ['standard'],
 \}
 let g:ale_fixers = {
-\   'python': ['yapf'],
+\   'elm': ['elm-format'],
+\   'python': ['black'],
 \   'javascript': ['prettier', 'standard'],
 \}
 let g:ale_fix_on_save = 1
@@ -62,3 +63,6 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
 let g:ale_set_signs = 0
 let g:ale_linters_explicit = 1
+
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+let g:EditorConfig_core_mode = 'external_command'
