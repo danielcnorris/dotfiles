@@ -2,7 +2,9 @@ xcode-select --install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 binaries=(
+  editorconfig
   go
+  ispell
   mysql
   node
   postgresql
@@ -26,6 +28,9 @@ apps=(
   docker
   google-chrome
   iterm2
+  google-backup-and-sync
+  # TODO Uninstall system emacs.
+  emacs
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}
