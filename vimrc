@@ -49,6 +49,7 @@ nmap <leader>s :BLines<CR>
 " Lint and format on save only.
 let g:ale_linters = {
 \  'javascript': ['standard'],
+\  'python': ['flake8'],
 \}
 let g:ale_fixers = {
 \   'elm': ['elm-format'],
