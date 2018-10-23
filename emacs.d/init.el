@@ -2,12 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-;; TODO Set up Org files (todo.org, journal.org, notes.org)
-;; TODO Set the first buffer to show (?)
-;; TODO Determine whether / when to enable evil by default.
+;; TODO Magithub
 ;; TODO Use ensure-system-package for external executable dependencies.
 ;; TODO Email
 ;; TODO Pass integration
+;; TODO Try GNU Global or LSP.
 (setq custom-file "~/.emacs.d/custom.el")
 
 (require 'package)
@@ -22,6 +21,11 @@
 
 (require 'use-package)
 
+;; TODO ARev is not being diminished.
+;; TODO Diminish other modes.
+(use-package diminish
+  :ensure t)
+
 (use-package auto-package-update
   :ensure t
   :defines (auto-package-update-delete-old-versions
@@ -32,6 +36,7 @@
   :config
   (auto-package-update-maybe))
 
+;; NOTE Requires extra work on macos.
 ;; https://emacs.stackexchange.com/questions/16818/cocoa-emacs-24-5-font-issues-inconsolata-dz/29397#29397
 (set-frame-font "InconsolataG 13" nil t)
 
@@ -55,6 +60,7 @@
   (ido-mode -1)
   (setq visible-bell nil))
 
+;; TODO Actually place these in the backups directory.
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "backups") t))
       create-lockfiles nil)
@@ -86,7 +92,8 @@
       ring-bell-function 'ignore
       tags-revert-without-query t
       tags-add-tables nil
-      large-file-warning-threshold nil)
+      large-file-warning-threshold nil
+      enable-local-variables :safe)
 (fset 'yes-or-no-p 'y-or-n-p)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -100,6 +107,7 @@
 
 (global-set-key (kbd "C-c z") 'dcn/zsh)
 
+;; TODO Learn how to use eshell.
 ;; TODO See if you can combine these.
 ;; TODO Get rid of the error you get when killing an ansi-term buffer.
 (defun dcn/set-no-process-query-on-exit ()
@@ -120,9 +128,6 @@
 
 (add-hook 'term-exec-hook 'dcn/term-exec-hook)
 (add-hook 'term-exec-hook 'dcn/set-no-process-query-on-exit)
-
-(use-package diminish
-  :ensure t)
 
 (use-package desktop
   :ensure t
@@ -171,10 +176,6 @@
   :config
   (ivy-rich-mode 1))
 
-(use-package avy
-  :ensure t
-  :bind  ("C-'" . avy-goto-char-2))
-
 (use-package projectile
   :diminish
   :ensure t
@@ -193,18 +194,23 @@
   :init
   (counsel-projectile-mode 1))
 
-;; TODO ivy integration with magit
-;; TODO Magithub
-;; TODO Pull requests
 (use-package magit
+  :after ivy
   :ensure t
   :bind ("C-x g" . magit-status))
+
+(use-package git-timemachine
+  :ensure t
+  :bind ("C-c g t" . git-timemachine-toggle))
+
+(use-package browse-at-remote
+  :ensure t
+  :bind ("C-c g g" . browse-at-remote))
 
 (use-package company
   :diminish
   :after smartparens
   :ensure t
-  :functions dcn/kill-region-or-word
   :bind (:map company-active-map
               ("C-w" . dcn/kill-region-or-word)
               ("C-c C-w" . company-show-location))
@@ -215,15 +221,10 @@
       (append (if (consp backend) backend (list backend))
               '(:with company-yasnippet))))
   :config
-  (global-company-mode)
+  (global-company-mode 1)
   (setq company-idle-delay 0.1
         company-show-numbers t
         company-backends (mapcar #'company-backend-with-yas company-backends)))
-
-(use-package company-quickhelp
-  :diminish
-  :ensure t
-  :hook (company-mode . company-quickhelp-mode))
 
 (use-package editorconfig
   :ensure t
@@ -282,6 +283,18 @@
   :diminish
   :hook (evil-mode . evil-cleverparens-mode))
 
+(use-package evil-snipe
+  :ensure t
+  :diminish evil-snipe-local-mode
+  :defines (evil-snipe-local-mode
+            evil-snipe-override-local-mode
+            evil-snipe-parent-transient-map)
+  :init
+  (setq evil-snipe-scope 'whole-buffer
+        evil-snipe-repeat-scope 'whole-buffer)
+  :hook ((evil-mode . evil-snipe-mode)
+         (evil-mode . evil-snipe-override-mode)))
+
 (use-package aggressive-indent
   :ensure t
   :diminish
@@ -289,11 +302,12 @@
          (clojure-mode . aggressive-indent-mode)
          (lisp-interaction-mode . aggressive-indent-mode)))
 
-;; TODO Make smartparens have C-arrow like Paredit.
+;; TODO Remove function error.
 (use-package smartparens
   :ensure t
   :diminish
   :bind ("C-w" . dcn/kill-region-or-word)
+  :init
   :preface
   ;; https://emacs.stackexchange.com/questions/28543/smartparens-strict-mode-c-w-kill-line-if-no-active-region
   (defun dcn/kill-region-or-word (&optional arg)
@@ -305,9 +319,12 @@
           (sp-backward-kill-word arg)
         (backward-kill-word arg))))
   :config
-  (smartparens-global-strict-mode))
+  (require 'smartparens-config)
+  (smartparens-global-strict-mode 1)
+  (sp-use-paredit-bindings))
 
 ;; TODO Silence the warning at the end.
+;; TODO Is this working?
 (use-package undo-tree
   :functions global-undo-tree-mode
   :config
@@ -360,8 +377,9 @@
   :after company
   :ensure t
   :functions company-backend-with-yas
-  :defines command-go-gocode-command
-  :init (setq command-go-gocode-command "gocode")
+  :defines (command-go-gocode-command)
+  :init
+  (setq command-go-gocode-command "gocode")
   :config
   (add-to-list 'company-backends
                (company-backend-with-yas 'company-go)))
@@ -384,21 +402,28 @@
   :ensure t)
 
 (use-package org
+  :diminish (org-indent-mode auto-fill-mode)
   :hook ((org-mode . org-indent-mode)
 	 (org-mode . auto-fill-mode))
   :ensure t
+  :defines (org-capture-templates)
   :bind (("C-c a" . org-agenda)
-         ("C-c l" . org-store-link))
+         ("C-c l" . org-store-link)
+         ("C-c c" . org-capture))
   :init
   (setq org-use-speed-commands t
         org-directory "~/Google Drive/org/"
-        org-default-notes-file (concat org-directory "todo.org")))
-
-(use-package org-journal
-  :ensure t
-  :after org
-  :init
-  (setq org-journal-dir (concat org-directory "journal/")))
+        ;; TODO Pull key files out into constants.
+        org-default-notes-file (concat org-directory "todo.org")
+        org-agenda-files (concat org-directory "todo.org")
+        org-todo-keywords '((sequence "TODO(t)" "DONE(d)")
+                            (sequence "LATER(l)" "MAYBE(m)" "WAITING(w)" "|" "CANCELED(c)"))
+        org-capture-templates  '(("t" "Todo" entry (file+headline (lambda () (concat org-directory "todo.org")) "To Do")
+                                  "* TODO %?\n %a")
+                                 ("j" "Journal" entry (file (lambda () (concat org-directory "journal.org")))
+                                  "* %?\n %U\n" :prepend t)
+                                 ("n" "Note" entry (file (lambda () (concat org-directory "notes.org")))
+                                  "* %?\n %U\n" :prepend t))))
 
 ;; TODO Would be nice to have async buffer fixing.
 (use-package prettier-js

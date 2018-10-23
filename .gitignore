@@ -1,8 +1,5 @@
 vim/.netrwhist
 vim/autoload/
 vim/pack/
-emacs.d/elpa/
-emacs.d/custom.el
-emacs.d/backups/
-emacs.d/recentf
-emacs.d/smex-items
+emacs.d/*
+!emacs.d/init.el
