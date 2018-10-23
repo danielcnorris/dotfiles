@@ -3,6 +3,7 @@
 # Download this repo.
 # Log into Chromium.
 # Create SSH keys, add to Github, and add to ssh-agent.
+# TODO Install standard-prettier.
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"

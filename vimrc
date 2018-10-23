@@ -26,6 +26,7 @@ command! -nargs=+ Grep silent! grep! <args> | silent redraw!
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Remove trailing whitespace on save.
+" TODO Handle files without extensions.
 autocmd BufWritePre *.* :%s/\s\+$//e
 
 let g:polyglot_disabled = ['python-compiler']

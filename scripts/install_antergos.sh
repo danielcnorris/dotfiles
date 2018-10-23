@@ -13,6 +13,7 @@ DOT_DIR=$(pwd)
 
 sudo -v
 
+# TODO Install Jedi and iPython
 PACMAN_PKGS=(
   acpi
   chromium

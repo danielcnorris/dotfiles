@@ -20,7 +20,6 @@ brew install ${binaries[@]}
 brew services start --all
 
 brew install vim --override-system-vi --with-lua --with-python3
-brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 brew tap caskroom/cask
 
@@ -34,6 +33,9 @@ apps=(
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}
+
+# I think this has to happen after Emacs.
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 # https://help.github.com/enterprise/2.13/user/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 ssh-keygen -t rsa -b 4096 -C "danielcnorris@gmail.com"
