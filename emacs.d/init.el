@@ -1,9 +1,10 @@
 ;;; package --- summary:
 ;;; Commentary:
+;;; With help from Centaur Emacs, Doom Emacs, and others.
 ;;; Code:
 
+;; TODO Persist undo history between sessions.
 ;; TODO Magithub
-;; TODO Use ensure-system-package for external executable dependencies.
 ;; TODO Email
 ;; TODO Pass integration
 ;; TODO Try GNU Global or LSP.
@@ -24,6 +25,9 @@
 ;; TODO ARev is not being diminished.
 ;; TODO Diminish other modes.
 (use-package diminish
+  :ensure t)
+
+(use-package use-package-ensure-system-package
   :ensure t)
 
 (use-package auto-package-update
@@ -92,7 +96,7 @@
       ring-bell-function 'ignore
       tags-revert-without-query t
       tags-add-tables nil
-      large-file-warning-threshold nil
+      ;; large-file-warning-threshold nil
       enable-local-variables :safe)
 (fset 'yes-or-no-p 'y-or-n-p)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -179,6 +183,7 @@
 (use-package projectile
   :diminish
   :ensure t
+  :ensure-system-package (ctags . universal-ctags)
   :init
   (setq projectile-project-search-path '("~/"
                                          "~/go/src/caffeine.tv/"
@@ -197,6 +202,7 @@
 (use-package magit
   :after ivy
   :ensure t
+  :ensure-system-package git
   :bind ("C-x g" . magit-status))
 
 (use-package git-timemachine
@@ -209,7 +215,7 @@
 
 (use-package company
   :diminish
-  :after smartparens
+  :after (smartparens yasnippet)
   :ensure t
   :bind (:map company-active-map
               ("C-w" . dcn/kill-region-or-word)
@@ -223,6 +229,7 @@
   :config
   (global-company-mode 1)
   (setq company-idle-delay 0.1
+        company-minimum-prefix-length 2
         company-show-numbers t
         company-backends (mapcar #'company-backend-with-yas company-backends)))
 
@@ -242,8 +249,9 @@
 
 (use-package flyspell
   :diminish
+  :ensure-system-package aspell
   :hook ((text-mode . flyspell-mode)
-	 (prog-mode . flyspell-prog-mode)))
+         (prog-mode . flyspell-prog-mode)))
 
 (use-package hl-todo
   :ensure t
@@ -268,6 +276,7 @@
   :diminish
   :hook (evil-mode . evil-matchit-mode))
 
+;; NOTE cs" doesn't work like in Vim, but looks for next set of quotes instead.
 (use-package evil-surround
   :ensure t
   :diminish
@@ -277,11 +286,6 @@
   :ensure t
   :diminish
   :hook (evil-mode . evil-commentary-mode))
-
-(use-package evil-cleverparens
-  :ensure t
-  :diminish
-  :hook (evil-mode . evil-cleverparens-mode))
 
 (use-package evil-snipe
   :ensure t
@@ -294,6 +298,11 @@
         evil-snipe-repeat-scope 'whole-buffer)
   :hook ((evil-mode . evil-snipe-mode)
          (evil-mode . evil-snipe-override-mode)))
+
+(use-package lispyville
+  :ensure t
+  :diminish
+  :hook (evil-mode . lispyville-mode))
 
 (use-package aggressive-indent
   :ensure t
@@ -332,8 +341,7 @@
 
 (use-package rainbow-delimiters
   :ensure t
-  :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
-         (clojure-mode . rainbow-delimiters-mode)))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package yasnippet
   :ensure t
@@ -366,12 +374,26 @@
   :diminish
   :hook (python-mode . format-all-mode))
 
-;; TODO Guru
+;; TODO Add better snippets.
+;; TODO Use dlv debugger.
 (use-package go-mode
   :ensure t
+  :ensure-system-package
+  ((gocode . "go get -u github.com/mdempsky/gocode")
+   (godef . "go get -u github.com/rogpeppe/godef")
+   (godoc . "go get -u golang.org/x/tools/cmd/godoc")
+   (goimports . "go get -u golang.org/x/tools/cmd/goimports"))
   :hook (before-save . gofmt-before-save)
   :config
   (setq gofmt-command "goimports"))
+
+(use-package go-tag
+  :ensure t
+  :ensure-system-package
+  (gomodifytags . "go get -u github.com/fatih/gomodifytags")
+  :bind (:map go-mode-map
+              ("C-c t" . go-tag-add)
+              ("C-c T" . go-tag-remove)))
 
 (use-package company-go
   :after company
@@ -404,7 +426,7 @@
 (use-package org
   :diminish (org-indent-mode auto-fill-mode)
   :hook ((org-mode . org-indent-mode)
-	 (org-mode . auto-fill-mode))
+     (org-mode . auto-fill-mode))
   :ensure t
   :defines (org-capture-templates)
   :bind (("C-c a" . org-agenda)
