@@ -26,9 +26,10 @@ fi
 
 DIR=$(pwd)
 FILES=(
-  emacs.d
+  # emacs.d
   gitconfig
   gitignore
+  spacemacs
   tmux.conf
   vim
   vimrc
