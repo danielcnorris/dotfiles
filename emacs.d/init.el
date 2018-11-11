@@ -1,12 +1,36 @@
 ;;; package --- summary:
 ;;; Commentary:
-;;; With help from Centaur Emacs, Doom Emacs, and others.
+;;; With help from Centaur Emacs, Spacemacs, Doom Emacs, and others.
 ;;; Code:
 
-;; TODO Learn how to use gtags so you don't have to open TAGS tables.
+;; TODO Figure out the tags issue
+;; TODO Figure out smartparens issue
+
+;; TODO REPL integration for other languages
+;; TODO Offline documentation sets / browsing (e.g. dash)
+;; TODO Learn how to use imenu? moccur
 ;; TODO Encrypt authinfo / mu4e
 ;; TODO Email
 ;; TODO Set up personal org files on Dropbox / Android
+
+;; Requirements:
+;; Autocomplete
+;; xref def and referendes
+;; Projectile
+;; Flycheck
+;; Easy documentation lookup
+;; Completion / navigation
+;; Evil
+;; Yas
+;; Multiterm
+
+;; Proposed layout:
+;; Foundation
+;; Appearance
+;; Completion and navigation
+;; Editing
+;; Language
+;; Tools
 (setq custom-file "~/.emacs.d/custom.el")
 
 (require 'package)
@@ -23,8 +47,7 @@
 (setq use-package-always-ensure t)
 
 (require 'use-package)
-
-(use-package diminish)
+(require 'diminish)
 
 (use-package use-package-ensure-system-package
   :functions (use-package-ensure-system-package-exists?))
@@ -42,7 +65,6 @@
 ;; https://emacs.stackexchange.com/questions/16818/cocoa-emacs-24-5-font-issues-inconsolata-dz/29397#29397
 (set-frame-font "InconsolataG 13" nil t)
 
-(fringe-mode '(0 . 0))
 (use-package zenburn-theme
   :config
   (load-theme 'zenburn t)
@@ -59,15 +81,12 @@
   :diminish auto-revert-mode
   :config
   ;; TODO https://github.com/technomancy/better-defaults/pull/25
-  (ido-mode -1)
-  (setq visible-bell nil))
+  (ido-mode -1))
 
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "backups/") t))
       create-lockfiles nil)
 
-(global-set-key (kbd "M-h") 'help-command)
-(global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-u") 'universal-argument)
 (define-key universal-argument-map (kbd "C-u") nil)
 (define-key universal-argument-map (kbd "M-u") 'universal-argument-more)
@@ -79,17 +98,13 @@
   (indent-according-to-mode))
 (define-key global-map (kbd "C-u") 'dcn/backward-kill-line)
 
-(defvar tags-revert-without-query)
 (setq inhibit-startup-message t
       initial-scratch-message ""
       ring-bell-function 'ignore
-      tags-revert-without-query t
-      tags-add-tables nil
-      disabled-command-function nil
-      large-file-warning-threshold nil
-      enable-local-variables :safe)
+      disabled-command-function nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; Enable electric pair mode for better indentation within pairs.
 (electric-pair-mode)
 
 ;; https://emacs.stackexchange.com/questions/17005/killing-ansi-term-says-has-a-running-process
@@ -121,51 +136,57 @@
   :config
   (recentf-mode))
 
-(use-package smex)
+;; (use-package smex)
 
-;; TODO Set up default workspaces with Ivy view.
-(use-package counsel
-  :diminish (ivy-mode counsel-mode)
-  :after smex
-  :bind (("C-x j" . counsel-mark-ring)
-         ("C-s" . counsel-grep-or-swiper)
-         ("C-S-s" . swiper-all)
-         ("C-r" . swiper)
-         ("C-c C-r" . ivy-resume)
-         ("C-c v" . ivy-push-view)
-         ("C-c V" . ivy-pop-view)
-         :map swiper-map
-         ("M-%" . swiper-query-replace))
-  :hook ((after-init . ivy-mode)
-         (ivy-mode . counsel-mode))
-  :init
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "(%d/%d) "
-        counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s"))
+;; (use-package counsel
+;;   :diminish (ivy-mode counsel-mode)
+;;   :after smex
+;;   :bind (("C-x j" . counsel-mark-ring)
+;;          ("C-s" . counsel-grep-or-swiper)
+;;          ("C-S-s" . swiper-all)
+;;          ("C-r" . swiper)
+;;          ("C-c C-r" . ivy-resume)
+;;          ("C-c v" . ivy-push-view)
+;;          ("C-c V" . ivy-pop-view)
+;;          :map swiper-map
+;;          ("M-%" . swiper-query-replace))
+;;   :hook ((after-init . ivy-mode)
+;;          (ivy-mode . counsel-mode))
+;;   :init
+;;   (setq ivy-use-virtual-buffers t
+;;         ivy-count-format "(%d/%d) "
+;;         counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s"))
 
-(use-package ivy-xref
-  :after ivy
-  :init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+;; (use-package ivy-xref
+;;   :after ivy
+;;   :init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
-(use-package ivy-rich
-  :after ivy
+;; (use-package ivy-rich
+;;   :after ivy
+;;   :hook (ivy-mode . ivy-rich-mode))
+
+(use-package anzu
+  :diminish
+  :bind (([remap query-replace] . anzu-query-replace)
+         ([remap query-replace-regexp] . anzu-query-replace-regexp))
   :config
-  (ivy-rich-mode))
+  (global-anzu-mode))
 
-(use-package flyspell-correct-ivy
-  :bind (:map flyspell-mode-map
-              ("C-;" . flyspell-correct-wrapper)))
+;; (use-package flyspell-correct-ivy
+;;   :bind (:map flyspell-mode-map
+;;               ("C-;" . flyspell-correct-wrapper)))
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
   :init
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
-(use-package desktop
-  :config
-  (desktop-save-mode)
-  (add-to-list 'desktop-globals-to-save
-               'ivy-views))
+;; TODO Don't include TAGS files.
+;; (use-package desktop
+;;   :config
+;;   (desktop-save-mode)
+;;   (add-to-list 'desktop-globals-to-save
+;;                'ivy-views))
 
 (use-package eyebrowse
   :config
@@ -176,44 +197,29 @@
   :config
   (ace-link-setup-default))
 
-(use-package ggtags
-  :diminish
-  :config
-  (ggtags-global-mode))
-
 (use-package projectile
   :diminish
-  :after (ggtags)
-  ;; :ensure-system-package (ctags . universal-ctags)
   :init
   (setq projectile-project-search-path '("~/"
                                          "~/go/src/caffeine.tv/"
                                          "~/go/src/github.com/caffeinetv/"
                                          "~/dcn/"
                                          "~/Google Drive/")
-        ;; TODO Don't include ignored files in TAGS. This doesn't appear to work.
-        ;; projectile-tags-command "rg --files | ctags -Re -f \"%s\" %s \"%s\""
+        projectile-tags-backend nil
         projectile-completion-system 'ivy))
 
-(use-package counsel-projectile
-  :after projectile
-  :bind ("C-c p" . projectile-command-map)
-  :init
-  (counsel-projectile-mode))
+;; (use-package counsel-projectile
+;;   :after projectile
+;;   :bind ("C-c p" . projectile-command-map)
+;;   :init
+;;   (counsel-projectile-mode))
 
 (use-package magit
   :after ivy
-  ;; :ensure-system-package git
-  :bind ("C-x g" . magit-status)
+  :bind (("C-x g" . magit-status)
+         ("C-c g s" . magit-status))
   :init
   (setq magit-auto-revert-mode nil))
-
-(use-package magithub
-  :after magit
-  :defines (magithub-clone-default-directory)
-  :init
-  (magithub-feature-autoinject t)
-  (setq magithub-clone-default-directory "~/"))
 
 (use-package git-timemachine
   :bind ("C-c g t" . git-timemachine-toggle))
@@ -221,25 +227,32 @@
 (use-package browse-at-remote
   :bind ("C-c g g" . browse-at-remote))
 
-; (use-package company
-;   :diminish
-;   :after (smartparens yasnippet)
-;   :functions (dcn/sp-kill-region-or-word)
-;   :bind (:map company-active-map
-;               ("C-w" . dcn/sp-kill-region-or-word)
-;               ("C-c C-w" . company-show-location))
-;   :preface
-;   (defun dcn/company-backend-with-yas (backend)
-;     (if (and (listp backend) (member 'company-yasnippet backend))
-;         backend
-;       (append (if (consp backend) backend (list backend))
-;               '(:with company-yasnippet))))
-;   :config
-;   (global-company-mode)
-;   (setq company-idle-delay 0.1
-;         company-minimum-prefix-length 2
-;         company-show-numbers t
-;         company-backends (mapcar #'dcn/company-backend-with-yas company-backends)))
+(use-package magithub
+  :after magit
+  :defines magithub-clone-default-directory
+  :init
+  (magithub-feature-autoinject t)
+  (setq magithub-clone-default-directory "~/"))
+
+(use-package company
+  :diminish
+  :after (smartparens yasnippet)
+  :functions (dcn/sp-kill-region-or-word)
+  :bind (:map company-active-map
+              ("C-w" . dcn/sp-kill-region-or-word)
+              ("C-c C-w" . company-show-location))
+  :preface
+  (defun dcn/company-backend-with-yas (backend)
+    (if (and (listp backend) (member 'company-yasnippet backend))
+        backend
+      (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+  :config
+  (global-company-mode)
+  (setq company-idle-delay 0.1
+        company-minimum-prefix-length 2
+        company-show-numbers t
+        company-backends (mapcar #'dcn/company-backend-with-yas company-backends)))
 
 (use-package editorconfig
   :diminish
@@ -310,32 +323,38 @@
   :config
   (lispyville-set-key-theme '(operators c-w slurp/barf-lispy wrap)))
 
+(use-package evil-numbers
+  :after evil
+  :functions (evil-numbers/inc-at-pt)
+  :bind (:map evil-normal-state-map
+              ("C-a" . evil-numbers/inc-at-pt)
+              ;; Close enough to C-x without messing up anything important.
+              ("C-z" . evil-numbers/dec-at-pt)))
+
 (use-package aggressive-indent
   :diminish
   :hook ((emacs-lisp-mode . aggressive-indent-mode)
          (clojure-mode . aggressive-indent-mode)
          (lisp-interaction-mode . aggressive-indent-mode)))
 
-(use-package smartparens
-  :diminish
-  :bind ("C-w" . dcn/sp-kill-region-or-word)
-  :defines (sp-kill-region sp-backward-kill-word)
-  :functions (sp-kill-region sp-backward-kill-word)
-  :config
-  ;; https://emacs.stackexchange.com/questions/28543/smartparens-strict-mode-c-w-kill-line-if-no-active-region
-  (defun dcn/sp-kill-region-or-word (&optional arg)
-    "Kill active region or one word backward with optional ARG."
-    (interactive "p")
-    (require 'smartparens)
-    (if (use-region-p)
-        (sp-kill-region (region-beginning) (region-end))
-      (if smartparens-strict-mode
-          (sp-backward-kill-word arg)
-        (backward-kill-word arg))))
-  (require 'smartparens-config)
-  (smartparens-global-strict-mode)
-  (sp-use-paredit-bindings))
-
+;; (use-package smartparens
+;;   :diminish
+;;   :bind ("C-w" . dcn/sp-kill-region-or-word)
+;;   :functions (sp-kill-region sp-backward-kill-word)
+;;   :hook (after-init . smartparens-global-strict-mode)
+;;   :config
+;;   ;; https://emacs.stackexchange.com/questions/28543/smartparens-strict-mode-c-w-kill-line-if-no-active-region
+;;   (defun dcn/sp-kill-region-or-word (&optional arg)
+;;     "Kill active region or one word backward with optional ARG."
+;;     (interactive "p")
+;;     (require 'smartparens)
+;;     (if (use-region-p)
+;;         (sp-kill-region (region-beginning) (region-end))
+;;       (if smartparens-strict-mode
+;;           (sp-backward-kill-word arg)
+;;         (backward-kill-word arg))))
+;;   (require 'smartparens-config)
+;;   (sp-use-paredit-bindings))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -358,26 +377,22 @@
 (use-package eldoc
   :diminish)
 
-;; TODO Set up anaconda, anaconda company, anaconda eldoc.
-;; TODO This will recenter the buffer sometimes.
-(use-package format-all
-  :diminish
-  :hook (python-mode . format-all-mode))
-
 (use-package gitignore-mode)
 
 ;; TODO Add better snippets.
 ;; TODO Use dlv debugger.
 ;; TODO M-q or gqap doesn't work for comments.
-; (use-package go-mode
-;   :ensure-system-package
-;   ((gocode . "go get -u github.com/mdempsky/gocode")
-;    (godef . "go get -u github.com/rogpeppe/godef")
-;    (godoc . "go get -u golang.org/x/tools/cmd/godoc")
-;    (goimports . "go get -u golang.org/x/tools/cmd/goimports"))
-;   :hook (before-save . gofmt-before-save)
-;   :config
-;   (setq gofmt-command "goimports"))
+;; TODO Use the test generation package.
+;; TODO Text objects for functions like in vim-go.
+(use-package go-mode
+  :ensure-system-package
+  ((gocode . "go get -u github.com/mdempsky/gocode")
+   (godef . "go get -u github.com/rogpeppe/godef")
+   (godoc . "go get -u golang.org/x/tools/cmd/godoc")
+   (goimports . "go get -u golang.org/x/tools/cmd/goimports"))
+  :hook (before-save . gofmt-before-save)
+  :config
+  (setq gofmt-command "goimports"))
 
 (use-package go-tag
   :ensure-system-package
@@ -385,16 +400,6 @@
   :bind (:map go-mode-map
               ("C-c t" . go-tag-add)
               ("C-c T" . go-tag-remove)))
-
-; (use-package company-go
-;   :after company
-;   :functions dcn/company-backend-with-yas
-;   :defines (command-go-gocode-command)
-;   :init
-;   (setq command-go-gocode-command "gocode")
-;   :config
-;   (add-to-list 'company-backends
-;                (dcn/company-backend-with-yas 'company-go)))
 
 (use-package go-eldoc
   :hook (go-mode . go-eldoc-setup))
@@ -409,17 +414,18 @@
 
 (use-package markdown-mode)
 
+(use-package vmd-mode
+  :ensure-system-package
+  (vmd . "npm i -g vmd"))
+
 (use-package org
   :diminish (org-indent-mode auto-fill-mode)
   :hook ((org-mode . org-indent-mode)
          (org-mode . auto-fill-mode))
-  :defines (org-capture-templates)
+  :defines org-capture-templates
   :bind (("C-c a" . org-agenda)
          ("C-c l" . org-store-link)
-         ("C-c c" . org-capture)
-         :map org-mode-map
-         ("C-c h" . org-mark-element)
-         ("M-h" . help-command))
+         ("C-c c" . org-capture))
   :init
   (setq org-use-speed-commands t
         org-directory "~/Google Drive/org/"
@@ -436,12 +442,71 @@
                                  ("n" "Note" entry (file (lambda () (concat org-directory "notes.org")))
                                   "* %?\n %U\n" :prepend ))))
 
-;; TODO Would be nice to have async buffer fixing.
+;; TODO Make this faster.
 (use-package prettier-js
   :diminish
+  :defines prettier-js-command
   :hook (((js2-mode json-mode rjsx-mode web-mode) . prettier-js-mode))
   :config
   (setq prettier-js-command "prettier-standard"))
+
+
+;; TODO Add async formatting for JavaScript and Ruby.
+;; TODO Add Clojure LSP.
+;; TODO LSP temporarily breaks Emacs lisp evaluation.
+(use-package lsp-mode
+  :diminish
+  :defines lsp-ui-mode-map)
+
+;; TODO I'd much rather have xref style interface to references.
+(use-package lsp-ui
+  :after lsp-mode
+  :hook ((lsp-mode . lsp-ui-mode)
+         (lsp-ui-mode . flycheck-mode))
+  :init
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-sideline-enable nil
+        ;; TODO Still italicizes sometimes.
+        lsp-ui-peek-fontify nil))
+
+(use-package company-lsp
+  :after company
+  :functions dcn/company-backend-with-yas
+  :init
+  (add-to-list 'company-backends
+               (dcn/company-backend-with-yas 'company-lsp)))
+
+(use-package lsp-go
+  :ensure-system-package
+  (go-langserver . "go get -u github.com/sourcegraph/go-langserver")
+  :after lsp-mode
+  :commands lsp-go-enable
+  :hook (go-mode . lsp-go-enable))
+
+;; TODO Should I use pyflakes? Make warnings compatible with black.
+(use-package lsp-python
+  :ensure-system-package
+  ((pyls . "pip install 'python-language-server[all]'")
+   (black . "pip install black"))
+  ;; TODO Make this work.
+  ;; (pyls-black . "pip install pyls-black"))
+  :after lsp-mode
+  :commands lsp-python-enable
+  :hook ((python-mode . lsp-python-enable)
+         (before-save . lsp-format-buffer)))
+
+(use-package lsp-ruby
+  :ensure-system-package
+  (solargraph . "sudo gem install solargraph")
+  :after lsp-mode
+  :commands lsp-ruby-enable
+  :hook (ruby-mode . lsp-ruby-enable))
+
+(use-package lsp-javascript-typescript
+  :ensure-system-package
+  (javascript-typescript-langserver . "npm i -g javascript-typescript-langserver")
+  :commands lsp-javascript-typescript-enable
+  :hook (js2-mode . lsp-javascript-typescript-enable))
 
 (use-package restclient)
 
@@ -449,10 +514,8 @@
 
 ;; TODO Install Postgres formatter or SQL formatter.
 (use-package sqlup-mode
+  :diminish
   :hook (sql-mode . sqlup-mode))
-
-(use-package sql-indent
-  :hook (sql-mode . sql-indent-mode))
 
 (use-package terraform-mode)
 
@@ -460,17 +523,6 @@
 
 (use-package web-mode
   :mode "\\.\\(html\\|erb\\)")
-
-(use-package dumb-jump
-  :bind (("M-g o" . dumb-jump-go-other-window)
-         ("M-g j" . dumb-jump-go)
-         ("M-g i" . dumb-jump-go-prompt)
-         ("M-g x" . dumb-jump-go-prefer-external)
-         ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :defines (dumb-jump-selector)
-  :config
-  (setq dumb-jump-selector 'ivy
-        dumb-jump-force-searcher 'rg))
 
 (use-package yaml-mode)
 
@@ -484,6 +536,7 @@
 
 ;; TODO Backup password store in git
 ;; TODO pass-otp
+;; TODO Easy generate password like in spacemacs.
 (use-package pass
   :ensure-system-package
   (pass . "brew install pass"))
