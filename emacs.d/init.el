@@ -3,7 +3,6 @@
 ;;; With lots of help from the community.
 ;;; Code:
 
-
 ;;;; Package
 (require 'package)
 (add-to-list 'package-archives
@@ -47,7 +46,7 @@
 
 
 ;;;; Files
-(setq custom-file (concat user-emacs-directory "custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory)
       make-backup-files nil
       auto-save-default nil
       create-lockfiles nil)
@@ -100,6 +99,8 @@
   :bind ("M-o" . ace-window)
   :init
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
+;; Winner mode for winner undo
 
 (use-package eyebrowse
   :hook (after-init . eyebrowse-mode)
@@ -169,7 +170,8 @@
               '(:with company-yasnippet))))
   :config
   (global-company-mode)
-  (setq company-idle-delay 0.1
+  (setq company-global-modes '(not org-mode)
+        company-idle-delay 0.1
         company-minimum-prefix-length 2
         company-show-numbers t
         company-backends (mapcar #'dcn/company-backend-with-yas company-backends)))
@@ -203,11 +205,11 @@
 (use-package yasnippet-snippets)
 
 
-;; Project management
+;;;; Project management
+;; TODO Will still error if visits TAGS table.
 (use-package projectile
   :diminish
-  :hook (after-init . projectile-mode)
-  :init
+  :demand
   (setq projectile-project-search-path '("~/"
                                          "~/go/src/caffeine.tv/"
                                          "~/go/src/github.com/caffeinetv/"
@@ -279,6 +281,10 @@
   :config
   (global-anzu-mode))
 
+(use-package dtrt-indent
+  :diminish
+  :hook (after-init . dtrt-indent-global-mode))
+
 (use-package evil
   :diminish (undo-tree-mode)
   :bind ("C-c e" . evil-mode)
@@ -327,7 +333,7 @@
   :ensure nil
   :config
   (setq-default save-place t)
-  (setq save-place-file (concat user-emacs-directory "places")))
+  (setq save-place-file (concat user-emacs-directory "places/")))
 
 ;; TODO https://github.com/Fuco1/smartparens/issues/80
 (use-package smartparens
@@ -357,7 +363,7 @@
   :hook (after-init . global-undo-tree-mode)
   :init
   (setq undo-tree-auto-save-history t
-        undo-tree-history-directory-alist `((".*" . ,(concat user-emacs-directory "undo")))))
+        undo-tree-history-directory-alist `((".*" . ,(concat user-emacs-directory "undo/")))))
 
 
 ;;;; Language
