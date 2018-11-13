@@ -36,6 +36,7 @@ FILES=(
   zlogin
   zpreztorc
   zshrc
+  zshenv
 )
 
 if [[ $(uname) = "Linux" ]]
