@@ -503,6 +503,7 @@
                                   "* %?\n %U\n" :prepend t)
                                  ("n" "Note" entry (file (lambda () (concat org-directory "notes.org")))
                                   "* %?\n %U\n" :prepend ))))
+
 ;; TODO Backup password store in git
 ;; TODO pass-otp
 ;; TODO Easy generate password like in spacemacs.

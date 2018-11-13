@@ -32,7 +32,6 @@ else
   export C="$GOPATH/src/github.com/caffeinetv/"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color bw"
 export FZF_DEFAULT_COMMAND='rg --files -g "!{node_modules,vendor}/*"'
 

@@ -13,6 +13,7 @@ binaries=(
   ripgrep
   stack
   tmux
+  fzf
 )
 
 brew install ${binaries[@]}
