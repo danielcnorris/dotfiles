@@ -16,6 +16,10 @@ export VISUAL=vim
 
 alias gfu="git pull upstream master"
 
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/.local/bin"
+
 if [[ $(uname) = "Linux" ]]
 then
   alias rd='redshift -O 5500'
@@ -23,10 +27,12 @@ then
   alias f='feh --scale-down --auto-zoom'
   alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
 else
+  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
   export D="$HOME/Google\ Drive/"
   export C="$GOPATH/src/github.com/caffeinetv/"
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--color bw"
 export FZF_DEFAULT_COMMAND='rg --files -g "!{node_modules,vendor}/*"'
 

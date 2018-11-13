@@ -23,6 +23,7 @@
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :config
+  (setq exec-path-from-shell-check-startup-files nil)
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "GOPATH"))
 
@@ -475,15 +476,6 @@
   :init
   (magithub-feature-autoinject t)
   (setq magithub-clone-default-directory "~/"))
-
-;; Properly encrypt credentials.
-;; (use-package mu4e
-;;   :ensure-system-package
-;;   ;; TODO Make cross-platform.
-;;   ((mu . "brew install mu --with-emacs")
-;;    (offlineimap . "brew install offlineimap"))
-;;   :init
-;;   (provide 'html2text))
 
 ;; TODO Set up backup / personal files.
 (use-package org
