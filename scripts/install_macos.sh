@@ -3,6 +3,7 @@ xcode-select --install
 
 binaries=(
   editorconfig
+  fzf
   go
   ispell
   mysql
@@ -13,7 +14,7 @@ binaries=(
   ripgrep
   stack
   tmux
-  fzf
+  vim
 )
 
 brew install ${binaries[@]}
@@ -30,7 +31,6 @@ apps=(
   google-backup-and-sync
   google-chrome
   iterm2
-  macvim
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}

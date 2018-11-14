@@ -29,8 +29,6 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Remove trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
-let g:polyglot_disabled = ['python-compiler']
-
 map <space> \
 
 " FZF configuration.

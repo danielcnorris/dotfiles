@@ -25,7 +25,6 @@ PLUGINS=(
   junegunn/fzf.vim
   ludovicchabant/vim-gutentags
   romainl/vim-qf
-  sheerun/vim-polyglot
   tpope/vim-commentary
   tpope/vim-eunuch
   tpope/vim-repeat
