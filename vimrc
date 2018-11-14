@@ -5,6 +5,7 @@ set nowritebackup
 set hidden
 set belloff=all
 set clipboard=unnamed,unnamedplus
+set mouse=a
 set spelllang=en_us
 set spell
 hi clear SpellBad
@@ -26,15 +27,13 @@ command! -nargs=+ Grep silent! grep! <args> | silent redraw!
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Remove trailing whitespace on save.
-" TODO Handle files without extensions.
-autocmd BufWritePre *.* :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 let g:polyglot_disabled = ['python-compiler']
 
 map <space> \
 
 " FZF configuration.
-" Create a command for using Ripgrep.
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always -g "!{node_modules,vendor}/*" '.shellescape(<q-args>), 1,
@@ -47,7 +46,6 @@ nmap <leader>f :Rg<CR>
 nmap <leader>s :BLines<CR>
 
 " ALE configuration.
-" Lint and format on save only.
 let g:ale_linters = {
 \  'javascript': ['standard'],
 \  'python': ['flake8'],

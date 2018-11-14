@@ -20,18 +20,17 @@ brew install ${binaries[@]}
 
 brew services start --all
 
-# TODO Are these options still necessary?
-brew install vim --override-system-vi --with-lua
+$(brew --prefix)/opt/fzf/install
 
 brew tap caskroom/cask
 
 apps=(
   docker
+  emacs
+  google-backup-and-sync
   google-chrome
   iterm2
-  google-backup-and-sync
-  # TODO Uninstall system emacs.
-  emacs
+  macvim
 )
 
 brew cask install --appdir="/Applications" ${apps[@]}

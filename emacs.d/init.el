@@ -62,8 +62,6 @@
       inhibit-startup-message t
       initial-scratch-message ""
       ring-bell-function 'ignore)
-(put 'inhibit-startup-echo-area-message 'saved-value t)
-(setq inhibit-startup-echo-area-message (user-login-name))
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (menu-bar-mode -1)
@@ -206,10 +204,18 @@
 
 
 ;;;; Project management
-;; TODO Will still error if visits TAGS table.
 (use-package projectile
   :diminish
   :demand
+  :config
+  (defun projectile-find-file-hook-function ()
+    "Override the default hook so the tags table isn't visited. TAGS
+tables are created when I use Vim."
+    (unless (file-remote-p default-directory)
+      (when projectile-dynamic-mode-line
+        (projectile-update-mode-line))
+      (projectile-cache-files-find-file-hook)
+      (projectile-track-known-projects-find-file-hook)))
   (setq projectile-project-search-path '("~/"
                                          "~/go/src/caffeine.tv/"
                                          "~/go/src/github.com/caffeinetv/"

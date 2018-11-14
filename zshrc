@@ -15,6 +15,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias gfu="git pull upstream master"
+alias vim="mvim -v"
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
@@ -34,6 +35,7 @@ fi
 
 export FZF_DEFAULT_OPTS="--color bw"
 export FZF_DEFAULT_COMMAND='rg --files -g "!{node_modules,vendor}/*"'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
