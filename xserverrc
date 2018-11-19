@@ -1,2 +1,0 @@
-# Prevent bypassing screen locker.
-exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR

@@ -73,7 +73,9 @@
 
 ;; NOTE Requires extra work on macos.
 ;; https://emacs.stackexchange.com/questions/16818/cocoa-emacs-24-5-font-issues-inconsolata-dz/29397#29397
-(set-frame-font "InconsolataG 13" nil t)
+(if (eq system-type 'darwin)
+    (set-frame-font "InconsolataG 13" nil t)
+  (set-frame-font "Deja Vu Sans Mono 11" nil t))
 
 (use-package hl-todo
   :hook (prog-mode . global-hl-todo-mode))
@@ -216,11 +218,13 @@ tables are created when I use Vim."
         (projectile-update-mode-line))
       (projectile-cache-files-find-file-hook)
       (projectile-track-known-projects-find-file-hook)))
-  (setq projectile-project-search-path '("~/"
-                                         "~/go/src/caffeine.tv/"
-                                         "~/go/src/github.com/caffeinetv/"
-                                         "~/dcn/"
-                                         "~/Google Drive/")
+  (setq projectile-project-search-path (if (eq system-type 'darwin)
+                                           '("~/"
+                                             "~/go/src/caffeine.tv/"
+                                             "~/go/src/github.com/caffeinetv/"
+                                             "~/dcn/"
+                                             "~/Google Drive/")
+                                         '("~/"))
         projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
@@ -502,7 +506,7 @@ tables are created when I use Vim."
   (setq org-special-ctrl-a/e t
         org-special-ctrl-k t
         org-use-speed-commands t
-        org-directory "~/Google Drive/org/"
+        org-directory (if (eq system-type 'darwin) "~/Google Drive/org/" "~/org/")
         ;; TODO Pull key files out into constants.
         org-default-notes-file (concat org-directory "todo.org")
         org-agenda-files `(,(concat org-directory "todo.org"))
@@ -520,8 +524,7 @@ tables are created when I use Vim."
 ;; TODO pass-otp
 ;; TODO Easy generate password like in spacemacs.
 (use-package pass
-  :ensure-system-package
-  (pass . "brew install pass"))
+  :ensure-system-package pass)
 
 (use-package helm-system-packages)
 

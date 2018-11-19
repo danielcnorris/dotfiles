@@ -8,14 +8,14 @@ set clipboard=unnamed,unnamedplus
 set mouse=a
 set spelllang=en_us
 set spell
-hi clear SpellBad
-hi SpellBad cterm=underline
-hi clear SpellRare
-hi SpellRare cterm=underline
-hi clear SpellCap
-hi SpellCap cterm=underline
-hi clear SpellLocal
-hi SpellLocal cterm=underline
+highlight clear SpellBad
+highlight SpellBad cterm=underline
+highlight clear SpellRare
+highlight SpellRare cterm=underline
+highlight clear SpellCap
+highlight SpellCap cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal cterm=underline
 
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
