@@ -253,7 +253,6 @@ tables are created when I use Vim."
 
 (use-package flyspell
   :diminish
-  :ensure-system-package aspell
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode)))
 
@@ -357,7 +356,7 @@ tables are created when I use Vim."
   :diminish
   :bind ("C-w" . dcn/sp-kill-region-or-word)
   :functions (sp-kill-region sp-backward-kill-word)
-  :hook (after-init . smartparens-global-strict-mode)
+  :hook (prog-mode . smartparens-strict-mode)
   :preface
   ;; https://emacs.stackexchange.com/questions/28543/smartparens-strict-mode-c-w-kill-line-if-no-active-region
   (defun dcn/sp-kill-region-or-word (&optional arg)
@@ -387,6 +386,11 @@ tables are created when I use Vim."
 (use-package cider)
 
 (use-package clojure-mode)
+
+(use-package clj-refactor
+  :hook (clojure-mode . clj-refactor-mode)
+  :config
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
 
 (use-package css-mode)
 

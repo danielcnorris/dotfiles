@@ -10,6 +10,8 @@ DOT_DIR=$(pwd)
 sudo -v
 
 PACMAN_PKGS=(
+  aspell
+  aspell-en
   chromium
   clojure
   docker
@@ -26,6 +28,7 @@ PACMAN_PKGS=(
   ripgrep
   slock
   tmux
+  udisks2
   xclip
 )
 sudo pacman -Sy --noconfirm ${PACMAN_PKGS[@]}
