@@ -4,8 +4,7 @@
 # Log into Chromium.
 # Create SSH keys, add to Github, and add to ssh-agent.
 # https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
-# TODO Install standard-prettier.
-# TODO Install AWS CLI, black.
+# Configure AWS: aws configure
 
 CALLER_DIR=$(pwd)
 cd "$(dirname "$0")"
@@ -56,4 +55,24 @@ do
 done
 
 source "$HOME/.zshrc"
+
+PIP_PKGS=(
+  awscli
+  black
+  requests
+)
+
+pip install --user ${PIP_PKGS[@]}
+
+NPM_PKGS=(
+  create-react-app
+  gatsby-cli
+  prettier
+  serverless
+  standard
+  standard-prettier
+)
+
+sudo npm install -g ${NPM_PKGS[@]}
+
 cd "$CALLER_DIR"

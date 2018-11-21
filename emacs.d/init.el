@@ -100,13 +100,20 @@
   :init
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
-;; Winner mode for winner undo
-
 (use-package eyebrowse
   :hook (after-init . eyebrowse-mode)
   :config
   (eyebrowse-setup-opinionated-keys))
 
+(use-package windmove
+  :demand
+  :ensure nil
+  :config
+  (windmove-default-keybindings))
+
+(use-package winner
+  :ensure nil
+  :hook (after-init . winner-mode))
 
 ;;;; Completion
 (global-set-key (kbd "M-m") 'execute-extended-command)
