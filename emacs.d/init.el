@@ -531,11 +531,10 @@ tables are created when I use Vim."
                                  ("n" "Note" entry (file (lambda () (concat org-directory "notes.org")))
                                   "* %?\n %U\n" :prepend ))))
 
-;; TODO Backup password store in git
-;; TODO pass-otp
-;; TODO Easy generate password like in spacemacs.
 (use-package pass
   :ensure-system-package pass)
+
+(use-package ivy-pass)
 
 (use-package helm-system-packages)
 
