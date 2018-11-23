@@ -54,6 +54,9 @@ do
   ln -s "$DIR/$FILE" "$HOME/.$FILE"
 done
 
+unlink "$HOME/.config/flake8"
+ln -s "$DIR/flake8" "$HOME/.config/flake8"
+
 source "$HOME/.zshrc"
 
 PIP_PKGS=(
@@ -65,6 +68,7 @@ PIP_PKGS=(
 pip install --user ${PIP_PKGS[@]}
 
 NPM_PKGS=(
+  babel-eslint
   create-react-app
   gatsby-cli
   prettier

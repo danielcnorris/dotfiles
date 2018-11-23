@@ -21,7 +21,6 @@ PLUGINS=(
   ElmCast/elm-vim
   editorconfig/editorconfig-vim
   fatih/vim-go
-  junegunn/fzf
   junegunn/fzf.vim
   ludovicchabant/vim-gutentags
   romainl/vim-qf
@@ -31,7 +30,6 @@ PLUGINS=(
   tpope/vim-sensible
   tpope/vim-sleuth
   tpope/vim-surround
-  w0rp/ale
 )
 for PLUGIN in "${PLUGINS[@]}"
 do

@@ -40,27 +40,16 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 nmap <leader>e :Files<CR>
 nmap <leader>b :Buffers<CR>
-nmap <leader>f :Rg<CR>
+nmap <leader>g :Rg<CR>
 nmap <leader>s :BLines<CR>
 
-" ALE configuration.
-let g:ale_linters = {
-\  'javascript': ['standard'],
-\  'python': ['flake8'],
-\}
-let g:ale_fixers = {
-\   'elm': ['elm-format'],
-\   'python': ['black'],
-\   'javascript': ['prettier', 'standard'],
-\}
-let g:ale_fix_on_save = 1
-let g:ale_open_list = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
-let g:ale_set_signs = 0
-let g:ale_linters_explicit = 1
+augroup Linting
+	autocmd!
+	autocmd FileType javascript setlocal makeprg=~/dotfiles/javascript.sh
+	autocmd FileType python setlocal makeprg=~/dotfiles/python.sh
+	autocmd BufWritePost *.py,*.js,*.jsx silent make! <afile> | silent redraw!
+	autocmd QuickFixCmdPost [^l]* cwindow
+augroup END
 
 let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
 let g:EditorConfig_core_mode = 'external_command'

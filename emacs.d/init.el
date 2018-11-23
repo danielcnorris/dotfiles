@@ -3,6 +3,7 @@
 ;;; With lots of help from the community.
 ;;; Code:
 
+
 ;;;; Package
 (require 'package)
 (add-to-list 'package-archives
@@ -537,6 +538,8 @@ tables are created when I use Vim."
 (use-package ivy-pass)
 
 (use-package helm-system-packages)
+
+(use-package rainbow-mode)
 
 (use-package restart-emacs)
 
