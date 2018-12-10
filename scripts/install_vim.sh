@@ -30,6 +30,7 @@ PLUGINS=(
   tpope/vim-sensible
   tpope/vim-sleuth
   tpope/vim-surround
+  w0rp/ale
 )
 for PLUGIN in "${PLUGINS[@]}"
 do
