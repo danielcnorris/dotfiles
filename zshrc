@@ -26,17 +26,18 @@ then
   alias rn='redshift -O 2000'
   alias f='feh --scale-down --auto-zoom'
   alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
+  [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+  [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+  [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+  [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 else
-  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+  export PATH="/usr/local/opt/python/libexec/bin:/Users/daniel/Library/Python/3.7/bin:$PATH"
   export D="$HOME/Google\ Drive/"
   export C="$GOPATH/src/github.com/caffeinetv/"
+  [[ -f /Users/daniel/shadow/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/daniel/shadow/node_modules/tabtab/.completions/serverless.zsh
+  [[ -f /Users/daniel/shadow/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/daniel/shadow/node_modules/tabtab/.completions/sls.zsh
 fi
 
 export FZF_DEFAULT_OPTS="--color bw"
 export FZF_DEFAULT_COMMAND='rg --files -g "!{node_modules,vendor}/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

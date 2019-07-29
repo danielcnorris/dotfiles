@@ -79,4 +79,7 @@ NPM_PKGS=(
 
 sudo npm install -g ${NPM_PKGS[@]}
 
+# TODO Install go packages
+# go get -u honnef.co/go/tools/cmd/...
+
 cd "$CALLER_DIR"

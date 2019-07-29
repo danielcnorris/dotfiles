@@ -17,9 +17,6 @@ highlight SpellCap cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal cterm=underline
 
-let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
-
 set grepprg=rg\ --vimgrep
 command! -nargs=+ Grep silent! grep! <args> | silent redraw!
 
@@ -45,13 +42,13 @@ nmap <leader>s :BLines<CR>
 
 " ALE configuration.
 let g:ale_linters = {
-\  'javascript': ['standard'],
 \  'python': ['flake8'],
 \}
+
 let g:ale_fixers = {
 \   'elm': ['elm-format'],
 \   'python': ['black'],
-\   'javascript': ['prettier', 'standard'],
+\   'javascript': ['prettier']
 \}
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
@@ -64,3 +61,9 @@ let g:ale_linters_explicit = 1
 
 let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
 let g:EditorConfig_core_mode = 'external_command'
+
+let g:mix_format_on_save = 1
+
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+

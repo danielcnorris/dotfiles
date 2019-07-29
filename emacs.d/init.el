@@ -27,13 +27,6 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "GOPATH"))
 
-(use-package use-package-ensure-system-package
-  :after exec-path-from-shell
-  :functions (use-package-ensure-system-package-exists?)
-  :config
-  ;; If this gets set earlier, Emacs tries to use Tramp.
-  (setq use-package-always-defer t))
-
 (use-package diminish)
 
 (use-package auto-package-update
@@ -72,40 +65,19 @@
   (horizontal-scroll-bar-mode -1)
   (add-to-list 'initial-frame-alist '(fullscreen . fullboth)))
 
-;; NOTE Requires extra work on macos.
-;; https://emacs.stackexchange.com/questions/16818/cocoa-emacs-24-5-font-issues-inconsolata-dz/29397#29397
-(if (eq system-type 'darwin)
-    (set-frame-font "InconsolataG 13" nil t)
-  (set-frame-font "Deja Vu Sans Mono 11" nil t))
-
 (use-package hl-todo
   :hook (prog-mode . global-hl-todo-mode))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package smooth-scrolling
-  :hook (after-init . smooth-scrolling-mode))
-
 (use-package zenburn-theme
   :demand
   :config
-  (load-theme 'zenburn t)
-  ;; Change the mode line emphasis for easier eyebrowse usage.
-  (set-face-attribute 'mode-line-emphasis nil :foreground "#DCA3A3"))
+  (load-theme 'zenburn t))
 
 
 ;;;; Window Management
-(use-package ace-window
-  :bind ("M-o" . ace-window)
-  :init
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
-
-(use-package eyebrowse
-  :hook (after-init . eyebrowse-mode)
-  :config
-  (eyebrowse-setup-opinionated-keys))
-
 (use-package windmove
   :demand
   :ensure nil
@@ -117,13 +89,6 @@
   :hook (after-init . winner-mode))
 
 ;;;; Completion
-(global-set-key (kbd "M-m") 'execute-extended-command)
-(global-set-key (kbd "M-M") 'back-to-indentation)
-
-(use-package ace-link
-  :config
-  (ace-link-setup-default))
-
 (use-package prescient
   :hook (after-init . prescient-persist-mode))
 
@@ -145,57 +110,10 @@
         ivy-count-format "(%d/%d) "
         counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s"))
 
-(use-package ivy-hydra
-  :after ivy)
-
 (use-package ivy-prescient
   :after ivy
   :hook (ivy-mode . ivy-prescient-mode))
 
-(use-package ivy-rich
-  :after ivy
-  :hook (ivy-mode . ivy-rich-mode))
-
-(use-package helm
-  :bind (:map helm-map
-              ("C-w" . backward-kill-word)))
-
-(use-package company
-  :demand
-  :diminish
-  :after (smartparens yasnippet)
-  :functions (dcn/sp-kill-region-or-word)
-  :bind (:map company-active-map
-              ("C-n" . (lambda () (interactive) (company-complete-common-or-cycle 1)))
-              ("C-p" . (lambda () (interactive) (company-complete-common-or-cycle -1)))
-              ("C-w" . dcn/sp-kill-region-or-word)
-              ("C-c C-w" . company-show-location))
-  :preface
-  (defun dcn/company-backend-with-yas (backend)
-    (if (and (listp backend) (member 'company-yasnippet backend))
-        backend
-      (append (if (consp backend) backend (list backend))
-              '(:with company-yasnippet))))
-  :config
-  (global-company-mode)
-  (setq company-global-modes '(not org-mode)
-        company-idle-delay 0.1
-        company-minimum-prefix-length 2
-        company-show-numbers t
-        company-backends (mapcar #'dcn/company-backend-with-yas company-backends)))
-
-(use-package company-prescient
-  :after company
-  :hook (company-mode . company-prescient-mode))
-
-(use-package flx
-  :demand)
-
-(use-package company-flx
-  :after (company flx)
-  :hook (company-mode . company-flx-mode))
-
-;; TODO Eldoc is annoying when using Swiper.
 (use-package eldoc
   :diminish)
 
@@ -207,28 +125,22 @@
 (use-package yasnippet
   :diminish (yas-minor-mode)
   :hook (after-init . yas-global-mode)
+  :defines (yas-verbosity)
   :init
   (setq yas-verbosity 2))
 
 (use-package yasnippet-snippets)
 
+(use-package ivy-yasnippet)
 
-;;;; Project management
+
+;;;; Project Management
 (use-package projectile
   :diminish
   :demand
   :config
-  (defun projectile-find-file-hook-function ()
-    "Override the default hook so the tags table isn't visited. TAGS
-tables are created when I use Vim."
-    (unless (file-remote-p default-directory)
-      (when projectile-dynamic-mode-line
-        (projectile-update-mode-line))
-      (projectile-cache-files-find-file-hook)
-      (projectile-track-known-projects-find-file-hook)))
   (setq projectile-project-search-path (if (eq system-type 'darwin)
                                            '("~/"
-                                             "~/go/src/caffeine.tv/"
                                              "~/go/src/github.com/caffeinetv/"
                                              "~/dcn/"
                                              "~/Google Drive/")
@@ -240,17 +152,16 @@ tables are created when I use Vim."
   :hook (after-init . counsel-projectile-mode)
   :bind ("C-c p" . projectile-command-map))
 
-(use-package xref
-  :ensure nil
-  :config
-  ;; Don't use Etags backend.
-  (setq xref-backend-functions nil))
-
 
 ;;;; Corrections
 (use-package flycheck
+  :disabled
   :diminish
-  :hook (after-init . global-flycheck-mode))
+  :hook (after-init . global-flycheck-mode)
+  :config
+  (setq flycheck-check-syntax-automatically '(mode-enabled save)
+        flycheck-highlighting-mode nil
+        flycheck-indication-mode nil))
 
 (use-package flyspell
   :diminish
@@ -259,22 +170,8 @@ tables are created when I use Vim."
 
 
 ;;;; Editing
-(global-set-key (kbd "M-u") 'universal-argument)
-(define-key universal-argument-map (kbd "C-u") nil)
-(define-key universal-argument-map (kbd "M-u") 'universal-argument-more)
-
-(defun dcn/backward-kill-line (arg)
-  "Kill ARG lines backward."
-  (interactive "p")
-  (kill-line (- 1 arg))
-  (indent-according-to-mode))
-
-(define-key global-map (kbd "C-u") 'dcn/backward-kill-line)
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 (global-auto-revert-mode)
-(delete-selection-mode)
 
 (setq-default indent-tabs-mode nil)
 (setq save-interprogram-paste-before-kill t
@@ -284,12 +181,8 @@ tables are created when I use Vim."
   :diminish
   :hook ((emacs-lisp-mode . aggressive-indent-mode)
          (clojure-mode . aggressive-indent-mode)
-         (lisp-interaction-mode . aggressive-indent-mode)))
-
-(use-package editorconfig
-  :diminish
-  :config
-  (editorconfig-mode))
+         (lisp-interaction-mode . aggressive-indent-mode)
+         (racket-mode . aggressive-indent-mode)))
 
 (use-package anzu
   :diminish
@@ -301,6 +194,17 @@ tables are created when I use Vim."
 (use-package dtrt-indent
   :diminish
   :hook (after-init . dtrt-indent-global-mode))
+
+(use-package editorconfig
+  :diminish
+  :config
+  (editorconfig-mode))
+
+(use-package electric
+  :diminish
+  :ensure nil
+  :hook ((after-init . electric-pair-mode)
+         (prog-mode . electric-indent-mode)))
 
 (use-package evil
   :diminish (undo-tree-mode)
@@ -324,148 +228,69 @@ tables are created when I use Vim."
               ;; Close enough to C-x without messing up anything important.
               ("C-z" . evil-numbers/dec-at-pt)))
 
-(use-package evil-snipe
-  :diminish evil-snipe-local-mode
-  :defines (evil-snipe-local-mode
-            evil-snipe-override-local-mode
-            evil-snipe-parent-transient-map)
-  :init
-  (setq evil-snipe-scope 'whole-buffer
-        evil-snipe-repeat-scope 'whole-buffer)
-  :hook ((evil-mode . evil-snipe-mode)
-         (evil-mode . evil-snipe-override-mode)))
-
-;; NOTE cs" doesn't work like in Vim, but looks for next set of quotes instead.
 (use-package evil-surround
   :diminish
   :hook (evil-mode . evil-surround-mode))
 
-(use-package lispyville
+(use-package format-all
   :diminish
-  :hook (evil-mode . lispyville-mode)
-  :config
-  (lispyville-set-key-theme '(operators c-w slurp/barf-lispy wrap)))
+  :hook ((python-mode . format-all-mode)
+         (js2-mode . format-all-mode)))
 
-(use-package saveplace
-  :ensure nil
-  :config
-  (setq-default save-place t)
-  (setq save-place-file (concat user-emacs-directory "places/")))
+(use-package paredit
+  :diminish
+  :hook ((clojure-mode . paredit-mode)
+         (emacs-lisp-mode . paredit-mode)
+         (lisp-interaction-mode . paredit-mode)
+         (racket-mode . paredit-mode)))
 
-;; TODO https://github.com/Fuco1/smartparens/issues/80
+(use-package paren
+  :diminish
+  :hook (prog-mode . show-paren-mode))
+
 (use-package smartparens
-  :diminish
-  :bind ("C-w" . dcn/sp-kill-region-or-word)
-  :functions (sp-kill-region sp-backward-kill-word)
-  :hook (prog-mode . smartparens-strict-mode)
-  :preface
-  ;; https://emacs.stackexchange.com/questions/28543/smartparens-strict-mode-c-w-kill-line-if-no-active-region
-  (defun dcn/sp-kill-region-or-word (&optional arg)
-    "Kill active region or one word backward with optional ARG."
-    (interactive "p")
-    (require 'smartparens)
-    (if (use-region-p)
-        (sp-kill-region (region-beginning) (region-end))
-      (if smartparens-strict-mode
-          (sp-backward-kill-word arg)
-        (backward-kill-word arg))))
+  :hook (elixir-mode . smartparens-strict-mode)
   :config
-  (require 'smartparens-config)
-  (sp-use-paredit-bindings)
-  (show-smartparens-global-mode))
+  (require 'smartparens-config))
 
-;; TODO Better binding for redo.
 (use-package undo-tree
   :diminish
-  :hook (after-init . global-undo-tree-mode)
-  :init
-  (setq undo-tree-auto-save-history t
-        undo-tree-history-directory-alist `((".*" . ,(concat user-emacs-directory "undo/")))))
-
+  :hook (after-init . global-undo-tree-mode))
 
 ;;;; Language
-(use-package cider)
+(use-package alchemist)
 
 (use-package clojure-mode)
 
-(use-package clj-refactor
-  :hook (clojure-mode . clj-refactor-mode)
-  :config
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
-
-(use-package css-mode)
+(use-package cider)
 
 (use-package dockerfile-mode)
 
+(use-package elixir-mode
+  :hook (elixir-mode . (lambda () (add-hook 'before-save-hook 'elixir-format nil t))))
+
 (use-package gitignore-mode)
 
-;; TODO Use dlv debugger.
-;; TODO M-q or gqap doesn't work for comments.
-;; TODO Use the test generation package.
-;; TODO Text objects for functions like in vim-go.
 (use-package go-mode
-  :ensure-system-package
-  ((gocode . "go get -u github.com/mdempsky/gocode")
-   (godef . "go get -u github.com/rogpeppe/godef")
-   (godoc . "go get -u golang.org/x/tools/cmd/godoc")
-   (goimports . "go get -u golang.org/x/tools/cmd/goimports"))
   :hook (before-save . gofmt-before-save)
   :config
   (setq gofmt-command "goimports"))
 
-(use-package go-tag
-  :ensure-system-package
-  (gomodifytags . "go get -u github.com/fatih/gomodifytags")
-  :bind (:map go-mode-map
-              ("C-c t" . go-tag-add)
-              ("C-c T" . go-tag-remove)))
+(use-package json-mode)
 
-;; TODO Tern for JS.
 (use-package js2-mode
   :mode "\\.js"
   :config
   (setq js2-strict-missing-semi-warning nil
         js2-basic-offset 2))
 
-;; TODO Make this faster / async.
-(use-package prettier-js
-  :diminish
-  :defines prettier-js-command
-  :hook (((js2-mode json-mode rjsx-mode web-mode) . prettier-js-mode))
-  :config
-  (setq-default flycheck-disabled-checkers '(javascript-eslint javascript-jshint))
-  (setq prettier-js-command "prettier-standard"))
+(use-package markdown-mode)
+
+(use-package racket-mode
+  :diminish (hs-minor-mode))
 
 (use-package rjsx-mode)
 
-(use-package json-mode)
-
-(use-package markdown-mode)
-
-(use-package vmd-mode
-  :ensure-system-package
-  (vmd . "npm i -g vmd"))
-
-;; TODO Finish setup and do ensure-system-package
-;; pip install jedi
-;; pip install flake8
-;; pip install black
-;; Disable flymake
-(use-package elpy
-  :config
-  (elpy-enable))
-
-;; TODO Rubocop
-;; TODO Ruby pair closing.
-(use-package robe)
-
-(use-package sqlup-mode
-  :diminish
-  :hook (sql-mode . sqlup-mode))
-
-(use-package terraform-mode)
-
-;; M-q or gqap doesn't work for comments.
 (use-package vimrc-mode)
 
 (use-package web-mode
@@ -475,22 +300,10 @@ tables are created when I use Vim."
 
 
 ;;;; Tools
-;; TODO Ensure sqlite3
-(use-package helm-dash
-  :functions (helm-dash-at-point)
-  :bind ("C-c d" . helm-dash-at-point)
-  :config
-  ;; TODO Set these intelligently based on the mode.
-  ;; TODO How to automatically install default docsets.
-  (setq  helm-dash-common-docsets '("Clojure" "Emacs_Lisp" "Go" "Javascript" "Python_3" "React" "Ruby" "Ruby_on_Rails_5")
-         helm-dash-browser-func 'eww))
-
 (use-package magit
   :after ivy
   :bind (("C-x g" . magit-status)
-         ("C-c g s" . magit-status))
-  :init
-  (setq magit-auto-revert-mode nil))
+         ("C-c g s" . magit-status)))
 
 (use-package git-timemachine
   :bind ("C-c g t" . git-timemachine-toggle))
@@ -498,48 +311,9 @@ tables are created when I use Vim."
 (use-package browse-at-remote
   :bind ("C-c g b" . browse-at-remote))
 
-(use-package magithub
-  :after magit
-  :defines magithub-clone-default-directory
-  :init
-  (magithub-feature-autoinject t)
-  (setq magithub-clone-default-directory "~/"))
-
-;; TODO Set up backup / personal files.
-(use-package org
-  :diminish (org-indent-mode auto-fill-mode)
-  :hook ((org-mode . org-indent-mode)
-         (org-mode . auto-fill-mode))
-  :defines (org-capture-templates)
-  :bind (("C-c a" . org-agenda)
-         ("C-c l" . org-store-link)
-         ("C-c c" . org-capture))
-  :init
-  (setq org-special-ctrl-a/e t
-        org-special-ctrl-k t
-        org-use-speed-commands t
-        org-directory (if (eq system-type 'darwin) "~/Google Drive/org/" "~/org/")
-        ;; TODO Pull key files out into constants.
-        org-default-notes-file (concat org-directory "todo.org")
-        org-agenda-files `(,(concat org-directory "todo.org"))
-        org-todo-keywords '((sequence "TODO" "DONE"))
-        org-log-done t
-        org-tag-alist '(("LATER" . ?l) ("MAYBE" . ?m) ("WAITING" . ?w) ("CANCELED" . ?c))
-        org-capture-templates  '(("t" "Todo" entry (file+headline (lambda () (concat org-directory "todo.org")) "To Do")
-                                  "* TODO %?\n %a")
-                                 ("j" "Journal" entry (file (lambda () (concat org-directory "journal.org")))
-                                  "* %?\n %U\n" :prepend t)
-                                 ("n" "Note" entry (file (lambda () (concat org-directory "notes.org")))
-                                  "* %?\n %U\n" :prepend ))))
-
-(use-package pass
-  :ensure-system-package pass)
+(use-package pass)
 
 (use-package ivy-pass)
-
-(use-package helm-system-packages)
-
-(use-package rainbow-mode)
 
 (use-package restart-emacs)
 
@@ -570,7 +344,6 @@ tables are created when I use Vim."
               (kill-buffer ,buff))))))
   :bind ("C-c m" . dcn/zsh)
   :hook (term-exec . dcn/term-exec-hook))
-
 
 (provide 'init)
 ;;; init.el ends here

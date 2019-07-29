@@ -21,12 +21,15 @@ PLUGINS=(
   ElmCast/elm-vim
   editorconfig/editorconfig-vim
   fatih/vim-go
+  jparise/vim-graphql
   junegunn/fzf.vim
-  ludovicchabant/vim-gutentags
+  # ludovicchabant/vim-gutentags
   romainl/vim-qf
   tpope/vim-commentary
   tpope/vim-eunuch
+  tpope/vim-fugitive
   tpope/vim-repeat
+  tpope/vim-rhubarb
   tpope/vim-sensible
   tpope/vim-sleuth
   tpope/vim-surround
