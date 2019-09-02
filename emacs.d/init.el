@@ -5,6 +5,9 @@
 
 
 ;;;; Package
+;; HACK In order to get all packages to load.
+;; https://github.com/bbatsov/prelude/issues/1225
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/")
