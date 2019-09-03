@@ -13,16 +13,14 @@ cd ..
 # Prezto.
 if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]
 then
+  zsh
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
   setopt EXTENDED_GLOB
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     unlink "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
-  if [[ $(uname) = "Darwin" ]]
-  then
-    chsh -s /usr/bin/zsh
-  fi
+  chsh -s /usr/bin/zsh
 else
   git -C "${ZDOTDIR:-$HOME}/.zprezto" pull
   git -C "${ZDOTDIR:-$HOME}/.zprezto" submodule update --init --recursive
@@ -70,14 +68,15 @@ pip install --user ${PIP_PKGS[@]}
 NPM_PKGS=(
   babel-eslint
   create-react-app
-  gatsby-cli
   prettier
   serverless
   standard
-  standard-prettier
 )
 
-sudo npm install -g ${NPM_PKGS[@]}
+# https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
+mkdir "${HOME}/.npm"
+npm config set prefix "${HOME}/.npm"
+npm install -g ${NPM_PKGS[@]}
 
 # TODO Install go packages
 # go get -u honnef.co/go/tools/cmd/...

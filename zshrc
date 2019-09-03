@@ -23,7 +23,6 @@ export PATH="$PATH:$HOME/.local/bin"
 if [[ $(uname) = "Linux" ]]
 then
   export BROWSER=/usr/bin/chromium
-  # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
   NPM_PACKAGES="${HOME}/.npm"
   export PATH="$NPM_PACKAGES/bin:$PATH"
   unset MANPATH
