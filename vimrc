@@ -67,3 +67,7 @@ let g:mix_format_on_save = 1
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 
+
+" TODO Get gx to work
+" https://bugzilla.xfce.org/show_bug.cgi?id=12251
+" let g:netrw_browsex_viewer="setsid exo-open"

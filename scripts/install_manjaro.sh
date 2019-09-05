@@ -1,4 +1,4 @@
-# Manjaros Linux distro. Use Manjaro Architect and select i3 edition.
+# Manjaros Linux distro. Now using XFCE edition.
 
 set -e
 
@@ -10,7 +10,6 @@ DOT_DIR=$(pwd)
 sudo -v
 
 PACMAN_PKGS=(
-  aspell
   aspell-en
   chromium
   clojure
@@ -20,16 +19,13 @@ PACMAN_PKGS=(
   fzf
   go
   gvim
-  libevent # Needed for tmux to work.
   nodejs
   npm
   pass
   python-pip
   redshift
   ripgrep
-  slock
   tmux
-  udisks2
   xclip
   yay
 )
@@ -43,14 +39,12 @@ YAY_PKGS=(
 )
 yay -Sy --noconfirm ${YAY_PKGS[@]}
 
-sudo systemctl enable --now docker.service--noconfirm
+sudo systemctl enable --now docker.service
 
-# Manjaro creates default versions of these files.
-cat "$DIR/config.i3" >> "$HOME/i3/config"
-sed -i "/^URxvt\.font/c\URxvt\.font: xft:Deja Vu Sans Mono:size=10" "$HOME/.Xresources"
-# Change default browser
+# TODO Map caps to ctrl.
+# XFCE Terminal > Edit > Preferences > Appearance > Opacity to 100%.
+# XFCE Terminal > Edit > Preferences > Colors > Dark Pastel
+# If you want to change the default browser:
 # https://www.reddit.com/r/ManjaroLinux/comments/7k8xi6/how_to_set_the_default_browser/
-# unlink "$HOME/.config/mimeapps.list"
-# ln -s "$DIR/mimeapps.list" "$HOME/.config/mimeapps.list"
 
 cd "$CALLER_DIR"

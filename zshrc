@@ -22,7 +22,7 @@ export PATH="$PATH:$HOME/.local/bin"
 
 if [[ $(uname) = "Linux" ]]
 then
-  export BROWSER=/usr/bin/chromium
+  export BROWSER=/usr/bin/firefox
   NPM_PACKAGES="${HOME}/.npm"
   export PATH="$NPM_PACKAGES/bin:$PATH"
   unset MANPATH

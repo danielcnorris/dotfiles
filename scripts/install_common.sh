@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/zsh
 # Manual steps
 # Download this repo.
 # Log into Chromium.
@@ -13,7 +13,6 @@ cd ..
 # Prezto.
 if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]
 then
-  zsh
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
   setopt EXTENDED_GLOB
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -70,7 +69,6 @@ NPM_PKGS=(
   create-react-app
   prettier
   serverless
-  standard
 )
 
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
