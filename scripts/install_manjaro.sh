@@ -46,5 +46,6 @@ sudo systemctl enable --now docker.service
 # XFCE Terminal > Edit > Preferences > Colors > Dark Pastel
 # If you want to change the default browser:
 # https://www.reddit.com/r/ManjaroLinux/comments/7k8xi6/how_to_set_the_default_browser/
+# Enable Emacs keybindings in GTK: https://wiki.archlinux.org/index.php/GTK#Keyboard_shortcuts
 
 cd "$CALLER_DIR"
