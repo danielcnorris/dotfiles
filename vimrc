@@ -47,7 +47,7 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
 \   'elm': ['elm-format'],
-\   'python': ['black'],
+\   'python': ['isort', 'black'],
 \   'javascript': ['prettier']
 \}
 let g:ale_fix_on_save = 1
@@ -71,3 +71,5 @@ let g:go_metalinter_autosave = 1
 " TODO Get gx to work
 " https://bugzilla.xfce.org/show_bug.cgi?id=12251
 " let g:netrw_browsex_viewer="setsid exo-open"
+" let g:netrw_browsex_viewer="open"
+" let g:netrw_http_command="open"
