@@ -18,13 +18,8 @@ CALLER_DIR=$(pwd)
 mkdir -p $HOME/.vim/pack/plugins/start/
 cd $HOME/.vim/pack/plugins/start/
 PLUGINS=(
-  ElmCast/elm-vim
-  editorconfig/editorconfig-vim
-  fatih/vim-go
-  jparise/vim-graphql
   junegunn/fzf.vim
-  # ludovicchabant/vim-gutentags
-  romainl/vim-qf
+  sheerun/vim-polyglot
   tpope/vim-commentary
   tpope/vim-eunuch
   tpope/vim-fugitive
@@ -33,7 +28,7 @@ PLUGINS=(
   tpope/vim-sensible
   tpope/vim-sleuth
   tpope/vim-surround
-  w0rp/ale
+  dense-analysis/ale
 )
 for PLUGIN in "${PLUGINS[@]}"
 do

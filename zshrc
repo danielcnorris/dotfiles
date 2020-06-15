@@ -19,6 +19,7 @@ alias gfu="git pull upstream master"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.emacs.d/bin"
 
 if [[ $(uname) = "Linux" ]]
 then
@@ -37,12 +38,15 @@ then
   [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 else
   export PATH="/usr/local/opt/python/libexec/bin:/Users/daniel/Library/Python/3.7/bin:$PATH"
-  export D="$HOME/Google\ Drive/"
-  export C="$GOPATH/src/github.com/caffeinetv/"
+  export PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"
   [[ -f /Users/daniel/shadow/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/daniel/shadow/node_modules/tabtab/.completions/serverless.zsh
   [[ -f /Users/daniel/shadow/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/daniel/shadow/node_modules/tabtab/.completions/sls.zsh
+  . /usr/local/etc/profile.d/z.sh
 fi
 
 export FZF_DEFAULT_OPTS="--color bw"
 export FZF_DEFAULT_COMMAND='rg --files -g "!{node_modules,vendor}/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
