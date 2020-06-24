@@ -27,7 +27,7 @@ fi
 
 DIR=$(pwd)
 FILES=(
-  emacs.d
+  emacs
   gitconfig
   gitignore
   tmux.conf
