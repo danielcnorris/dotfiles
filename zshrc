@@ -25,6 +25,7 @@ if [[ $(uname) = "Linux" ]]
 then
   export BROWSER=/usr/bin/firefox
   NPM_PACKAGES="${HOME}/.npm"
+  . /usr/share/z/z.sh
   export PATH="$NPM_PACKAGES/bin:$PATH"
   unset MANPATH
   export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
