@@ -1,3 +1,5 @@
+(setq custom-file "~/.custom.el")
+
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 
@@ -43,12 +45,15 @@
 
 (setq org-capture-templates
       '(("t" "Task" entry (file+headline "~/org/todo.org" "Tasks")
-	 "* TODO %?\n" :prepend t)))
+	 "* TODO %?\n" :prepend t)
+	("n" "Note" entry (file "~/org/notes.org")
+	 "* %? %^g\n%U\n" :prepend t)))
 
 (add-hook 'org-mode-hook 'auto-fill-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'org-indent-mode)
 
+;; Don't want thise in org mode though!
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'prog-mode-hook 'electric-indent-mode)
