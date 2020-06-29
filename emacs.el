@@ -18,7 +18,8 @@
 (setq org-special-ctrl-a/e t
       org-special-ctrl-o t
       org-use-speed-commands t
-      org-odd-levels-only t
+      org-enforce-todo-dependencies t
+      org-enforce-todo-checkbox-dependencies t
       org-insert-heading-respect-content t
       org-log-into-drawer t
       org-todo-keywords
