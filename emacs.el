@@ -22,6 +22,7 @@
       org-enforce-todo-checkbox-dependencies t
       org-insert-heading-respect-content t
       org-log-into-drawer t
+      calendar-week-start-day 1
       org-todo-keywords
       '((sequence
 	 "TODO(t)"
