@@ -15,6 +15,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias gfu="git pull upstream master"
+alias chaws="source $HOME/.aws/login"
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
@@ -33,15 +34,11 @@ then
   alias rn='redshift -O 2000'
   alias f='feh --scale-down --auto-zoom'
   alias m='xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1'
-  [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-  [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
   [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
   [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 else
-  export PATH="/usr/local/opt/python/libexec/bin:/Users/daniel/Library/Python/3.7/bin:$PATH"
+  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
   export PATH="/Applications/Emacs.app/Contents/MacOS:$PATH"
-  [[ -f /Users/daniel/shadow/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/daniel/shadow/node_modules/tabtab/.completions/serverless.zsh
-  [[ -f /Users/daniel/shadow/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/daniel/shadow/node_modules/tabtab/.completions/sls.zsh
   . /usr/local/etc/profile.d/z.sh
 fi
 
@@ -51,3 +48,6 @@ export FZF_DEFAULT_COMMAND='rg --files -g "!{node_modules,vendor}/*"'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
